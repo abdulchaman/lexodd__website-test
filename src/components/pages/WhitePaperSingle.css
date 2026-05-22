@@ -1,0 +1,20 @@
+.white-paper-hero {
+  padding: 0 48px 40px;
+  border-bottom: 1px solid var(--b1);
+}
+
+.white-paper-hero h1 {
+  font-size: clamp(26px, 4vw, 50px);
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+
+.white-paper-header {
+  padding: 28px 48px 0;
+}
+
+.framework-image {
+  height: 200px;
+  margin: 32px 0;
+  border-radius: 4px;
+}

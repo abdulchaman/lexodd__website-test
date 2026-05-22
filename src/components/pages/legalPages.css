@@ -1,0 +1,139 @@
+.legal-page {
+    background: #0b0b0d;
+    color: #ffffff;
+}
+
+/* ================= HERO ================= */
+
+.legal-hero {
+    padding: clamp(64px, 8vw, 120px) 24px 48px;
+}
+
+.legal-hero__inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.legal-kicker {
+    color: #a51fc1;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.legal-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.legal-meta {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ================= CONTENT ================= */
+
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+}
+
+/* highlight */
+.legal-highlight {
+    border-left: 3px solid #a51fc1;
+    background: rgba(165, 31, 193, 0.08);
+    padding: 20px;
+    margin-bottom: 48px;
+}
+
+/* sections */
+.legal-section {
+    margin-bottom: 56px;
+}
+
+.legal-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.legal-section p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+/* lists */
+.legal-section ul {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.legal-section li {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+}
+
+/* boxes */
+.legal-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* footer note */
+.legal-footer-note {
+    border-left: 3px solid rgba(165, 31, 193, 0.7);
+    background: rgba(165, 31, 193, 0.06);
+    padding: 20px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+    .legal-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .legal-content {
+        padding: 0 18px 80px;
+    }
+
+    .legal-highlight,
+    .legal-box,
+    .legal-footer-note {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-title {
+        line-height: 1.2;
+    }
+
+    .legal-meta {
+        font-size: 0.85rem;
+    }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+.legal-section h2 {
+    scroll-margin-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+    }
+}

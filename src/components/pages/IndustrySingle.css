@@ -1,0 +1,18 @@
+.industry-hero {
+  padding-top: 40px;
+}
+
+.industry-cta-box {
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  padding: 40px;
+  max-width: 640px;
+}
+
+.paper-list-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 28px;
+}

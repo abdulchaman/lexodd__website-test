@@ -1,0 +1,253 @@
+{
+    "hero": {
+        "eyebrow": "Our technology stack",
+        "title": "Tools we choose for a reason.",
+        "lead": "We don't chase trends. Every tool in our stack solves a specific problem — performance, reliability, or speed of delivery. Here's what we use and why.",
+        "heroImage": {
+            "url": "/images/tech-stack/hero.jpg",
+            "alt": "Lexodd technology stack overview",
+            "placeholder": "CMS — hero image"
+        },
+        "stats": {
+            "categories": 6,
+            "totalTools": 23,
+            "openSource": "100%"
+        }
+    },
+    "categories": [
+        {
+            "id": "frontend",
+            "name": "Frontend & Interfaces",
+            "icon": "◈",
+            "description": "Building operational interfaces that teams actually want to use — fast, reliable, and clear under pressure.",
+            "tools": [
+                {
+                    "name": "React 18",
+                    "iconSymbol": "⚛",
+                    "benefit": "Component-based architecture lets us build complex operational UIs that stay maintainable as requirements evolve. The ecosystem gives us battle-tested solutions for real-time data, maps, and dashboards.",
+                    "useCase": "All client-facing operational dashboards, control panels, and exception queues.",
+                    "category": "Core Framework"
+                },
+                {
+                    "name": "TypeScript",
+                    "iconSymbol": "TS",
+                    "benefit": "Operational systems can't afford type errors at runtime. TypeScript catches entire classes of bugs before they reach production — especially important when multiple engineers work on the same codebase.",
+                    "useCase": "Every frontend and backend codebase. Non-negotiable for new projects.",
+                    "category": "Language"
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "iconSymbol": "←→",
+                    "benefit": "Utility-first means we never fight CSS specificity or worry about breaking unrelated components. Operational teams need consistent, predictable interfaces — Tailwind delivers that without overhead.",
+                    "useCase": "All frontend projects. Enables rapid iteration without CSS debt.",
+                    "category": "Styling"
+                },
+                {
+                    "name": "React Query",
+                    "iconSymbol": "⟳",
+                    "benefit": "Server state is the hard part of operational UIs — not rendering. React Query handles caching, background updates, and stale data invalidation so engineers focus on what matters.",
+                    "useCase": "Data-heavy dashboards and real-time operational views.",
+                    "category": "State Management"
+                }
+            ]
+        },
+        {
+            "id": "backend",
+            "name": "Backend & APIs",
+            "icon": "◈",
+            "description": "Systems that stay reliable when it matters. We prioritize boring technology that works predictably at scale.",
+            "tools": [
+                {
+                    "name": "Node.js + Express",
+                    "iconSymbol": "◉",
+                    "benefit": "JavaScript across the stack reduces context switching. Express is unopinionated enough to let us structure systems the way operational logic demands — not the way a framework dictates.",
+                    "useCase": "API services, real-time endpoints, and integration layers.",
+                    "category": "Runtime"
+                },
+                {
+                    "name": "Python FastAPI",
+                    "iconSymbol": "🐍",
+                    "benefit": "Data-heavy operations and ML pipelines belong in Python. FastAPI gives us automatic OpenAPI docs, async support, and type validation — perfect for internal tools and data services.",
+                    "useCase": "Data pipelines, ETL processes, and analytical services.",
+                    "category": "Data Services"
+                },
+                {
+                    "name": "PostgreSQL",
+                    "iconSymbol": "◉",
+                    "benefit": "Reliability and data integrity aren't optional in operational systems. PostgreSQL gives us transactional guarantees, JSON support, and battle-tested performance under load.",
+                    "useCase": "Primary data store for all client platforms.",
+                    "category": "Database"
+                },
+                {
+                    "name": "Redis",
+                    "iconSymbol": "◆",
+                    "benefit": "Operational decisions need sub-millisecond latency for caches, rate limiting, and real-time queues. Redis delivers that without complexity.",
+                    "useCase": "Session storage, rate limiting, and real-time job queues.",
+                    "category": "Cache"
+                }
+            ]
+        },
+        {
+            "id": "data-streaming",
+            "name": "Data & Streaming",
+            "icon": "◈",
+            "description": "Real-time data is the difference between reactive and proactive operations. These tools keep information flowing.",
+            "tools": [
+                {
+                    "name": "Apache Kafka",
+                    "iconSymbol": "◉◉◉",
+                    "benefit": "Operational visibility depends on event-driven architecture. Kafka decouples data producers from consumers, so telemetry never blocks operations and failures don't cascade.",
+                    "useCase": "IoT telemetry ingestion, event sourcing, and audit logging.",
+                    "category": "Streaming Platform"
+                },
+                {
+                    "name": "dbt",
+                    "iconSymbol": "▤",
+                    "benefit": "Trustworthy data needs repeatable transformations. dbt brings software engineering practices (testing, documentation, version control) to SQL — so analysts and engineers collaborate effectively.",
+                    "useCase": "Data warehousing, reporting pipelines, and business metrics.",
+                    "category": "Data Transformation"
+                },
+                {
+                    "name": "Apache Airflow",
+                    "iconSymbol": "↻",
+                    "benefit": "Scheduled data pipelines need visibility and retry logic. Airflow gives us DAG-based orchestration with built-in monitoring — critical for ETL that operations teams depend on.",
+                    "useCase": "Daily reporting, data syncs, and batch processing.",
+                    "category": "Orchestration"
+                }
+            ]
+        },
+        {
+            "id": "infrastructure",
+            "name": "Infrastructure & DevOps",
+            "icon": "◈",
+            "description": "Infrastructure as code, because manual configuration fails silently. Every environment is reproducible and auditable.",
+            "tools": [
+                {
+                    "name": "AWS",
+                    "iconSymbol": "◯",
+                    "benefit": "Mature services across compute, storage, and networking. We use what fits the problem — EC2 for predictable workloads, Lambda for event-driven functions, and managed services where they reduce operational burden.",
+                    "useCase": "Primary cloud provider for all client platforms.",
+                    "category": "Cloud Provider"
+                },
+                {
+                    "name": "Terraform",
+                    "iconSymbol": "◰",
+                    "benefit": "Infrastructure as code means no undocumented changes, no configuration drift, and full audit trails. Terraform lets us review infrastructure changes like code — because they are code.",
+                    "useCase": "All infrastructure provisioning across environments.",
+                    "category": "IaC"
+                },
+                {
+                    "name": "Docker + ECS",
+                    "iconSymbol": "▯",
+                    "benefit": "Containerization eliminates 'works on my machine' problems. ECS gives us orchestration without managing Kubernetes control planes — simpler for the scale we operate at.",
+                    "useCase": "Container runtime and orchestration for all services.",
+                    "category": "Containerization"
+                },
+                {
+                    "name": "GitHub Actions",
+                    "iconSymbol": "◫",
+                    "benefit": "CI/CD integrated with code review means deployment pipelines aren't separate from development. Every PR triggers tests; every merge to main deploys when tests pass.",
+                    "useCase": "Automated testing, building, and deployment.",
+                    "category": "CI/CD"
+                }
+            ]
+        },
+        {
+            "id": "monitoring",
+            "name": "Observability & Monitoring",
+            "icon": "◈",
+            "description": "If it's not measured, it's not working. We instrument everything because operational systems fail in unexpected ways.",
+            "tools": [
+                {
+                    "name": "Datadog",
+                    "iconSymbol": "▤",
+                    "benefit": "Unified platform for metrics, logs, and traces. When an alert fires, we have context — not just a notification. This matters when a client's operation is waiting on us.",
+                    "useCase": "Production monitoring, alerting, and performance analysis.",
+                    "category": "Monitoring"
+                },
+                {
+                    "name": "Sentry",
+                    "iconSymbol": "◉",
+                    "benefit": "Frontend errors reach users even when backend is fine. Sentry captures client-side exceptions with context — browser, user action, network state — so we fix what actually broke.",
+                    "useCase": "Error tracking and performance monitoring for frontend apps.",
+                    "category": "Error Tracking"
+                },
+                {
+                    "name": "Logstash + OpenSearch",
+                    "iconSymbol": "◯◯",
+                    "benefit": "Centralized logging with full-text search. When debugging distributed systems, being able to trace a request across services is non-negotiable.",
+                    "useCase": "Log aggregation and search across all services.",
+                    "category": "Logging"
+                }
+            ]
+        },
+        {
+            "id": "collaboration",
+            "name": "Team & Collaboration",
+            "icon": "◈",
+            "description": "Tools that reduce friction, not add overhead. We choose what helps us communicate clearly.",
+            "tools": [
+                {
+                    "name": "Linear",
+                    "iconSymbol": "◰",
+                    "benefit": "Issue tracking designed for speed. Keyboard-first, no unnecessary fields, and cycles instead of arbitrary deadlines. It matches how we actually work.",
+                    "useCase": "Project management, issue tracking, and sprint planning.",
+                    "category": "Project Management"
+                },
+                {
+                    "name": "Slack",
+                    "iconSymbol": "◻",
+                    "benefit": "Synchronous communication when needed, asynchronous by default. Integrations with Linear, GitHub, and Datadog mean alerts and updates come to us.",
+                    "useCase": "Team communication and integrations.",
+                    "category": "Communication"
+                },
+                {
+                    "name": "Notion",
+                    "iconSymbol": "◩",
+                    "benefit": "Documentation that's actually used. Notion lets us embed databases, code blocks, and diagrams in the same place — so operational runbooks and architecture docs stay up to date.",
+                    "useCase": "Documentation, runbooks, and knowledge base.",
+                    "category": "Documentation"
+                },
+                {
+                    "name": "Miro",
+                    "iconSymbol": "◫",
+                    "benefit": "Whiteboarding for distributed teams. Architecture reviews, incident post-mortems, and operational process mapping — visual collaboration without being in the same room.",
+                    "useCase": "Diagramming, brainstorming, and process mapping.",
+                    "category": "Collaboration"
+                }
+            ]
+        }
+    ],
+    "principles": {
+        "title": "How we evaluate new tools",
+        "description": "We don't add tools without answering these questions first. Every addition to our stack needs to justify itself.",
+        "items": [
+            {
+                "number": "01",
+                "title": "Does it solve a real problem?",
+                "description": "We don't adopt tools because they're popular. We adopt them because they fix something we're actually struggling with — and the alternatives don't."
+            },
+            {
+                "number": "02",
+                "title": "Can we operate it reliably?",
+                "description": "Bleeding-edge tools that require constant attention take focus away from client work. We prioritize boring technology that works predictably."
+            },
+            {
+                "number": "03",
+                "title": "Does it reduce cognitive load?",
+                "description": "Every tool adds mental overhead. If a tool doesn't make the team's life noticeably easier, it doesn't belong in our stack."
+            },
+            {
+                "number": "04",
+                "title": "Can clients access it?",
+                "description": "We avoid proprietary tools that lock clients in. If a client needs access to logs or metrics, we use tools that support external access."
+            }
+        ]
+    },
+    "cta": {
+        "title": "Interested in how we build?",
+        "description": "We're always open to conversations with engineers who care about tooling and architecture. If you have thoughts on our stack — or questions about why we chose what we did — reach out.",
+        "buttonText": "Start a conversation",
+        "secondaryButtonText": "View open roles"
+    }
+}

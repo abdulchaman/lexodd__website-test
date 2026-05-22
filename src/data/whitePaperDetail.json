@@ -1,0 +1,47 @@
+{
+  "breadcrumb": {
+    "parent": "White papers",
+    "current": "Exception visibility in multi-depot operations"
+  },
+  "hero": {
+    "topic": "Visibility & escalation",
+    "date": "April 2026",
+    "readTime": "18 min read",
+    "title": "Designing for exception visibility in multi-depot operations",
+    "lead": "Most operations platforms report what happened. The ones that don't fail silently are designed to surface what's about to happen. This paper explains the difference."
+  },
+  "download": {
+    "title": "Download full paper",
+    "description": "18-page PDF · Includes framework diagrams and implementation checklist",
+    "buttonText": "Download PDF — free",
+    "pdfUrl": "/pdfs/exception-visibility-framework.pdf"
+  },
+  "images": {
+    "frameworkDiagram": {
+      "url": "/images/white-papers/exception-visibility-framework.jpg",
+      "alt": "Exception visibility framework diagram",
+      "placeholder": "CMS — framework diagram (editable)"
+    }
+  },
+  "abstract": "Operations platforms typically collect and display status data. When something goes wrong, a coordinator notices and escalates. This model has a fundamental flaw: it relies on a human to be monitoring the right screen at the right moment. In a multi-depot operation, that's not a reliable mechanism. This paper presents a framework for designing exception visibility as a structural property of operations platforms — not a reporting layer on top of them. We cover threshold design, escalation logic, accountability assignment, and the architectural decisions that determine whether a failure is surfaced in two hours or two days.",
+  "pullQuote": "\"Failure visibility is a structural property, not a reporting feature. It has to be designed in — it can't be added later.\"",
+  "content": {
+    "problem": {
+      "title": "Why exceptions arrive too late",
+      "description": "In a typical multi-depot operation, delivery status moves through three layers before it reaches someone with authority to act. At each layer, information is compressed, delayed, and filtered. By the time an exception reaches operations leadership, the window to intervene has often closed.",
+      "additional": "We've observed this pattern across fuel distribution, healthcare logistics, and fleet management. The root cause is consistent: exception escalation is designed as a human process, not a system process. The system records; humans decide when to escalate. That dependency is where visibility breaks."
+    },
+    "framework": {
+      "title": "Three components of structural exception visibility",
+      "description": "Designing exception visibility into an operations platform requires three things to work together: threshold definition (what constitutes an exception, expressed precisely), escalation logic (who receives it, in what form, at what point), and accountability assignment (which role is responsible for resolution, and how that's tracked).",
+      "additional": "Each component is straightforward in isolation. The difficulty is in the interaction between them — specifically in defining thresholds that are precise enough to be automatic, but contextual enough not to generate noise."
+    }
+  },
+  "sidebar": {
+    "topic": "Visibility & escalation design",
+    "readingTime": "18 minutes",
+    "published": "April 2026",
+    "relatedCaseStudy": "Fuel distribution platform — 340 depots →",
+    "alsoInSeries": "The accountability gap: why informal governance breaks at scale"
+  }
+}

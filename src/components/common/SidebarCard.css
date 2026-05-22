@@ -1,0 +1,40 @@
+.sidebar-card {
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.sidebar-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tt);
+  margin-bottom: 12px;
+}
+
+.sidebar-value {
+  font-size: 14px;
+  color: var(--ts);
+  line-height: 1.6;
+}
+
+.sidebar-value strong {
+  color: var(--tp);
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.sidebar-link {
+  cursor: pointer;
+  color: var(--ac);
+  font-size: 13px;
+  transition: opacity 0.15s;
+}
+
+.sidebar-link:hover {
+  opacity: 0.8;
+}

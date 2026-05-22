@@ -1,0 +1,81 @@
+{
+  "breadcrumb": {
+    "parent": "Industries",
+    "current": "Energy & logistics"
+  },
+  "hero": {
+    "eyebrow": "Industry",
+    "title": "Energy & logistics",
+    "lead": "Distribution networks don't fail loudly. They erode quietly — through delayed escalations, informal workarounds, and coordination gaps that no individual can see from where they sit.",
+    "heroImage": {
+      "url": "/images/industries/energy-logistics-hero.jpg",
+      "alt": "Energy and logistics distribution network",
+      "placeholder": "CMS — hero image"
+    }
+  },
+  "focus": {
+    "title": "The structural problems that define this industry",
+    "description": "Every distribution operation is different in its specifics. The structural problems are remarkably consistent. These are the ones we see most often — and have built systems to solve.",
+    "pillars": [
+      {
+        "title": "Multi-depot coordination",
+        "description": "Status, accountability, and escalation break down when decisions need to cross depot boundaries. We design the coordination layer that holds it together at scale."
+      },
+      {
+        "title": "Exception visibility",
+        "description": "In most operations, failures are invisible until they're escalated by a human. We design platforms where exceptions surface automatically — before they become expensive."
+      },
+      {
+        "title": "Real-time decision context",
+        "description": "Dispatch and operations decisions are made on stale data. The fix isn't faster reporting — it's redesigning the information architecture that feeds those decisions."
+      },
+      {
+        "title": "Growth without fragmentation",
+        "description": "New depots, new routes, new teams — these all stress coordination systems that weren't designed to absorb them. We build the infrastructure that makes expansion predictable."
+      }
+    ]
+  },
+  "caseStudies": [
+    {
+      "image": {
+        "url": "/images/case-studies/fuel-distribution-thumb.jpg",
+        "alt": "Fuel distribution platform dashboard",
+        "placeholder": "Cover image"
+      },
+      "date": "Mar 2026",
+      "title": "Rebuilding the coordination layer for a 340-depot fuel distributor",
+      "result": "On-time delivery: 84% → 98.3%. Issue resolution: 48 hrs → 2 hrs.",
+      "industryTag": "ind"
+    },
+    {
+      "image": {
+        "url": "/images/case-studies/fleet-operations-thumb.jpg",
+        "alt": "Fleet operations telemetry dashboard",
+        "placeholder": "Cover image"
+      },
+      "date": "Nov 2025",
+      "title": "Fleet operations platform for enterprise logistics provider",
+      "result": "1,200+ vehicles. Real-time dispatch visibility built from scratch.",
+      "industryTag": "ind"
+    }
+  ],
+  "whitePapers": [
+    {
+      "topic": "Visibility & escalation",
+      "title": "Designing for exception visibility in multi-depot operations",
+      "id": "exception-visibility"
+    },
+    {
+      "topic": "Governance design",
+      "title": "The accountability gap: why informal governance breaks at scale",
+      "id": "accountability-gap"
+    }
+  ],
+  "cta": {
+    "eyebrow": "Work with us in this space",
+    "title": "If this is your industry, we know the terrain.",
+    "description": "We've built operational systems across fuel distribution, fleet management, and multi-site logistics. We don't need a briefing on how the industry works — we need to understand where your specific coordination is breaking down.",
+    "buttonText": "Start a conversation",
+    "secondaryButtonText": "See all case studies"
+  }
+}

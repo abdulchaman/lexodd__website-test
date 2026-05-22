@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "eyebrow": "Case studies",
+    "title": "Work that held under real conditions.",
+    "lead": "These aren't polished success stories written after the fact. Each one documents a structural problem, the decisions made, and what the operation looks like now."
+  },
+  "filters": ["All", "Energy & logistics", "Healthcare", "Fleet management", "Platform buildout"],
+  "caseStudies": [
+    {
+      "id": "fuel-distribution",
+      "image": {
+        "url": "/images/case-studies/fuel-distribution-cover.jpg",
+        "alt": "Fuel distribution platform dashboard",
+        "placeholder": "Cover image"
+      },
+      "industry": "Energy / Logistics",
+      "industryTag": "ind",
+      "date": "Mar 2026",
+      "title": "Fuel distribution platform for a 340-depot network",
+      "excerpt": "A national distributor running on fragmented spreadsheets and radio coordination. Delivery failures were invisible until they became escalations. We rebuilt the coordination layer entirely."
+    },
+    {
+      "id": "clinic-coordination",
+      "image": {
+        "url": "/images/case-studies/clinic-coordination-cover.jpg",
+        "alt": "Healthcare coordination platform interface",
+        "placeholder": "Cover image"
+      },
+      "industry": "Healthcare",
+      "industryTag": "ind",
+      "date": "Jan 2026",
+      "title": "Multi-location coordination platform for 22-clinic group",
+      "excerpt": "Scheduling, supply ordering, and clinical handoffs across 22 locations were managed through individual WhatsApp groups. We designed a unified coordination layer without disrupting operations during rollout."
+    },
+    {
+      "id": "fleet-operations",
+      "image": {
+        "url": "/images/case-studies/fleet-operations-cover.jpg",
+        "alt": "Fleet operations telemetry dashboard",
+        "placeholder": "Cover image"
+      },
+      "industry": "Fleet management",
+      "industryTag": "ind",
+      "date": "Nov 2025",
+      "title": "Fleet operations platform for enterprise logistics provider",
+      "excerpt": "Real-time visibility across 1,200+ vehicles was theoretically possible but practically absent. Dispatch decisions were made on stale data. We built the telemetry layer and control interface from scratch."
+    }
+  ]
+}

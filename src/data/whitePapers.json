@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "eyebrow": "White papers",
+    "title": "How we think about operational structure.",
+    "lead": "These papers document the frameworks, failure patterns, and design principles that inform how we work. They're written to be useful to anyone building or running operational systems — not just Lexodd clients."
+  },
+  "filters": ["All topics", "Visibility & escalation", "Governance design", "System architecture", "Scale & coordination"],
+  "papers": [
+    {
+      "id": "exception-visibility",
+      "topic": "Visibility & escalation",
+      "date": "Apr 2026",
+      "readTime": "18 min read",
+      "title": "Designing for exception visibility in multi-depot operations",
+      "excerpt": "Why most operations platforms surface failures too late, and how to design escalation logic that's proportional, automatic, and auditable.",
+      "coverImage": {
+        "url": "/images/white-papers/exception-visibility-cover.jpg",
+        "alt": "Exception visibility framework diagram",
+        "placeholder": "Cover image"
+      }
+    },
+    {
+      "id": "accountability-gap",
+      "topic": "Governance design",
+      "date": "Feb 2026",
+      "readTime": "22 min read",
+      "title": "The accountability gap: why informal governance breaks at scale",
+      "excerpt": "A structural analysis of how accountability drifts when organisations grow beyond informal coordination — and what designed governance looks like in practice.",
+      "coverImage": {
+        "url": "/images/white-papers/accountability-gap-cover.jpg",
+        "alt": "Governance structure diagram",
+        "placeholder": "Cover image"
+      }
+    },
+    {
+      "id": "incremental-delivery",
+      "topic": "System architecture",
+      "date": "Dec 2025",
+      "readTime": "14 min read",
+      "title": "Incremental delivery in high-stakes operational environments",
+      "excerpt": "How to structure a platform delivery when the operation can't afford downtime — sequencing, parallel running, and the rollout architecture that minimises risk.",
+      "coverImage": {
+        "url": "/images/white-papers/incremental-delivery-cover.jpg",
+        "alt": "Rollout sequence diagram",
+        "placeholder": "Cover image"
+      }
+    }
+  ]
+}

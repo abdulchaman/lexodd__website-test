@@ -1,0 +1,26 @@
+.case-study-hero {
+  padding: 0 48px 40px;
+  border-bottom: 1px solid var(--b1);
+}
+
+.case-study-hero h1 {
+  font-size: clamp(28px, 4vw, 52px);
+  max-width: 760px;
+  margin-bottom: 20px;
+}
+
+.case-study-header {
+  padding: 28px 48px 0;
+}
+
+.feature-image {
+  height: 280px;
+  margin-bottom: 36px;
+  border-radius: 4px;
+}
+
+.secondary-image {
+  height: 220px;
+  margin: 32px 0;
+  border-radius: 4px;
+}

@@ -1,0 +1,459 @@
+/* .footer {
+    background: #0b0b0d;
+    border-top: 1px solid #1f1f24;
+}
+
+.footer-container {
+    margin: auto;
+}
+
+.footer-grid {
+    display: flex;
+}
+
+.ft_top1 {
+    width: 30%;
+}
+
+.ft_col {
+    flex: 1;
+    padding-right: 24px;
+}
+
+.ft_top2 {
+    flex: 1;
+    display: flex;
+}
+
+.footer-logo {
+    height: 36px;
+}
+
+.footer-text {
+    margin-top: 16px;
+    color: #fff;
+    max-width: 67%;
+}
+
+.footer-heading {
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.footer-links {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    width: fit-content;
+}
+
+.footer-links a:hover {
+    color: #A51FC1;
+}
+
+.footer-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 24px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.icon:hover {
+    color: #A51FC1;
+}
+
+.footer-bottom {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid #1f1f24;
+    display: flex;
+    gap: 12px;
+    font-size: 16px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+
+
+.footer-bottom-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-bottom-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.footer-bottom-links a:hover {
+    color: #A51FC1;
+} */
+
+
+.footer {
+    background: #0b0b0d;
+    border-top: 1px solid #1f1f24;
+    overflow: hidden;
+}
+
+.footer-container {
+    margin: auto;
+}
+
+.footer-grid {
+    display: flex;
+}
+
+.ft_top1 {
+    width: 30%;
+}
+
+.ft_col {
+    flex: 1;
+    padding-right: 24px;
+}
+
+.ft_top2 {
+    flex: 1;
+    display: flex;
+}
+
+.footer-logo {
+    width: 140px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.footer-text {
+    margin-top: 16px;
+    color: #fff;
+    max-width: 67%;
+}
+
+.footer-heading {
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.footer-links {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    width: fit-content;
+}
+
+.footer-links a:hover {
+    color: #A51FC1;
+}
+
+.footer-links a:focus-visible {
+    outline: 2px solid #A51FC1;
+    outline-offset: 4px;
+}
+
+.footer-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    transition: color 0.3s;
+    flex-shrink: 0;
+}
+
+.icon:hover {
+    color: #A51FC1;
+}
+
+.footer-bottom {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid #1f1f24;
+    display: flex;
+    gap: 12px;
+    font-size: 16px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.footer-bottom-links a:hover {
+    color: #A51FC1;
+}
+
+.footer-bottom-links a:focus-visible {
+    outline: 2px solid #A51FC1;
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   LARGE DESKTOPS
+========================================================= */
+
+@media (max-width: 1440px) {
+
+    .footer-container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   LAPTOPS
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .footer-grid {
+        gap: 48px;
+    }
+
+    .ft_top1 {
+        width: 35%;
+    }
+
+    .footer-text {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .footer-grid {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    .ft_top1 {
+        width: 100%;
+    }
+
+    .ft_top2 {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 48px 32px;
+    }
+
+    .ft_col {
+        min-width: calc(50% - 16px);
+        padding-right: 0;
+    }
+
+    .footer-text {
+        max-width: 600px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE DEVICES
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .footer-grid {
+        gap: 40px;
+    }
+
+    .ft_top2 {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .ft_col {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .footer-heading {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .footer-links {
+        margin-top: 12px;
+        gap: 14px;
+    }
+
+    .footer-links a {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .footer-text {
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+    .footer-socials {
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        padding-top: 24px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .footer-bottom-links {
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE DEVICES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .footer-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-logo {
+        width: 120px;
+        height: auto;
+    }
+
+    .footer-text {
+        margin-top: 14px;
+    }
+
+    .footer-links {
+        gap: 12px;
+    }
+
+    .footer-inline {
+        align-items: flex-start;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+    }
+
+    .footer-bottom {
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .footer-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+    }
+
+    .footer-text {
+        font-size: 14px;
+    }
+
+}
+
+.footer-muted {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 15px;
+    line-height: 1.5;
+}

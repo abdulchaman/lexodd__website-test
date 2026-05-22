@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "eyebrow": "Careers at Lexodd",
+    "title": "We hire people who think in systems.",
+    "lead": "Small team. Serious work. Operational problems that most engineering firms won't touch. If you're drawn to complexity and allergic to theatre, you'll fit here.",
+    "stats": {
+      "openRoles": 12,
+      "activeLocations": 3,
+      "teamSize": "~12"
+    },
+    "heroImage": {
+      "url": "/images/careers/hero-placeholder.jpg",
+      "alt": "Lexodd team working on operational systems",
+      "placeholder": "CMS — hero image"
+    }
+  },
+  "values": {
+    "title": "What this place is actually like",
+    "description": "No hierarchy for its own sake. You work directly with clients and senior engineers. The expectation is ownership, not task completion. We take on a small number of projects at a time, which means every person goes deep.",
+    "additional": "Most hires come through referrals. We're selective not because we're exclusive, but because the work demands it.",
+    "cultureImage": {
+      "url": "/images/careers/culture-placeholder.jpg",
+      "alt": "Lexodd collaborative workspace",
+      "placeholder": "CMS — culture image"
+    },
+    "items": [
+      {
+        "number": "01",
+        "title": "Diagnosis before design",
+        "description": "We don't build until we understand what's actually broken. If you can't explain why, you shouldn't be designing the solution."
+      },
+      {
+        "number": "02",
+        "title": "Fewer clients, deeper work",
+        "description": "You go deep on one or two problems — not shallow across twelve. Better work, faster growth."
+      },
+      {
+        "number": "03",
+        "title": "Outcomes, not output",
+        "description": "Every release is judged by whether the operation runs better — not by velocity or ticket count."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Don't see your role?",
+    "title": "Write to us directly.",
+    "description": "If you have a specific capability in systems engineering or operational analysis and you've built things that work in the real world — write to us. Tell us what you've done, not what you're looking for.",
+    "buttonText": "Send a direct note",
+    "workspaceImage": {
+      "url": "/images/careers/workspace-placeholder.jpg",
+      "alt": "Lexodd workspace environment",
+      "placeholder": "CMS — workspace image"
+    }
+  },
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Senior Systems Engineer",
+      "dept": "Engineering",
+      "loc": "Hyderabad",
+      "type": "Full-time",
+      "exp": "5+",
+      "tags": ["Engineering", "Full-time"],
+      "desc": "You design and build operational platforms end-to-end — from data architecture through production. You're comfortable in ambiguity, uncomfortable with unnecessary complexity.",
+      "resp": [
+        "Architect and build real-time operational systems",
+        "Translate operational constraints into precise technical requirements",
+        "Lead delivery from design through production stability",
+        "Review and shape the work of junior engineers"
+      ],
+      "req": [
+        "5+ years in backend/systems engineering",
+        "Strong PostgreSQL and distributed systems background",
+        "Experience delivering in complex, real-world operational environments",
+        "Ability to diagnose problems before designing solutions"
+      ],
+      "nice": [
+        "Experience with IoT/telematics",
+        "Kafka or similar event streaming",
+        "Prior consulting or agency background"
+      ]
+    }
+  ]
+}
