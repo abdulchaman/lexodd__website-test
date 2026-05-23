@@ -14,6 +14,7 @@ import WhitePaperSingle from './components/pages/WhitePaperSingle';
 import IndustrySingle from './components/pages/IndustrySingle';
 import TechStack from './components/pages/TechStack';
 import Careers from './components/pages/Careers';
+import OpenRoles from './components/pages/OpenRoles';
 
 
 import ContactPage from './components/pages/ContactPage';
@@ -33,6 +34,7 @@ const routeConfig = [
   { path: "/white-papers/:slug", Component: WhitePaperSingle },
   { path: "/industries/:slug", Component: IndustrySingle },
   { path: "/careers", Component: Careers },
+  { path: "/open-roles", Component: OpenRoles },
   { path: "/tech-stack", Component: TechStack },
   { path: "/contact", Component: ContactPage },
   { path: "/terms", Component: TermsConditions },

@@ -108,17 +108,17 @@ const WhitePaperSingle = () => {
 
         <div className="white-paper-hero">
           {/* <div className="cms-note">CMS — editable: all content, PDF upload, reading time, topic tag</div> */}
-          <div className="card-meta mb-3">
+          {/* <div className="card-meta mb-3">
             <span className="tag-wp">{hero.topic || whitePaper.topic}</span>
             <span className="card-date">{hero.date || whitePaper.date} · {hero.readTime || whitePaper.readTime}</span>
-          </div>
+          </div> */}
           <h1>{hero.title || whitePaper.title}</h1>
           <p className="lead max-width-580">{hero.lead || hero.description || whitePaper.excerpt}</p>
         </div>
 
         <div className="article-layout">
           <div className="article-body">
-            <div className="wp-cover">
+            {/* <div className="wp-cover">
               <div className="wp-icon">📄</div>
               <div className="wp-meta">
                 <div className="wp-title">{download?.title}</div>
@@ -127,7 +127,7 @@ const WhitePaperSingle = () => {
                   {download?.buttonText || 'Download PDF'}
                 </Button>
               </div>
-            </div>
+            </div> */}
 
             <div className="sl mb-2">Abstract</div>
             <p className="body-text">{abstract}</p>

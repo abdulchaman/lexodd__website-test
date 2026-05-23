@@ -40,14 +40,14 @@
   --s1: #141418;
   --s2: #18181D;
   --s3: #27272F;
-  
+
   /* Border Colors */
   --border: #27272F;
   --border-mid: #3A3A44;
   --b1: rgba(255, 255, 255, 0.06);
   --b2: rgba(255, 255, 255, 0.11);
   --b3: rgba(255, 255, 255, 0.18);
-  
+
   /* Text Colors */
   --text-light: #FFFFFF;
   --tp: #FFFFFF;
@@ -57,22 +57,27 @@
   --tt: #A3A3B0;
   --text-muted-dark: rgba(0, 0, 0, 0.6);
   --text-dark: #0B0B0D;
-  
+
   /* Accent Colors */
   --accent: #A51FC1;
   --accent-dim: #8F1AA6;
   --ac: #A51FC1;
   --ac2: rgba(165, 31, 193, 0.12);
   --ac3: rgba(165, 31, 193, 0.22);
-  
+
   /* Typography */
   font-family: "IBM Plex Sans", sans-serif;
 }
+
 body {
   background: var(--bg-dark);
   color: var(--text-light);
 }
 
+.btn-o,
+.btn-p {
+  padding: 5px;
+}
 
 * {
   box-sizing: border-box;
@@ -86,10 +91,10 @@ body {
   padding: 80px 0;
 }
 
-.paper-actions{
-      display: flex;
-    gap: 10px;
-    margin-top: 10px;
+.paper-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .container {

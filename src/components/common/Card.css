@@ -1,6 +1,5 @@
 .card {
-  background: var(--bg);
-  padding: 32px;
+  background: var(--surface);
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -19,7 +18,7 @@
 
 .card-image {
   height: 160px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   background: var(--s2);
   border: 1px solid var(--b1);
   display: flex;
@@ -32,19 +31,11 @@
   text-transform: uppercase;
 }
 
-.card-title {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.25;
-  margin-bottom: 10px;
-}
-
-.card-excerpt {
+/* .card-excerpt {
   font-size: 13px;
   color: var(--ts);
   line-height: 1.65;
-}
+} */
 
 .card-arrow {
   margin-top: 20px;
@@ -72,22 +63,6 @@
   flex-direction: column;
   gap: 8px;
   flex-shrink: 0;
-}
-
-.card-image {
-  height: 160px;
-  margin-bottom: 20px;
-  background: var(--s2);
-  border: 1px solid var(--b1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--tt);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  overflow: hidden;
 }
 
 .card-image img {

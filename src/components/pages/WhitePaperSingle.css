@@ -1,5 +1,5 @@
 .white-paper-hero {
-  padding: 0 48px 40px;
+  padding: 0 0px 48px;
   border-bottom: 1px solid var(--b1);
 }
 
@@ -10,7 +10,7 @@
 }
 
 .white-paper-header {
-  padding: 28px 48px 0;
+  padding: 28px 0px 0;
 }
 
 .framework-image {

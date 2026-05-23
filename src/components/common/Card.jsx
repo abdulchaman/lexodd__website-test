@@ -11,16 +11,16 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
 
   const renderImage = () => {
     if (!image) return null;
-    
+
     const imageUrl = getImageUrl(image);
     const imageAlt = getImageAlt(image, 'Card image');
     const placeholder = getImagePlaceholder(image, 'Image');
     if (!imageUrl) return null;
-    
+
     return (
       <div className="card-image">
-        <img 
-          src={imageUrl} 
+        <img
+          src={imageUrl}
           alt={imageAlt}
           onError={(e) => {
             e.target.style.display = 'none';
@@ -39,8 +39,8 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
             {industry && <span className={getTagStyle()}>{industry}</span>}
             {date && <span className="card-date">{date}</span>}
           </div>
-          <div className="card-title">{title}</div>
-          {excerpt && <div className="card-excerpt">{excerpt}</div>}
+          <h3 className="card-title">{title}</h3>
+          {excerpt && <p className="card-excerpt">{excerpt}</p>}
         </div>
         <div className="card-actions">
           <button className="btn-secondary">Read online</button>
@@ -53,13 +53,16 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
   return (
     <div className="card" onClick={onClick}>
       {renderImage()}
-      <div className="card-meta">
-        {industry && <span className={getTagStyle()}>{industry}</span>}
-        {date && <span className="card-date">{date}</span>}
+      <div className='card-body'>
+        <div className="card-meta">
+          {industry && <span className={getTagStyle()}>{industry}</span>}
+          {/* {date && <span className="card-date">{date}</span>} */}
+        </div>
+        <h3 className="card-title">{title}</h3>
+        <p className="card-excerpt">{excerpt}</p>
+        {/* <div className="card-arrow">Read case study →</div> */}
       </div>
-      <div className="card-title">{title}</div>
-      <div className="card-excerpt">{excerpt}</div>
-      <div className="card-arrow">Read case study →</div>
+
     </div>
   );
 };

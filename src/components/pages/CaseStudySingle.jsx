@@ -104,11 +104,10 @@ const CaseStudySingle = () => {
         </div>
 
         <div className="case-study-hero">
-          {/* <div className="cms-note">CMS — editable: all fields, cover image, stats, body content</div> */}
-          <div className="card-meta mb-3">
+          {/* <div className="card-meta mb-3">
             <span className="tag-ind">{hero.industry || caseStudy.industryTag}</span>
             <span className="card-date">{hero.date || caseStudy.date}</span>
-          </div>
+          </div> */}
           <h1>{hero.title || caseStudy.title}</h1>
           <p className="lead max-width-600">{hero.lead || caseStudy.excerpt}</p>
         </div>
@@ -181,10 +180,10 @@ const CaseStudySingle = () => {
             <h2 className="mb-3">{section(content.result, 'The result').title}</h2>
             <p className="body-text">{section(content.result, 'The result').description}</p>
 
-            <div className="btn-row">
+            {/* <div className="btn-row">
               <Button variant="secondary" onClick={() => navigate('/case-studies')}>← Back to case studies</Button>
               <Button variant="primary" onClick={() => alert('PDF download functionality')}>Download as PDF</Button>
-            </div>
+            </div> */}
           </div>
 
           <div className="article-sidebar">
