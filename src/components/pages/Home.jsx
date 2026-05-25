@@ -73,19 +73,23 @@ export default function Home() {
                         </div>
                     </div>
                     <div class="hero-proof">
+                        <div className="proof-name">
+                            Active in
+                        </div>
+                        <div class="proof-divider"></div>
                         <div class="proof-item">
-                            <div class="proof-label">Recently delivered in</div>
+                            <div class="proof-label">Energy</div>
                             <div class="proof-text">Fuel logistics &amp; distribution</div>
                         </div>
                         <div class="proof-divider"></div>
                         <div class="proof-item">
-                            <div class="proof-label">Multi-location</div>
-                            <div class="proof-text">Healthcare coordination</div>
+                            <div class="proof-label">Healthcare</div>
+                            <div class="proof-text">Multi-location coordination</div>
                         </div>
                         <div class="proof-divider"></div>
                         <div class="proof-item">
                             <div class="proof-label">Enterprise</div>
-                            <div class="proof-text">Franchise management platforms.</div>
+                            <div class="proof-text">Franchise & fleet management</div>
                         </div>
                     </div>
                 </div>

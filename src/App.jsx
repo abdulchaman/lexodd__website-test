@@ -15,6 +15,7 @@ import IndustrySingle from './components/pages/IndustrySingle';
 import TechStack from './components/pages/TechStack';
 import Careers from './components/pages/Careers';
 import OpenRoles from './components/pages/OpenRoles';
+import ApplyPage from './components/pages/ApplyPage';
 
 
 import ContactPage from './components/pages/ContactPage';
@@ -35,6 +36,7 @@ const routeConfig = [
   { path: "/industries/:slug", Component: IndustrySingle },
   { path: "/careers", Component: Careers },
   { path: "/open-roles", Component: OpenRoles },
+  { path: "/apply/:jobId", Component: ApplyPage },
   { path: "/tech-stack", Component: TechStack },
   { path: "/contact", Component: ContactPage },
   { path: "/terms", Component: TermsConditions },

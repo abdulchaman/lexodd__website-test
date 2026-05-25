@@ -417,7 +417,7 @@ export default function Navbar() {
     const loadIndustries = async () => {
         try {
             const response = await getIndustries();
-            setIndustries(response.data.data || response.data || []);
+            setIndustries((response.data.data || response.data || []).filter(industry => industry.isVisible !== false));
         } catch (error) {
             console.error('Failed to load industries:', error);
             setIndustries([]);

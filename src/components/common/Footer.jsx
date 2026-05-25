@@ -204,7 +204,7 @@ export default function Footer() {
         const loadIndustries = async () => {
             try {
                 const response = await getIndustries();
-                setIndustries(response.data.data || response.data || []);
+                setIndustries((response.data.data || response.data || []).filter(industry => industry.isVisible !== false));
             } catch (error) {
                 console.error('Failed to load footer industries:', error);
                 setIndustries([]);

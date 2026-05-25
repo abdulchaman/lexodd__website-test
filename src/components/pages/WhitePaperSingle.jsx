@@ -118,7 +118,7 @@ const WhitePaperSingle = () => {
 
         <div className="article-layout">
           <div className="article-body">
-            {/* <div className="wp-cover">
+            <div className="wp-cover">
               <div className="wp-icon">📄</div>
               <div className="wp-meta">
                 <div className="wp-title">{download?.title}</div>
@@ -127,7 +127,7 @@ const WhitePaperSingle = () => {
                   {download?.buttonText || 'Download PDF'}
                 </Button>
               </div>
-            </div> */}
+            </div>
 
             <div className="sl mb-2">Abstract</div>
             <p className="body-text">{abstract}</p>
@@ -178,7 +178,7 @@ const WhitePaperSingle = () => {
             <SidebarCard label="Topic" value={sidebar.topic || whitePaper.topic} />
             <SidebarCard label="Reading time" value={sidebar.readingTime || whitePaper.readTime} />
             <SidebarCard label="Published" value={sidebar.published || whitePaper.date} />
-            <SidebarCard label="Related case study" value={sidebar.relatedCaseStudy} isLink onClick={() => navigate('/case-studies')} />
+            <SidebarCard label="Related case study" value={sidebar.relatedCaseStudy} isLink onClick={() => sidebar.relatedCaseStudySlug ? navigate(`/case-studies/${sidebar.relatedCaseStudySlug}`) : navigate('/case-studies')} />
             <SidebarCard label="Also in this series" value={sidebar.alsoInSeries} />
           </div>
         </div>

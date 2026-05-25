@@ -30,15 +30,9 @@ const WhitePapersMain = () => {
     const fetchWhitePapers = async () => {
         try {
             const response = await getWhitePapers();
-            const papers = response.data.data || response.data || [];
+            const papers = (response.data.data || response.data || []).filter(paper => paper.isVisible !== false);
             setWhitePapers(papers);
             setFilteredPapers(papers);
-
-            setHeroData({
-                eyebrow: 'Resources',
-                title: 'White Papers',
-                lead: 'Strategic insights for multi-location operations'
-            });
             setLoading(false);
         } catch (error) {
             console.error('Error fetching white papers:', error);
@@ -48,7 +42,7 @@ const WhitePapersMain = () => {
 
     // Get unique topics for filters
     const getUniqueTopics = () => {
-        const topics = ['All topics', ...new Set(whitePapers.map(paper => paper.topic))];
+        const topics = ['All topics', ...new Set(whitePapers.map(paper => paper.topic).filter(Boolean))];
         return topics;
     };
 
@@ -90,26 +84,29 @@ const WhitePapersMain = () => {
             <div className='container'>
                 <div className="page">
                     <div className="hero">
-                        <div className="ey">{heroData.eyebrow}</div>
-                        <h1>{heroData.title}</h1>
-                        <p className="lead">{heroData.lead}</p>
+                        <div className="ey">Resources</div>
+                        <h1>White Papers</h1>
+                        <p className="lead">Strategic insights for multi-location operations</p>
                     </div>
 
                     <div className="sec">
-                        <div className="filter-row">
-                            {filters.map(filter => (
-                                <button
-                                    key={filter}
-                                    className={`f-btn ${activeFilter === filter ? 'on' : ''}`}
-                                    onClick={() => handleFilter(filter)}
-                                >
-                                    {filter}
-                                </button>
-                            ))}
-                        </div>
+                        {whitePapers.length > 0 && (
+                            <div className="filter-row">
+                                {filters.map(filter => (
+                                    <button
+                                        key={filter}
+                                        className={`f-btn ${activeFilter === filter ? 'on' : ''}`}
+                                        onClick={() => handleFilter(filter)}
+                                    >
+                                        {filter}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
 
-                        <div className="grid3">
-                            {filteredPapers.map(paper => (
+                        {filteredPapers.length > 0 ? (
+                            <div className="grid3">
+                                {filteredPapers.map(paper => (
                                 <div key={paper._id} className="card paper-card" onClick={() => navigate(`/white-papers/${paper.slug}`)}>
                                     {/* <div>
                                         <img src={paper.coverImage} alt="" />
@@ -137,8 +134,15 @@ const WhitePapersMain = () => {
                                     </div>
 
                                 </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="empty-state">
+                                <div className="empty-icon">WP</div>
+                                <h3>No white papers available</h3>
+                                <p>We're working on new research. Check back later.</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

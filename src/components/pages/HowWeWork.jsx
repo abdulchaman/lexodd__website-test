@@ -84,8 +84,8 @@ const HowWeWork = () => {
                         <p class="section-body">Every engagement moves through the same four stages. The depth of each stage depends on where you are — but the sequence never changes.</p>
                     </div>
 
-                    <div class="steps">
-                        <div class="step">
+                    <div class="steps-wk">
+                        <div class="step-wk">
                             <div class="step-num">01</div>
                             <div class="step-left">
                                 <div class="step-tag">Problem framing</div>
@@ -106,7 +106,7 @@ const HowWeWork = () => {
                             </div>
                         </div>
 
-                        <div class="step">
+                        <div class="step-wk">
                             <div class="step-num">02</div>
                             <div class="step-left">
                                 <div class="step-tag">System design</div>
@@ -127,7 +127,7 @@ const HowWeWork = () => {
                             </div>
                         </div>
 
-                        <div class="step">
+                        <div class="step-wk">
                             <div class="step-num">03</div>
                             <div class="step-left">
                                 <div class="step-tag">Build and integrate</div>
@@ -148,7 +148,7 @@ const HowWeWork = () => {
                             </div>
                         </div>
 
-                        <div class="step">
+                        <div class="step-wk">
                             <div class="step-num">04</div>
                             <div class="step-left">
                                 <div class="step-tag">Stabilise and operate</div>

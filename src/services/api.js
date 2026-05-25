@@ -4,13 +4,16 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
 // Add token if admin is logged in (for preview mode)
 api.interceptors.request.use((config) => {
+  if (config.data instanceof FormData) {
+    delete config.headers['Content-Type'];
+  } else {
+    config.headers['Content-Type'] = 'application/json';
+  }
+
   const token = localStorage.getItem('adminToken');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -20,16 +23,14 @@ api.interceptors.request.use((config) => {
 
 // Career APIs
 export const getCareerPage = () => api.get('/careers/page');
-export const getJobs = (showAll = false) => api.get(`/jobs${showAll ? '?showAll=true' : ''}`);
+export const getJobs = (admin = false) => api.get(`/jobs${admin ? '?admin=true' : ''}`);
 export const getJobById = (id) => api.get(`/jobs/${id}`);
-export const submitApplication = (formData) => api.post('/applications', formData, {
-  headers: { 'Content-Type': 'multipart/form-data' }
-});
+export const submitApplication = (formData) => api.post('/applications', formData);
 
 // Case Study APIs
-export const getCaseStudies = (showAll = false, featured = false) => {
+export const getCaseStudies = (admin = false, featured = false) => {
   const params = new URLSearchParams();
-  if (showAll) params.set('showAll', 'true');
+  if (admin) params.set('admin', 'true');
   if (featured) params.set('featured', 'true');
   const query = params.toString();
   return api.get(`/case-studies${query ? `?${query}` : ''}`);
@@ -37,12 +38,12 @@ export const getCaseStudies = (showAll = false, featured = false) => {
 export const getCaseStudyBySlug = (slug) => api.get(`/case-studies/${slug}`);
 
 // White Paper APIs
-export const getWhitePapers = (showAll = false) => api.get(`/white-papers${showAll ? '?showAll=true' : ''}`);
+export const getWhitePapers = (admin = false) => api.get(`/white-papers${admin ? '?admin=true' : ''}`);
 export const getWhitePaperBySlug = (slug) => api.get(`/white-papers/${slug}`);
 export const trackDownload = (id) => api.post(`/white-papers/${id}/download`);
 
 // Industry APIs
-export const getIndustries = () => api.get('/industries');
+export const getIndustries = (admin = false) => api.get(`/industries${admin ? '?admin=true' : ''}`);
 export const getIndustryBySlug = (slug) => api.get(`/industries/${slug}`);
 
 // Tech Stack API

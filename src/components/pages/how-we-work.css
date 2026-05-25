@@ -164,13 +164,13 @@
     margin-top: 16px;
 }
 
-.steps {
+.steps-wk {
     display: flex;
     flex-direction: column;
     gap: 1px;
 }
 
-.step {
+.step-wk {
     display: grid;
     grid-template-columns: 80px 1fr 1fr;
     gap: 0;
@@ -179,7 +179,7 @@
     transition: border-color 0.2s;
 }
 
-.step:hover {
+.step-wk:hover {
     border-color: var(--border-mid);
 }
 

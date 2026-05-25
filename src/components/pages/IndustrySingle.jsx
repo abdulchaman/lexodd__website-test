@@ -57,7 +57,9 @@ const IndustrySingle = () => {
     );
   }
 
-  const { hero = {}, focus = {}, caseStudies = [], whitePapers = [], cta = {} } = industry;
+  const { hero = {}, focus = {}, cta = {} } = industry;
+  const caseStudies = (industry.caseStudies || []).filter(study => study.isVisible !== false);
+  const whitePapers = (industry.whitePapers || []).filter(paper => paper.isVisible !== false);
 
   return (
     <>
@@ -82,7 +84,7 @@ const IndustrySingle = () => {
           </div>
 
           <div className="hero industry-hero">
-            {/* <div className="cms-note">CMS — editable: industry name, headline, description, challenge bullets, all linked content</div> */}
+
             <div className="ey">{hero?.eyebrow}</div>
             <h1>{hero?.title}</h1>
             <p className="lead">{hero?.lead}</p>
@@ -95,11 +97,11 @@ const IndustrySingle = () => {
                   alt={getImageAlt(hero.heroImage, 'Industry image')}
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div style="padding: 20px; text-align: center;">Image failed to load</div>';
+                    e.target.parentElement.innerHTML = '<div style={{ padding: "20px", textAlign: "center" }}>Image failed to load</div>';
                   }}
                 />
               ) : (
-                <div style="padding: 20px; text-align: center;">CMS — hero image</div>
+                <div style={{ padding: "20px", textAlign: "center" }}>CMS — hero image</div>
               )}
             </div>
           </div>
@@ -127,7 +129,7 @@ const IndustrySingle = () => {
               {caseStudies && caseStudies.length > 0 ? (
                 caseStudies.map((study) => (
                   <Card
-                    key={study._id}
+                    key={study._id || study.slug || study.title}
                     {...study}
                     onClick={() => navigate(`/case-studies/${study.slug}`)}
                     excerpt={study.result}
@@ -146,7 +148,7 @@ const IndustrySingle = () => {
             <div className="papers-container">
               {whitePapers && whitePapers.length > 0 ? (
                 whitePapers.map((paper) => (
-                  <div key={paper._id} className="card paper-list-item" onClick={() => navigate(`/white-papers/${paper.slug}`)}>
+                  <div key={paper._id || paper.slug || paper.id || paper.title} className="card paper-list-item" onClick={() => navigate(`/white-papers/${paper.slug}`)}>
                     <div>
                       <div className="card-meta mb-2">
                         <span className="tag-wp">{paper.topic}</span>
@@ -187,7 +189,7 @@ const IndustrySingle = () => {
                   View case studies →
                 </Link>
 
-               
+
               </div>
             </div>
           </div>
