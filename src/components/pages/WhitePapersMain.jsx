@@ -4,6 +4,7 @@ import Button from '../common/Button';
 import api, { getWhitePapers } from '../../services/api';
 import MetaTags from '../common/MetaTags';
 import { formatDisplayDate } from '../../utils/dateFormat';
+import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
 
 const WhitePapersMain = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const WhitePapersMain = () => {
     const [loading, setLoading] = useState(true);
     const [heroData, setHeroData] = useState({ eyebrow: '', title: '', lead: '' });
     const [seo, setSeo] = useState(null);
+    const [visibleCount, setVisibleCount] = useState(6);
 
     useEffect(() => {
         fetchWhitePapers();
@@ -49,6 +51,7 @@ const WhitePapersMain = () => {
 
     const handleFilter = (filter) => {
         setActiveFilter(filter);
+        setVisibleCount(6);
         if (filter === 'All topics') {
             setFilteredPapers(whitePapers);
         } else {
@@ -69,6 +72,8 @@ const WhitePapersMain = () => {
     }
 
     const filters = getUniqueTopics();
+    const visiblePapers = filteredPapers.slice(0, visibleCount);
+    const hasMorePapers = filteredPapers.length > visibleCount;
 
     return (
         <>
@@ -106,22 +111,25 @@ const WhitePapersMain = () => {
                         )}
 
                         {filteredPapers.length > 0 ? (
+                            <>
                             <div className="grid3">
-                                {filteredPapers.map(paper => (
+                                {visiblePapers.map(paper => {
+                                const coverImageUrl = getImageUrl(paper.coverImage);
+                                return (
                                 <div key={paper._id} className="card paper-card" onClick={() => navigate(`/white-papers/${paper.slug}`)}>
                                     {/* <div>
                                         <img src={paper.coverImage} alt="" />
                                     </div> */}
-                                    <div className="card-image">
+                                    {coverImageUrl && <div className="card-image">
                                         <img
-                                            src={paper.coverImage}
-                                            alt={paper.title}
+                                            src={coverImageUrl}
+                                            alt={getImageAlt(paper.coverImage, paper.title)}
                                             onError={(e) => {
                                                 e.target.style.display = 'none';
-                                                e.target.parentElement.innerHTML = placeholder;
+                                                e.target.parentElement.innerHTML = getImagePlaceholder(paper.coverImage, 'Image failed to load');
                                             }}
                                         />
-                                    </div>
+                                    </div>}
                                     <div className='card-body'>
                                         <div className="card-meta mb-2">
                                             <span className="tag-wp">{paper.topic}</span>
@@ -135,8 +143,17 @@ const WhitePapersMain = () => {
                                     </div>
 
                                 </div>
-                                ))}
+                                );
+                                })}
                             </div>
+                            {hasMorePapers && (
+                                <div className="btn-row" style={{ justifyContent: 'center', marginTop: 32 }}>
+                                    <Button variant="secondary" onClick={() => setVisibleCount((count) => count + 6)}>
+                                        Load more
+                                    </Button>
+                                </div>
+                            )}
+                            </>
                         ) : (
                             <div className="empty-state">
                                 <div className="empty-icon">WP</div>

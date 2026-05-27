@@ -5,7 +5,6 @@
   },
   "hero": {
     "industry": "Energy / Logistics",
-    "date": "March 2026",
     "title": "Rebuilding the coordination layer for a 340-depot fuel distributor",
     "lead": "Delivery failures were happening daily. Leadership found out two days later. The problem wasn't execution — it was that the system had no way to surface them earlier."
   },
@@ -51,10 +50,6 @@
   "sidebar": {
     "client": "National fuel distributor",
     "clientNote": "Name withheld at client request",
-    "industry": "Energy & logistics",
-    "engagementType": "Platform buildout + long-term partnership",
-    "duration": "14 months (active)",
-    "scope": "340 depots · 3 states · 1,200+ drivers",
     "relatedWhitePaper": "Designing for exception visibility in multi-depot operations →"
   },
   "related": [

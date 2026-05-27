@@ -15,7 +15,6 @@
       },
       "industry": "Energy / Logistics",
       "industryTag": "ind",
-      "date": "Mar 2026",
       "title": "Fuel distribution platform for a 340-depot network",
       "excerpt": "A national distributor running on fragmented spreadsheets and radio coordination. Delivery failures were invisible until they became escalations. We rebuilt the coordination layer entirely."
     },
@@ -28,7 +27,6 @@
       },
       "industry": "Healthcare",
       "industryTag": "ind",
-      "date": "Jan 2026",
       "title": "Multi-location coordination platform for 22-clinic group",
       "excerpt": "Scheduling, supply ordering, and clinical handoffs across 22 locations were managed through individual WhatsApp groups. We designed a unified coordination layer without disrupting operations during rollout."
     },
@@ -41,7 +39,6 @@
       },
       "industry": "Fleet management",
       "industryTag": "ind",
-      "date": "Nov 2025",
       "title": "Fleet operations platform for enterprise logistics provider",
       "excerpt": "Real-time visibility across 1,200+ vehicles was theoretically possible but practically absent. Dispatch decisions were made on stale data. We built the telemetry layer and control interface from scratch."
     }

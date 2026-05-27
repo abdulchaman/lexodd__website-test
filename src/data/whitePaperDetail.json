@@ -11,9 +11,6 @@
     "lead": "Most operations platforms report what happened. The ones that don't fail silently are designed to surface what's about to happen. This paper explains the difference."
   },
   "download": {
-    "title": "Download full paper",
-    "description": "18-page PDF · Includes framework diagrams and implementation checklist",
-    "buttonText": "Download PDF — free",
     "pdfUrl": "/pdfs/exception-visibility-framework.pdf"
   },
   "images": {

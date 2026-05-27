@@ -210,18 +210,18 @@ const TechStack = () => {
                   <Link
                     className='grad-cta cta'
                     to="/contact"
-                    aria-label="Start a conversation"
+                    aria-label={cta.buttonText || 'Start a conversation'}
                   >
                     <span className='cta-text'>
-                      Start a conversation
+                      {cta.buttonText || 'Start a conversation'}
                     </span>
                   </Link>
                   <Link
                     className='cta3 cta'
                     to="/open-roles"
-                    aria-label="See open roles"
+                    aria-label={cta.secondaryButtonText || 'See open roles'}
                   >
-                    See open roles
+                    {cta.secondaryButtonText || 'See open roles'}
                   </Link>
                 </div>
               </div>

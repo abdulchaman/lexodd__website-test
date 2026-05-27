@@ -9,7 +9,7 @@
 
 .prb-blocks {
     display: flex;
-    gap: 2px;
+    gap: 32px;
 }
 
 .block {

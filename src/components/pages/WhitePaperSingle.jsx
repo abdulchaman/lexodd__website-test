@@ -75,12 +75,12 @@ const WhitePaperSingle = () => {
   }
 
   const hero = whitePaper.hero || {};
-  const download = whitePaper.download || {};
   const images = whitePaper.images || {};
   const abstract = whitePaper.abstract || whitePaper.excerpt;
   const pullQuote = whitePaper.pullQuote;
   const content = whitePaper.content || {};
   const sidebar = whitePaper.sidebar || {};
+  const frameworkImageUrl = getImageUrl(images.frameworkDiagram);
   const section = (value, fallbackTitle) => typeof value === 'string'
     ? { title: fallbackTitle, description: value, additional: '' }
     : (value || { title: fallbackTitle, description: '', additional: '' });
@@ -93,7 +93,7 @@ const WhitePaperSingle = () => {
       keywords={whitePaper.seo?.metaKeywords}
       ogTitle={whitePaper.seo?.ogTitle}
       ogDescription={whitePaper.seo?.ogDescription}
-      ogImage={whitePaper.seo?.ogImage?.url || whitePaper.coverImage}
+      ogImage={whitePaper.seo?.ogImage?.url || getImageUrl(whitePaper.coverImage)}
       canonicalUrl={whitePaper.seo?.canonicalUrl}
       robots={whitePaper.seo?.robots}
     />
@@ -119,16 +119,13 @@ const WhitePaperSingle = () => {
 
         <div className="article-layout">
           <div className="article-body">
+            {/*
             <div className="wp-cover">
               <div className="wp-icon">📄</div>
               <div className="wp-meta">
-                <div className="wp-title">{download?.title}</div>
-                <div className="wp-description">{download?.description}</div>
-                <Button variant="primary" onClick={handleDownload}>
-                  {download?.buttonText || 'Download PDF'}
-                </Button>
               </div>
             </div>
+            */}
 
             <div className="sl mb-2">Abstract</div>
             <p className="body-text">{abstract}</p>
@@ -151,9 +148,9 @@ const WhitePaperSingle = () => {
 
             {/* Framework Diagram */}
             <div className="img-ph framework-image">
-              {images?.frameworkDiagram ? (
+              {frameworkImageUrl ? (
                 <img
-                  src={getImageUrl(images.frameworkDiagram)}
+                  src={frameworkImageUrl}
                   alt={getImageAlt(images.frameworkDiagram, 'Framework diagram')}
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -168,7 +165,7 @@ const WhitePaperSingle = () => {
             <p className="body-text">The full framework, including worked examples from fuel distribution and healthcare contexts, is available in the downloadable PDF.</p>
 
             <div className="btn-row">
-              <Button variant="primary" onClick={() => alert(`Download PDF: ${download.pdfUrl}`)}>
+              <Button variant="primary" onClick={handleDownload}>
                 Download full paper
               </Button>
               <Button variant="secondary" onClick={() => navigate('/white-papers')}>← Back to white papers</Button>
@@ -177,7 +174,7 @@ const WhitePaperSingle = () => {
 
           <div className="article-sidebar">
             <SidebarCard label="Topic" value={sidebar.topic || whitePaper.topic} />
-            <SidebarCard label="Reading time" value={sidebar.readingTime || whitePaper.readTime} />
+            {/* <SidebarCard label="Reading time" value={sidebar.readingTime || whitePaper.readTime} /> */}
             <SidebarCard label="Published" value={formatDisplayDate(sidebar.published || whitePaper.date)} />
             <SidebarCard label="Related case study" value={sidebar.relatedCaseStudy} isLink onClick={() => sidebar.relatedCaseStudySlug ? navigate(`/case-studies/${sidebar.relatedCaseStudySlug}`) : navigate('/case-studies')} />
             <SidebarCard label="Also in this series" value={sidebar.alsoInSeries} />

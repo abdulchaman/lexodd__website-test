@@ -60,6 +60,7 @@ const IndustrySingle = () => {
   const { hero = {}, focus = {}, cta = {} } = industry;
   const caseStudies = (industry.caseStudies || []).filter(study => study.isVisible !== false);
   const whitePapers = (industry.whitePapers || []).filter(paper => paper.isVisible !== false);
+  const heroImageUrl = getImageUrl(hero.heroImage);
 
   return (
     <>
@@ -69,7 +70,7 @@ const IndustrySingle = () => {
         keywords={industry.seo?.metaKeywords}
         ogTitle={industry.seo?.ogTitle}
         ogDescription={industry.seo?.ogDescription}
-        ogImage={industry.seo?.ogImage?.url || hero.heroImage}
+        ogImage={industry.seo?.ogImage?.url || heroImageUrl}
         canonicalUrl={industry.seo?.canonicalUrl}
         robots={industry.seo?.robots}
       />
@@ -91,9 +92,9 @@ const IndustrySingle = () => {
 
             {/* Hero Image */}
             <div className="img-ph hero-image mt-4">
-              {hero?.heroImage ? (
+              {heroImageUrl ? (
                 <img
-                  src={getImageUrl(hero.heroImage)}
+                  src={heroImageUrl}
                   alt={getImageAlt(hero.heroImage, 'Industry image')}
                   onError={(e) => {
                     e.target.style.display = 'none';

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Card from '../common/Card';
+import Button from '../common/Button';
 import api, { getCaseStudies } from '../../services/api';
 import MetaTags from '../common/MetaTags';
 
@@ -12,6 +13,7 @@ const CaseStudiesMain = () => {
     const [loading, setLoading] = useState(true);
     const [heroData, setHeroData] = useState({ eyebrow: '', title: '', lead: '' });
     const [seo, setSeo] = useState(null);
+    const [visibleCount, setVisibleCount] = useState(6);
 
     useEffect(() => {
         fetchCaseStudies();
@@ -49,6 +51,7 @@ const CaseStudiesMain = () => {
 
     const handleFilter = (filter) => {
         setActiveFilter(filter);
+        setVisibleCount(6);
         if (filter === 'All') {
             setFilteredStudies(caseStudies);
         } else {
@@ -69,6 +72,8 @@ const CaseStudiesMain = () => {
     }
 
     const filters = getUniqueIndustries();
+    const visibleStudies = filteredStudies.slice(0, visibleCount);
+    const hasMoreStudies = filteredStudies.length > visibleCount;
 
     return (
         <>
@@ -106,11 +111,20 @@ const CaseStudiesMain = () => {
                         )}
 
                         {filteredStudies.length > 0 ? (
-                            <div className="grid3">
-                                {filteredStudies.map(study => (
-                                    <Card key={study._id} {...study} onClick={() => navigate(`/case-studies/${study.slug}`)} />
-                                ))}
-                            </div>
+                            <>
+                                <div className="grid3">
+                                    {visibleStudies.map(study => (
+                                        <Card key={study._id} {...study} onClick={() => navigate(`/case-studies/${study.slug}`)} />
+                                    ))}
+                                </div>
+                                {hasMoreStudies && (
+                                    <div className="btn-row" style={{ justifyContent: 'center', marginTop: 32 }}>
+                                        <Button variant="secondary" onClick={() => setVisibleCount((count) => count + 6)}>
+                                            Load more
+                                        </Button>
+                                    </div>
+                                )}
+                            </>
                         ) : (
                             <div className="empty-state">
                                 <div className="empty-icon">CS</div>
