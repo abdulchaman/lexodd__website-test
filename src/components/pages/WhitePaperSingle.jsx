@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import { getWhitePaperBySlug, trackDownload } from '../../services/api';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
 import MetaTags from '../common/MetaTags';
+import { formatDisplayDate } from '../../utils/dateFormat';
 import './WhitePaperSingle.css';
 
 const WhitePaperSingle = () => {
@@ -110,7 +111,7 @@ const WhitePaperSingle = () => {
           {/* <div className="cms-note">CMS — editable: all content, PDF upload, reading time, topic tag</div> */}
           {/* <div className="card-meta mb-3">
             <span className="tag-wp">{hero.topic || whitePaper.topic}</span>
-            <span className="card-date">{hero.date || whitePaper.date} · {hero.readTime || whitePaper.readTime}</span>
+            <span className="card-date">{formatDisplayDate(hero.date || whitePaper.date)} · {hero.readTime || whitePaper.readTime}</span>
           </div> */}
           <h1>{hero.title || whitePaper.title}</h1>
           <p className="lead max-width-580">{hero.lead || hero.description || whitePaper.excerpt}</p>
@@ -177,7 +178,7 @@ const WhitePaperSingle = () => {
           <div className="article-sidebar">
             <SidebarCard label="Topic" value={sidebar.topic || whitePaper.topic} />
             <SidebarCard label="Reading time" value={sidebar.readingTime || whitePaper.readTime} />
-            <SidebarCard label="Published" value={sidebar.published || whitePaper.date} />
+            <SidebarCard label="Published" value={formatDisplayDate(sidebar.published || whitePaper.date)} />
             <SidebarCard label="Related case study" value={sidebar.relatedCaseStudy} isLink onClick={() => sidebar.relatedCaseStudySlug ? navigate(`/case-studies/${sidebar.relatedCaseStudySlug}`) : navigate('/case-studies')} />
             <SidebarCard label="Also in this series" value={sidebar.alsoInSeries} />
           </div>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import Button from '../common/Button';
 import api, { getWhitePapers } from '../../services/api';
 import MetaTags from '../common/MetaTags';
+import { formatDisplayDate } from '../../utils/dateFormat';
 
 const WhitePapersMain = () => {
     const navigate = useNavigate();
@@ -124,7 +125,7 @@ const WhitePapersMain = () => {
                                     <div className='card-body'>
                                         <div className="card-meta mb-2">
                                             <span className="tag-wp">{paper.topic}</span>
-                                            <span className="card-date">{paper.date} · {paper.readTime}</span>
+                                            <span className="card-date">{formatDisplayDate(paper.date)} · {paper.readTime}</span>
                                         </div>
                                         <h3 className="card-title paper-title">{paper.title}</h3>
                                         <p className="card-excerpt">{paper.excerpt}</p>

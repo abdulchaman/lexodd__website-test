@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatDisplayDate } from '../../utils/dateFormat';
 
 const MinimalJobCard = ({ job, onApply }) => {
   const [expanded, setExpanded] = useState(false);
@@ -26,6 +27,12 @@ const MinimalJobCard = ({ job, onApply }) => {
             <span>{job.loc || 'Location flexible'}</span>
             <span aria-hidden="true">.</span>
             <span>{job.type || 'Role type open'}</span>
+            {job.postedDate && (
+              <>
+                <span aria-hidden="true">.</span>
+                <span>{formatDisplayDate(String(job.postedDate).slice(0, 10))}</span>
+              </>
+            )}
           </span>
         </span>
         <button

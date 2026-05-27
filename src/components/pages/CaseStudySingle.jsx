@@ -6,6 +6,7 @@ import Card from '../common/Card';
 import { getCaseStudyBySlug, getCaseStudies } from '../../services/api';
 import { getImageAlt, getImageUrl } from '../../utils/imageHelper';
 import MetaTags from '../common/MetaTags';
+import { formatDisplayDate } from '../../utils/dateFormat';
 import './CaseStudySingle.css';
 
 const CaseStudySingle = () => {
@@ -180,6 +181,7 @@ const CaseStudySingle = () => {
             <div className="article-sidebar">
               <SidebarCard label="Client" value={{ strong: sidebar?.client, note: sidebar?.clientNote }} />
               <SidebarCard label="Industry" value={sidebar?.industry} />
+              <SidebarCard label="Engagement date" value={formatDisplayDate(hero?.date || caseStudy.date)} />
               <SidebarCard label="Engagement type" value={sidebar?.engagementType} />
               <SidebarCard label="Duration" value={sidebar?.duration} />
               <SidebarCard label="Scope" value={sidebar?.scope} />

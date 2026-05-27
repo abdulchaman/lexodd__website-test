@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
+import { formatDisplayDate } from '../../utils/dateFormat';
 
 const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, variant = 'default' }) => {
   const getTagStyle = () => {
@@ -37,7 +38,7 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
         <div>
           <div className="card-meta">
             {industry && <span className={getTagStyle()}>{industry}</span>}
-            {date && <span className="card-date">{date}</span>}
+            {date && <span className="card-date">{formatDisplayDate(date)}</span>}
           </div>
           <h3 className="card-title">{title}</h3>
           {excerpt && <p className="card-excerpt">{excerpt}</p>}
