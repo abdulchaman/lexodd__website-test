@@ -4,6 +4,8 @@ import Card from '../common/Card';
 import Button from '../common/Button';
 import api, { getCaseStudies } from '../../services/api';
 import MetaTags from '../common/MetaTags';
+import { CaseStudiesListingSkeleton } from '../common/Skeletons';
+import { FadeUp, StaggerGrid, TextReveal } from '../common/Animations';
 
 const CaseStudiesMain = () => {
     const navigate = useNavigate();
@@ -60,15 +62,7 @@ const CaseStudiesMain = () => {
     };
 
     if (loading) {
-        return (
-            <div className='container'>
-                <div className="page">
-                    <div style={{ padding: '40px', textAlign: 'center' }}>
-                        <p>Loading case studies...</p>
-                    </div>
-                </div>
-            </div>
-        );
+        return <CaseStudiesListingSkeleton />;
     }
 
     const filters = getUniqueIndustries();
@@ -89,15 +83,15 @@ const CaseStudiesMain = () => {
             />
             <div className='container'>
                 <div className="page">
-                    <div className="hero">
+                    <FadeUp className="hero">
                         <div className="ey">Our work</div>
-                        <h1>Case Studies</h1>
+                        <TextReveal as="h1" text="Case Studies" />
                         <p className="lead">Real solutions to real operational challenges</p>
-                    </div>
+                    </FadeUp>
 
                     <div className="sec">
                         {caseStudies.length > 0 && (
-                            <div className="filter-row">
+                            <FadeUp className="filter-row">
                                 {filters.map(filter => (
                                     <button
                                         key={filter}
@@ -107,16 +101,16 @@ const CaseStudiesMain = () => {
                                         {filter}
                                     </button>
                                 ))}
-                            </div>
+                            </FadeUp>
                         )}
 
                         {filteredStudies.length > 0 ? (
                             <>
-                                <div className="grid3">
+                                <StaggerGrid className="grid3">
                                     {visibleStudies.map(study => (
                                         <Card key={study._id} {...study} onClick={() => navigate(`/case-studies/${study.slug}`)} />
                                     ))}
-                                </div>
+                                </StaggerGrid>
                                 {hasMoreStudies && (
                                     <div className="btn-row" style={{ justifyContent: 'center', marginTop: 32 }}>
                                         <Button variant="secondary" onClick={() => setVisibleCount((count) => count + 6)}>

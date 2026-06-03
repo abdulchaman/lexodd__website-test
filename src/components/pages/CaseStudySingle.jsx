@@ -6,6 +6,9 @@ import Card from '../common/Card';
 import { getCaseStudyBySlug, getCaseStudies } from '../../services/api';
 import { getImageAlt, getImageUrl } from '../../utils/imageHelper';
 import MetaTags from '../common/MetaTags';
+import { CaseStudySingleSkeleton } from '../common/Skeletons';
+import OptimizedImage from '../common/OptimizedImage';
+import { AnimatedCounter, FadeUp, ScaleIn, StaggerGrid, TextReveal } from '../common/Animations';
 import './CaseStudySingle.css';
 
 const CaseStudySingle = () => {
@@ -48,15 +51,7 @@ const CaseStudySingle = () => {
   };
 
   if (loading) {
-    return (
-      <div className='container'>
-        <div className="page">
-          <div style={{ padding: '40px', textAlign: 'center' }}>
-            <p>Loading case study...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <CaseStudySingleSkeleton />;
   }
 
   if (error || !caseStudy) {
@@ -103,28 +98,31 @@ const CaseStudySingle = () => {
             </div>
           </div>
 
-          <div className="case-study-hero">
-            <h1>{hero.title || caseStudy.title}</h1>
+          <FadeUp className="case-study-hero">
+            <TextReveal as="h1" text={hero.title || caseStudy.title} />
             <p className="lead max-width-600">{hero.lead || caseStudy.excerpt}</p>
-          </div>
+          </FadeUp>
 
           <div className="article-layout">
             <div className="article-body">
-              <div className="stat-row">
+              <StaggerGrid className="stat-row">
                 {stats.map((stat, index) => (
-                  <div className="stat-box" key={index}>
-                    <div className="stat-n">{stat.value}</div>
+                  <FadeUp className="stat-box" key={index}>
+                    <div className="stat-n"><AnimatedCounter value={stat.value} /></div>
                     <div className="stat-label">{stat.label}</div>
-                  </div>
+                  </FadeUp>
                 ))}
-              </div>
+              </StaggerGrid>
 
               {/* Feature Image */}
-              <div className="img-ph feature-image">
+              <ScaleIn className="img-ph feature-image">
                 {images?.featureImage ? (
-                  <img
+                  <OptimizedImage
                     src={getImageUrl(images.featureImage)}
                     alt={getImageAlt(images.featureImage, 'Feature image')}
+                    width={900}
+                    height={420}
+                    sizes="(max-width: 1024px) 100vw, 780px"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.parentElement.innerHTML = '<div style={{ padding: "20px", textAlign: "center" }}>Image failed to load</div>';
@@ -133,7 +131,7 @@ const CaseStudySingle = () => {
                 ) : (
                   <div style={{ padding: "20px", textAlign: "center" }}>CMS — feature image</div>
                 )}
-              </div>
+              </ScaleIn>
 
               <div className="sl mb-2">The problem</div>
               <h2 className="mb-3">{section(content.problem, 'The problem').title}</h2>
@@ -159,9 +157,12 @@ const CaseStudySingle = () => {
               {/* Secondary Image */}
               <div className="img-ph secondary-image">
                 {images?.secondaryImage ? (
-                  <img
+                  <OptimizedImage
                     src={getImageUrl(images.secondaryImage)}
                     alt={getImageAlt(images.secondaryImage, 'Secondary image')}
+                    width={900}
+                    height={360}
+                    sizes="(max-width: 1024px) 100vw, 780px"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.parentElement.innerHTML = '<div style={{ padding: "20px", textAlign: "center" }}>Image failed to load</div>';

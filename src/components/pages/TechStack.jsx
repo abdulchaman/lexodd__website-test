@@ -4,6 +4,9 @@ import Button from '../common/Button';
 import { getTechStack } from '../../services/api';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
 import MetaTags from '../common/MetaTags';
+import { TechStackSkeleton } from '../common/Skeletons';
+import OptimizedImage from '../common/OptimizedImage';
+import { FadeUp, HoverCard, ScaleIn, StaggerGrid, TextReveal } from '../common/Animations';
 import './TechStack.css';
 
 const sortByOrder = (items = []) => [...items].sort((a, b) => (a.orderIndex ?? 0) - (b.orderIndex ?? 0));
@@ -46,15 +49,7 @@ const TechStack = () => {
   }, [techStack]);
 
   if (loading) {
-    return (
-      <div className="container">
-        <div className="page">
-          <div style={{ padding: '40px', textAlign: 'center' }}>
-            <p>Loading tech stack...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <TechStackSkeleton />;
   }
 
   if (error || !techStack || techStack.isVisible === false) {
@@ -91,16 +86,22 @@ const TechStack = () => {
           {hero.isVisible !== false && (
             <section className="tech-stack-hero">
               <div className="hero-grid">
-                <div className="hero-content">
+                <FadeUp className="hero-content">
                   <div className="ey">{hero.eyebrow}</div>
-                  <h1>{hero.title}</h1>
+                  <TextReveal as="h1" text={hero.title} />
                   <p className="lead">{hero.lead}</p>
-                </div>
-                <div className="img-ph hero-image">
+                </FadeUp>
+                <ScaleIn className="img-ph hero-image">
                   {heroImageUrl ? (
-                    <img
+                    <OptimizedImage
                       src={heroImageUrl}
                       alt={getImageAlt(hero.heroImage, 'Tech Stack image')}
+                      width={900}
+                      height={520}
+                      sizes="(max-width: 1024px) 100vw, 520px"
+                      loading="eager"
+                      fetchPriority="high"
+                      fallbackContent={getImagePlaceholder(hero.heroImage, 'Image failed to load')}
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.parentElement.innerHTML = '<div style="padding: 20px; text-align: center;">Image failed to load</div>';
@@ -109,23 +110,23 @@ const TechStack = () => {
                   ) : (
                     getImagePlaceholder(hero.heroImage, 'CMS - hero image')
                   )}
-                </div>
+                </ScaleIn>
               </div>
             </section>
           )}
 
           {introduction.isVisible !== false && hasIntroductionContent && (
             <section className="tech-introduction">
-              <div className="section-copy">
-                <h2>{introduction.title}</h2>
+              <FadeUp className="section-copy">
+                <TextReveal as="h2" text={introduction.title} />
                 <p>{introduction.description}</p>
-              </div>
+              </FadeUp>
               {introduction.features?.length > 0 && (
-                <div className="feature-list">
+                <StaggerGrid className="feature-list">
                   {introduction.features.map((feature, index) => (
-                    <div className="feature-item" key={`${feature}-${index}`}>{feature}</div>
+                    <HoverCard className="feature-item" key={`${feature}-${index}`}>{feature}</HoverCard>
                   ))}
-                </div>
+                </StaggerGrid>
               )}
             </section>
           )}
@@ -135,23 +136,30 @@ const TechStack = () => {
               {visibleCategories.map((category) => {
                 const categoryLogoUrl = getImageUrl(category.logo);
                 return (
-                  <div className="stack-category" key={category._id || category.id}>
+                  <FadeUp className="stack-category" key={category._id || category.id}>
                     <div className="category-header">
                       {categoryLogoUrl && (
                         <div className="category-logo">
-                          <img src={categoryLogoUrl} alt={getImageAlt(category.logo, category.name)} />
+                          <OptimizedImage
+                            src={categoryLogoUrl}
+                            alt={getImageAlt(category.logo, category.name)}
+                            width={64}
+                            height={64}
+                            sizes="64px"
+                          />
                         </div>
                       )}
                       <h2>{category.name}</h2>
                       <p className="category-description">{category.description}</p>
                     </div>
 
-                    <div className="tools-grid">
+                    <StaggerGrid className="tools-grid">
                       {category.tools.map((tool) => {
                         const toolKey = `${category._id || category.id}-${tool._id || tool.orderIndex || tool.name}`;
                         const isExpanded = expandedTool === toolKey;
                         return (
-                          <button
+                          <HoverCard
+                            as="button"
                             type="button"
                             className={`tool-card ${isExpanded ? 'expanded' : ''}`}
                             key={toolKey}
@@ -170,11 +178,11 @@ const TechStack = () => {
                                 <span>{tool.useCase}</span>
                               </span>
                             )}
-                          </button>
+                          </HoverCard>
                         );
                       })}
-                    </div>
-                  </div>
+                    </StaggerGrid>
+                  </FadeUp>
                 );
               })}
             </section>
@@ -182,19 +190,19 @@ const TechStack = () => {
 
           {principles.isVisible !== false && visiblePrinciples.length > 0 && (
             <section className="principles-section">
-              <div className="category-header">
-                <h2>{principles.title}</h2>
+              <FadeUp className="category-header">
+                <TextReveal as="h2" text={principles.title} />
                 <p className="category-description">{principles.description}</p>
-              </div>
-              <div className="principles-grid">
+              </FadeUp>
+              <StaggerGrid className="principles-grid">
                 {visiblePrinciples.map((principle, index) => (
-                  <div className="principle-card" key={principle._id || index}>
+                  <HoverCard className="principle-card" key={principle._id || index}>
                     <div className="principle-number">{principle.number}</div>
                     <h3>{principle.title}</h3>
                     <p>{principle.description}</p>
-                  </div>
+                  </HoverCard>
                 ))}
-              </div>
+              </StaggerGrid>
             </section>
           )}
 
@@ -203,7 +211,7 @@ const TechStack = () => {
               className="stack-cta-section"
               style={ctaImageUrl ? { backgroundImage: `linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)), url(${ctaImageUrl})` } : undefined}
             >
-              <div className="stack-cta-box">
+              <FadeUp className="stack-cta-box">
                 <h2>{cta.title}</h2>
                 <p className="body-text">{cta.description}</p>
                 <div className="btn-row" style={{ justifyContent: 'center' }}>
@@ -224,7 +232,7 @@ const TechStack = () => {
                     {cta.secondaryButtonText || 'See open roles'}
                   </Link>
                 </div>
-              </div>
+              </FadeUp>
             </section>
           )}
         </div>

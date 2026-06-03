@@ -3,6 +3,9 @@ import { Link } from 'react-router';
 import { getCareerPage } from '../../services/api';
 import MetaTags from '../common/MetaTags';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
+import { CareersSkeleton } from '../common/Skeletons';
+import OptimizedImage from '../common/OptimizedImage';
+import { AnimatedCounter, FadeUp, HoverCard, ScaleIn, StaggerGrid, TextReveal } from '../common/Animations';
 import './Careers.css';
 
 const Careers = () => {
@@ -26,6 +29,10 @@ const Careers = () => {
 
   const { hero, values, cta } = careerData || { hero: {}, values: {}, cta: {} };
 
+  if (loading) {
+    return <CareersSkeleton />;
+  }
+
   return (
     <>
       <MetaTags
@@ -40,70 +47,84 @@ const Careers = () => {
       />
       <div className="container">
         <div className="page">
-          {loading && (
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <p>Loading career opportunities...</p>
-            </div>
-          )}
-
-          {!loading && (
             <div className="view-content">
               <div className="hero-split">
-                <div>
+                <FadeUp>
                   <div className="ey">{hero.eyebrow}</div>
-                  <h1>{hero.title}</h1>
+                  <TextReveal as="h1" text={hero.title} />
                   <p className="lead">{hero.lead}</p>
                   <div className="hero-actions">
                     <Link className="grad-cta cta" to="/open-roles"><span className='cta-text'>See open roles</span></Link>
                   </div>
-                </div>
-                <div className="img-ph hero-image">
+                </FadeUp>
+                <ScaleIn className="img-ph hero-image">
                   {hero.heroImage ? (
-                    <img
+                    <OptimizedImage
                       src={getImageUrl(hero.heroImage)}
                       alt={getImageAlt(hero.heroImage, 'Careers hero')}
+                      width={700}
+                      height={420}
+                      sizes="(max-width: 768px) 100vw, 560px"
+                      loading="eager"
+                      fetchPriority="high"
+                      fallbackContent={getImagePlaceholder(hero.heroImage, 'Image failed to load')}
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.parentElement.innerHTML = getImagePlaceholder(hero.heroImage, 'Image failed to load');
                       }}
                     />
                   ) : (getImagePlaceholder(hero.heroImage, 'CMS - hero image'))}
-                </div>
+                </ScaleIn>
               </div>
+
+              {Array.isArray(hero.stats) && hero.stats.length > 0 && (
+                <StaggerGrid className="stat-row career-stat-row">
+                  {hero.stats.slice(0, 3).map((stat, index) => (
+                    <FadeUp className="stat-box" key={`${stat.label || 'career-stat'}-${index}`}>
+                      <div className="stat-n"><AnimatedCounter value={stat.value} /></div>
+                      <div className="stat-label">{stat.label}</div>
+                    </FadeUp>
+                  ))}
+                </StaggerGrid>
+              )}
 
               <div className="values-section">
                 <div className="values-grid-2col">
-                  <div>
+                  <FadeUp>
                     <div className="sl">How we work as a team</div>
-                    <h2>{values.title}</h2>
+                    <TextReveal as="h2" text={values.title} />
                     <p className="body mt-2">{values.description}</p>
                     <p className="body mt-2">{values.additional}</p>
-                  </div>
-                  <div className="img-ph culture-image">
+                  </FadeUp>
+                  <ScaleIn className="img-ph culture-image">
                     {values.cultureImage ? (
-                      <img
+                      <OptimizedImage
                         src={getImageUrl(values.cultureImage)}
                         alt={getImageAlt(values.cultureImage, 'Culture')}
+                        width={700}
+                        height={360}
+                        sizes="(max-width: 768px) 100vw, 560px"
+                        fallbackContent={getImagePlaceholder(values.cultureImage, 'Image failed to load')}
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.parentElement.innerHTML = getImagePlaceholder(values.cultureImage, 'Image failed to load');
                         }}
                       />
                     ) : (getImagePlaceholder(values.cultureImage, 'CMS - culture image'))}
-                  </div>
+                  </ScaleIn>
                 </div>
-                <div className="values-grid">
+                <StaggerGrid className="values-grid">
                   {values.items && values.items.map((item, index) => (
-                    <div className="val" key={index}>
+                    <HoverCard className="val" key={index}>
                       <div className="v-num">{item.number}</div>
                       <h3>{item.title}</h3>
                       <p className="body">{item.description}</p>
-                    </div>
+                    </HoverCard>
                   ))}
-                </div>
+                </StaggerGrid>
               </div>
 
-              <div className="cta-section">
+              <FadeUp className="cta-section">
                 <div className="cta-grid">
                   <div className="cta-box">
                     <div className="sl">{cta.eyebrow}</div>
@@ -113,9 +134,13 @@ const Careers = () => {
                   </div>
                   <div className="img-ph workspace-image">
                     {cta.workspaceImage ? (
-                      <img
+                      <OptimizedImage
                         src={getImageUrl(cta.workspaceImage)}
                         alt={getImageAlt(cta.workspaceImage, 'Workspace')}
+                        width={700}
+                        height={320}
+                        sizes="(max-width: 768px) 100vw, 560px"
+                        fallbackContent={getImagePlaceholder(cta.workspaceImage, 'Image failed to load')}
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.parentElement.innerHTML = getImagePlaceholder(cta.workspaceImage, 'Image failed to load');
@@ -124,9 +149,8 @@ const Careers = () => {
                     ) : (getImagePlaceholder(cta.workspaceImage, 'CMS - workspace image'))}
                   </div>
                 </div>
-              </div>
+              </FadeUp>
             </div>
-          )}
         </div>
       </div>
     </>

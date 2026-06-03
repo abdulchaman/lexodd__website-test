@@ -6,6 +6,14 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
+const getCache = new Map();
+const CACHE_TTL = 60 * 1000;
+
+const getCacheKey = (config) => {
+  const params = config.params ? JSON.stringify(config.params) : '';
+  return `${config.baseURL || ''}${config.url || ''}${params}`;
+};
+
 // Add token if admin is logged in (for preview mode)
 api.interceptors.request.use((config) => {
   if (config.data instanceof FormData) {
@@ -19,6 +27,39 @@ api.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
+});
+
+api.interceptors.request.use((config) => {
+  if ((config.method || 'get').toLowerCase() !== 'get' || config.skipCache) return config;
+
+  const key = getCacheKey(config);
+  const cached = getCache.get(key);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    config.adapter = () => Promise.resolve({
+      data: cached.data,
+      status: 200,
+      statusText: 'OK',
+      headers: cached.headers || {},
+      config,
+      request: null
+    });
+  }
+
+  config.metadata = { cacheKey: key };
+  return config;
+});
+
+api.interceptors.response.use((response) => {
+  const method = (response.config?.method || 'get').toLowerCase();
+  const key = response.config?.metadata?.cacheKey;
+  if (method === 'get' && key && response.status === 200) {
+    getCache.set(key, {
+      timestamp: Date.now(),
+      data: response.data,
+      headers: response.headers
+    });
+  }
+  return response;
 });
 
 // Career APIs
@@ -60,5 +101,16 @@ export const updatePageSEO = (pageType, id, seoData) => {
 
 // Contact API
 export const submitContact = (data) => api.post('/contacts', data);
+
+// Search API
+export const searchContent = ({ query, type = 'all', limit = 8 } = {}) => {
+  const params = new URLSearchParams();
+  if (query) params.set('q', query);
+  if (type && type !== 'all') params.set('type', type);
+  if (limit) params.set('limit', String(limit));
+  return api.get(`/search?${params.toString()}`);
+};
+
+export const getPopularSearches = () => api.get('/search/popular');
 
 export default api;

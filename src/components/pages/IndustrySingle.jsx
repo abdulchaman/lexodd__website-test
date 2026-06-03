@@ -5,6 +5,8 @@ import Button from '../common/Button';
 import { getIndustryBySlug } from '../../services/api';
 import { getImageAlt, getImageUrl } from '../../utils/imageHelper';
 import MetaTags from '../common/MetaTags';
+import { IndustrySingleSkeleton } from '../common/Skeletons';
+import OptimizedImage from '../common/OptimizedImage';
 import './IndustrySingle.css';
 
 const IndustrySingle = () => {
@@ -33,15 +35,7 @@ const IndustrySingle = () => {
   };
 
   if (loading) {
-    return (
-      <div className='container'>
-        <div className="page">
-          <div style={{ padding: '40px', textAlign: 'center' }}>
-            <p>Loading industry...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <IndustrySingleSkeleton />;
   }
 
   if (error || !industry) {
@@ -93,9 +87,14 @@ const IndustrySingle = () => {
             {/* Hero Image */}
             <div className="img-ph hero-image mt-4">
               {heroImageUrl ? (
-                <img
+                <OptimizedImage
                   src={heroImageUrl}
                   alt={getImageAlt(hero.heroImage, 'Industry image')}
+                  width={1200}
+                  height={640}
+                  sizes="(max-width: 768px) 100vw, 1180px"
+                  loading="eager"
+                  fetchPriority="high"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.parentElement.innerHTML = '<div style={{ padding: "20px", textAlign: "center" }}>Image failed to load</div>';

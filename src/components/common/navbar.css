@@ -12,9 +12,11 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #0B0B0D;
+    background-color: var(--bg);
     z-index: 1010;
-    transition: top 0.55s cubic-bezier(0.85, 0, 0, 1);
+    transition: top 0.55s cubic-bezier(0.85, 0, 0, 1), background-color 180ms ease, border-color 180ms ease;
+    border-bottom: 1px solid var(--b1);
+    contain: paint;
 }
 
 .rad-global-nav__container {
@@ -74,7 +76,7 @@
     padding: 8px 16px;
     font-size: 1rem;
     font-weight: 500;
-    color: #ffffff;
+    color: var(--tp);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -86,20 +88,20 @@
 
 .chevron-icon svg {
     font-size: 26px;
-    color: #fff;
+    color: var(--tp);
     transition: color 0.2s;
 }
 
 .rad-button--ghost:hover {
-    color: #a2a2a0;
+    color: var(--tt);
 }
 
 .rad-button--ghost:hover .chevron-icon svg {
-    color: #a2a2a0;
+    color: var(--tt);
 }
 
 .rad-button--ghost.active {
-    color: #a100ff;
+    color: var(--ac);
 }
 
 
@@ -107,6 +109,42 @@
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.nav-search-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--b2);
+    background: transparent;
+    color: var(--tp);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.nav-search-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-search-btn:hover {
+    border-color: var(--ac);
+    color: var(--ac);
+}
+
+.nav-loading-skeleton {
+    background-color: #18181D !important;
+}
+
+.nav-loading-skeleton::after {
+    background: linear-gradient(90deg, transparent, #27272F, transparent) !important;
+}
+
+.mobile-nav-skeleton {
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .rad-global-nav__overlay {
@@ -128,7 +166,7 @@
     top: calc(var(--rad-nav-height) - 100vh);
     left: 0;
     width: 100%;
-    background-color: #202020;
+    background-color: var(--s1);
     padding-top: 1rem;
 
     z-index: 1000;
@@ -197,7 +235,7 @@
     display: none;
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--tp);
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -210,7 +248,7 @@
 .mobile_drawer {
     position: fixed;
     inset: 0;
-    background: #0B0B0D;
+    background: var(--bg);
     z-index: 1200;
 
     transform: translateX(100%);
@@ -248,7 +286,7 @@ DRAWER HEADER
 .mobile_close_btn {
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--tp);
     cursor: pointer;
     font-size: 34px;
     padding: 0;
@@ -346,7 +384,7 @@ TABLET
         right: -100%;
         width: 100%;
         height: calc(100vh - var(--rad-nav-height));
-        background: #0B0B0D;
+    background: var(--bg);
         transition: right 550ms cubic-bezier(0.85, 0, 0, 1);
         padding: 40px 24px;
         overflow-y: auto;
@@ -455,4 +493,9 @@ MOBILE
     }
 
 
+}
+
+.mobile_theme_toggle {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }

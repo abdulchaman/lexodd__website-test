@@ -1,0 +1,157 @@
+.lex-skeleton {
+  background-color: #18181D !important;
+  transform: none !important;
+}
+
+.lex-skeleton::after {
+  background: linear-gradient(90deg, transparent, #27272F, transparent) !important;
+}
+
+.skeleton-hero {
+  display: grid;
+  gap: 18px;
+  padding: 80px 0;
+  border-bottom: 1px solid var(--b1);
+}
+
+.skeleton-hero--split {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  gap: 48px;
+  align-items: center;
+  padding: 0;
+  border-bottom: 0;
+}
+
+.skeleton-copy,
+.skeleton-text-block,
+.skeleton-card-body,
+.wp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-line-lg {
+  margin-top: 4px;
+}
+
+.skeleton-button,
+.skeleton-filter,
+.skeleton-input {
+  border-radius: 8px !important;
+}
+
+.skeleton-image,
+.skeleton-card-image {
+  border-radius: 6px !important;
+}
+
+.skeleton-card {
+  min-height: 304px;
+  background: var(--surface);
+}
+
+.skeleton-card--horizontal {
+  min-height: 132px;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 0;
+  border: 1px solid var(--b1);
+}
+
+.skeleton-card--horizontal .skeleton-card-image {
+  height: 100% !important;
+  min-height: 132px;
+  border-radius: 0 !important;
+}
+
+.skeleton-card-body {
+  padding: 16px;
+}
+
+.skeleton-meta-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skeleton-list,
+.papers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-sidebar-card {
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-text-block {
+  margin: 28px 0;
+}
+
+.skeleton-dot {
+  border-radius: 50% !important;
+}
+
+.skeleton-download-card {
+  min-height: 136px;
+}
+
+.skeleton-job-card .job-card-header {
+  min-height: 84px;
+}
+
+.skeleton-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skeleton-career-stats {
+  margin: 0;
+}
+
+.skeleton-career-stats .stat-row {
+  margin: 0;
+  width: 100%;
+}
+
+.skeleton-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-form-action {
+  align-self: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .skeleton-hero--split,
+  .skeleton-card--horizontal {
+    grid-template-columns: 1fr;
+  }
+
+  .skeleton-card--horizontal .skeleton-card-image {
+    height: 160px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .skeleton-hero {
+    padding: 56px 0;
+  }
+}

@@ -1,366 +1,17 @@
-// import { Link } from 'react-router';
-// import './navbar.css';
-// import { useState, useEffect } from 'react';
-// import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-// import { HiOutlineMenuAlt3 } from "react-icons/hi";
-// import { IoClose } from "react-icons/io5";
-
-// export default function Navbar() {
-
-//     const [isVisible, setIsVisible] = useState(true);
-//     const [lastScrollY, setLastScrollY] = useState(0);
-
-//     // MOBILE DRAWERS
-//     const [isMenuOpen, setIsMenuOpen] = useState(false);
-//     const [isIndustriesDrawerOpen, setIsIndustriesDrawerOpen] = useState(false);
-
-//     // DESKTOP INDUSTRIES
-//     const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
-
-//     /* =========================
-//        NAVBAR HIDE / SHOW
-//     ========================= */
-
-//     useEffect(() => {
-
-//         const handleScroll = () => {
-
-//             const currentScrollY = window.scrollY;
-
-//             if (currentScrollY > lastScrollY && currentScrollY > 50) {
-//                 setIsVisible(false);
-//             } else if (currentScrollY < lastScrollY) {
-//                 setIsVisible(true);
-//             }
-
-//             setLastScrollY(currentScrollY);
-//         };
-
-//         window.addEventListener('scroll', handleScroll, { passive: true });
-
-//         return () => {
-//             window.removeEventListener('scroll', handleScroll);
-//         };
-
-//     }, [lastScrollY]);
-
-//     /* =========================
-//        BODY LOCK
-//     ========================= */
-
-//     useEffect(() => {
-
-//         if (
-//             isMenuOpen ||
-//             isIndustriesDrawerOpen ||
-//             isIndustriesOpen
-//         ) {
-//             document.body.style.overflow = 'hidden';
-//         } else {
-//             document.body.style.overflow = '';
-//         }
-
-//     }, [
-//         isMenuOpen,
-//         isIndustriesDrawerOpen,
-//         isIndustriesOpen
-//     ]);
-
-//     /* =========================
-//        CLOSE ALL
-//     ========================= */
-
-//     const closeAllMenus = () => {
-//         setIsMenuOpen(false);
-//         setIsIndustriesDrawerOpen(false);
-//         setIsIndustriesOpen(false);
-//     };
-
-//     return (
-//         <>
-//             <div className={`rad-global-nav ${!isVisible ? 'rad-global-nav--hidden' : ''}`}>
-
-//                 {/* =========================
-//                     TOP NAVBAR
-//                 ========================= */}
-
-//                 <div className="rad-global-nav__wrapper">
-
-//                     <nav
-//                         className="rad-global-nav__container"
-//                         aria-label="Primary navigation"
-//                     >
-
-//                         {/* LOGO */}
-//                         <div className="rad-global-nav__logo">
-
-//                             <Link
-//                                 to="/"
-//                                 className="rad-global-nav__static-logo"
-//                                 aria-label="Go to homepage"
-//                             >
-//                                 <img
-//                                     src="/images/logo.svg"
-//                                     alt="Company logo"
-//                                     width="140"
-//                                     height="40"
-//                                     loading="eager"
-//                                     decoding="async"
-//                                 />
-//                             </Link>
-
-//                         </div>
-
-//                         {/* DESKTOP NAV */}
-//                         <div className="rad-global-nav__primary-nav desktop-nav">
-
-//                             <ul className="rad-global-nav__menu-items">
-
-//                                 <li>
-//                                     <Link
-//                                         to="/how-we-work"
-//                                         className="rad-button rad-button--ghost"
-//                                         onClick={closeAllMenus}
-//                                     >
-//                                         <div className="rad-button__text rad-link">
-//                                             How we work
-//                                         </div>
-//                                     </Link>
-//                                 </li>
-
-//                                 <li>
-//                                     <Link
-//                                         to="/case-studies"
-//                                         className="rad-button rad-button--ghost"
-//                                         onClick={closeAllMenus}
-//                                     >
-//                                         <div className="rad-button__text rad-link">
-//                                             Case studies
-//                                         </div>
-//                                     </Link>
-//                                 </li>
-
-//                                 <li>
-
-//                                     <button
-//                                         className="rad-button rad-button--ghost"
-//                                         onClick={() => setIsIndustriesOpen(prev => !prev)}
-//                                         aria-expanded={isIndustriesOpen}
-//                                     >
-
-//                                         <div className="rad-button__text">
-//                                             Industries
-//                                         </div>
-
-//                                         <span className={`chevron-icon ${isIndustriesOpen ? 'rotate' : ''}`}>
-//                                             <MdOutlineKeyboardArrowDown />
-//                                         </span>
-
-//                                     </button>
-
-//                                 </li>
-
-//                             </ul>
-
-//                         </div>
-
-//                         {/* DESKTOP CTA */}
-//                         <div className="rad-global-nav__utility-nav desktop-nav">
-
-//                             <Link
-//                                 className='grad-cta cta'
-//                                 to="/contact"
-//                                 aria-label="Start a conversation with us"
-//                             >
-//                                 <span className='cta-text'>
-//                                     Start conversation →
-//                                 </span>
-//                             </Link>
-
-//                         </div>
-
-//                         {/* MOBILE MENU BUTTON */}
-//                         <button
-//                             className="mobile_menu_btn"
-//                             onClick={() => setIsMenuOpen(true)}
-//                             aria-label="Open navigation menu"
-//                         >
-//                             <HiOutlineMenuAlt3 />
-//                         </button>
-
-//                     </nav>
-
-//                 </div>
-
-//                 {/* =========================
-//                     DESKTOP INDUSTRIES DRAWER
-//                 ========================= */}
-
-//                 <div className={`industries-drawer ${isIndustriesOpen ? 'open' : ''}`}>
-
-//                     <div className="industries-content">
-
-//                         <div className='section'>
-
-//                             <div className='container'>
-
-//                                 <div className='narrow'>
-//                                     <h2 className='mb-lg'>
-//                                         Explore featured industries
-//                                     </h2>
-//                                 </div>
-
-//                                 <div className='dr_row'>
-
-//                                     <div className='dr_col'>
-
-//                                         <Link to="/industries/logistics" className='dr_item' onClick={closeAllMenus}>
-//                                             Logistics
-//                                         </Link>
-
-//                                         <Link to="/industries/healthcare" className='dr_item' onClick={closeAllMenus}>
-//                                             Healthcare
-//                                         </Link>
-
-
-
-//                                     </div>
-
-//                                 </div>
-
-//                             </div>
-
-//                         </div>
-
-//                     </div>
-
-//                 </div>
-
-//                 {/* =========================
-//                     MOBILE MAIN DRAWER
-//                 ========================= */}
-
-//                 <div className={`mobile_drawer ${isMenuOpen ? 'open' : ''}`}>
-
-//                     <div className="mobile_drawer__header">
-
-//                         <button
-//                             className="mobile_close_btn"
-//                             onClick={() => setIsMenuOpen(false)}
-//                             aria-label="Close navigation menu"
-//                         >
-//                             <IoClose />
-//                         </button>
-
-//                     </div>
-
-//                     <div className="mobile_drawer__body">
-
-//                         <Link
-//                             to="/how-we-work"
-//                             className="mobile_nav_link"
-//                             onClick={closeAllMenus}
-//                         >
-//                             How we work
-//                         </Link>
-
-//                         <Link
-//                             to="/case-studies"
-//                             className="mobile_nav_link"
-//                             onClick={closeAllMenus}
-//                         >
-//                             Case studies
-//                         </Link>
-
-//                         {/* OPEN INDUSTRIES DRAWER */}
-//                         <button
-//                             className="mobile_nav_link mobile_industry_btn"
-//                             onClick={() => setIsIndustriesDrawerOpen(true)}
-//                         >
-
-//                             <span>
-//                                 Industries
-//                             </span>
-
-//                             <span className="mobile_arrow">
-//                                 →
-//                             </span>
-
-//                         </button>
-
-//                         <div className="mobile_cta_wrap">
-
-//                             <Link
-//                                 className='grad-cta cta'
-//                                 to='/contact'
-//                                 onClick={closeAllMenus}
-//                             >
-//                                 <span className='cta-text'>
-//                                     Start conversation →
-//                                 </span>
-//                             </Link>
-
-//                         </div>
-
-//                     </div>
-
-//                 </div>
-
-//                 {/* =========================
-//                     MOBILE INDUSTRIES DRAWER
-//                 ========================= */}
-
-//                 <div className={`mobile_drawer second_drawer ${isIndustriesDrawerOpen ? 'open' : ''}`}>
-
-//                     <div className="mobile_drawer__header">
-
-//                         <button
-//                             className="mobile_close_btn"
-//                             onClick={() => setIsIndustriesDrawerOpen(false)}
-//                             aria-label="Close industries menu"
-//                         >
-//                             <IoClose />
-//                         </button>
-
-//                     </div>
-
-//                     <div className="mobile_drawer__body">
-
-//                         <Link
-//                             to="/industries/logistics"
-//                             className="mobile_nav_link"
-//                             onClick={closeAllMenus}
-//                         >
-//                             Logistics
-//                         </Link>
-
-//                         <Link
-//                             to="/industries/healthcare"
-//                             className="mobile_nav_link"
-//                             onClick={closeAllMenus}
-//                         >
-//                             Healthcare
-//                         </Link>
-
-                     
-//                     </div>
-
-//                 </div>
-
-//             </div>
-//         </>
-//     );
-// }
-
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import './navbar.css';
 import { useState, useEffect } from 'react';
+import Skeleton from '@mui/material/Skeleton';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { IoClose } from "react-icons/io5";
+import { IoClose, IoSearch } from "react-icons/io5";
 import { getIndustries, getTechStack } from '../../services/api';
+import SearchModal from './SearchModal';
+import OptimizedImage from './OptimizedImage';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
+    const { pathname } = useLocation();
 
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -373,6 +24,7 @@ export default function Navbar() {
     // DESKTOP DROPDOWNS
     const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
     const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     // Industries from API
     const [industries, setIndustries] = useState([]);
@@ -447,7 +99,8 @@ export default function Navbar() {
             isIndustriesDrawerOpen ||
             isIndustriesOpen ||
             isResourcesDrawerOpen ||
-            isResourcesOpen
+            isResourcesOpen ||
+            isSearchOpen
         ) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -459,7 +112,8 @@ export default function Navbar() {
         isIndustriesDrawerOpen,
         isIndustriesOpen,
         isResourcesDrawerOpen,
-        isResourcesOpen
+        isResourcesOpen,
+        isSearchOpen
     ]);
 
     /* =========================
@@ -473,6 +127,13 @@ export default function Navbar() {
         setIsResourcesDrawerOpen(false);
         setIsResourcesOpen(false);
     };
+
+    const openSearch = () => {
+        closeAllMenus();
+        setIsSearchOpen(true);
+    };
+
+    const isActivePath = (paths) => paths.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
     return (
         <>
@@ -497,12 +158,13 @@ export default function Navbar() {
                                 className="rad-global-nav__static-logo"
                                 aria-label="Go to homepage"
                             >
-                                <img
+                                <OptimizedImage
                                     src="/images/logo.svg"
                                     alt="Company logo"
                                     width="140"
                                     height="40"
                                     loading="eager"
+                                    fetchPriority="high"
                                     decoding="async"
                                 />
                             </Link>
@@ -518,7 +180,7 @@ export default function Navbar() {
                                 <li>
                                     <Link
                                         to="/how-we-work"
-                                        className="rad-button rad-button--ghost"
+                                        className={`rad-button rad-button--ghost ${isActivePath(['/how-we-work']) ? 'active' : ''}`}
                                         onClick={closeAllMenus}
                                     >
                                         <div className="rad-button__text rad-link">
@@ -531,7 +193,7 @@ export default function Navbar() {
                                 <li>
 
                                     <button
-                                        className="rad-button rad-button--ghost"
+                                        className={`rad-button rad-button--ghost ${isActivePath(['/case-studies', '/white-papers']) ? 'active' : ''}`}
                                         onClick={() => {
                                             setIsResourcesOpen(prev => !prev);
                                             setIsIndustriesOpen(false);
@@ -555,7 +217,7 @@ export default function Navbar() {
                                     <li>
                                         <Link
                                             to="/tech-stack"
-                                            className="rad-button rad-button--ghost"
+                                            className={`rad-button rad-button--ghost ${isActivePath(['/tech-stack']) ? 'active' : ''}`}
                                             onClick={closeAllMenus}
                                         >
                                             <div className="rad-button__text rad-link">
@@ -569,7 +231,7 @@ export default function Navbar() {
                                 <li>
 
                                     <button
-                                        className="rad-button rad-button--ghost"
+                                        className={`rad-button rad-button--ghost ${isActivePath(['/industries']) ? 'active' : ''}`}
                                         onClick={() => {
                                             setIsIndustriesOpen(prev => !prev);
                                             setIsResourcesOpen(false);
@@ -595,6 +257,17 @@ export default function Navbar() {
 
                         {/* DESKTOP CTA */}
                         <div className="rad-global-nav__utility-nav desktop-nav">
+
+                            <button
+                                type="button"
+                                className="nav-search-btn"
+                                onClick={openSearch}
+                                aria-label="Open search"
+                            >
+                                <IoSearch aria-hidden="true" />
+                            </button>
+
+                            <ThemeToggle />
 
                             <Link
                                 className='grad-cta cta'
@@ -705,7 +378,10 @@ export default function Navbar() {
                                                 </Link>
                                             ))
                                         ) : (
-                                            <span className='dr_item'>Loading industries...</span>
+                                            <>
+                                                <Skeleton animation="wave" className="nav-loading-skeleton" width={160} height={24} />
+                                                <Skeleton animation="wave" className="nav-loading-skeleton" width={120} height={24} />
+                                            </>
                                         )}
 
                                     </div>
@@ -758,6 +434,19 @@ export default function Navbar() {
                         >
                             How we work
                         </Link>
+
+                        <button
+                            type="button"
+                            className="mobile_nav_link mobile_industry_btn"
+                            onClick={openSearch}
+                        >
+                            <span>Search</span>
+                            <IoSearch aria-hidden="true" />
+                        </button>
+
+                        <div className="mobile_theme_toggle">
+                            <ThemeToggle />
+                        </div>
 
                         {/* RESOURCES */}
                         <button
@@ -887,7 +576,10 @@ export default function Navbar() {
                                 </Link>
                             ))
                         ) : (
-                            <span className="mobile_nav_link">Loading industries...</span>
+                            <>
+                                <Skeleton animation="wave" className="nav-loading-skeleton mobile-nav-skeleton" width="100%" height={48} />
+                                <Skeleton animation="wave" className="nav-loading-skeleton mobile-nav-skeleton" width="82%" height={48} />
+                            </>
                         )}
 
                     </div>
@@ -895,6 +587,7 @@ export default function Navbar() {
                 </div>
 
             </div>
+            <SearchModal open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
         </>
     );
 }

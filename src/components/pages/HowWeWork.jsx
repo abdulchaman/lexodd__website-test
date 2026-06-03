@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import api, { getHowWeWorkPage } from '../../services/api';
 import MetaTags from '../common/MetaTags';
 import { getImageAlt, getImageUrl } from '../../utils/imageHelper';
+import OptimizedImage from '../common/OptimizedImage';
 
 const HowWeWork = () => {
     const [seo, setSeo] = useState(null);
@@ -66,7 +67,15 @@ const HowWeWork = () => {
                         ) : (
                             <div className='hero-image-placeholder has-image'>
                                 {heroImageUrl ? (
-                                    <img src={heroImageUrl} alt={getImageAlt(pageData?.heroImage, 'How we work')} />
+                                    <OptimizedImage
+                                        src={heroImageUrl}
+                                        alt={getImageAlt(pageData?.heroImage, 'How we work')}
+                                        width={960}
+                                        height={660}
+                                        sizes="(max-width: 992px) 100vw, 620px"
+                                        loading="eager"
+                                        fetchPriority="high"
+                                    />
                                 ) : (
                                     <div className="image-empty-state">CMS image pending</div>
                                 )}
@@ -76,15 +85,15 @@ const HowWeWork = () => {
 
                 </div>
             </div>
-            <section class="section">
+            <section className="section">
                 <div className='container'>
-                    <div class="section-header">
-                        <div class="section-label">The four stages</div>
-                        <h2 class="section-title">What working with us looks like</h2>
+                    <div className="section-header">
+                        <div className="section-label">The four stages</div>
+                        <h2 className="section-title">What working with us looks like</h2>
                         <p class="section-body">Every engagement moves through the same four stages. The depth of each stage depends on where you are — but the sequence never changes.</p>
                     </div>
 
-                    <div class="steps-wk">
+                    <div className="steps-wk">
                         <div class="step-wk">
                             <div class="step-num">01</div>
                             <div class="step-left">
@@ -263,7 +272,13 @@ const HowWeWork = () => {
                             ) : (
                                 <div className="honest-image-placeholder has-image">
                                     {expectImageUrl ? (
-                                        <img src={expectImageUrl} alt={getImageAlt(pageData?.expectImage, 'What to expect')} />
+                                        <OptimizedImage
+                                            src={expectImageUrl}
+                                            alt={getImageAlt(pageData?.expectImage, 'What to expect')}
+                                            width={640}
+                                            height={800}
+                                            sizes="(max-width: 992px) 100vw, 480px"
+                                        />
                                     ) : (
                                         <div className="image-empty-state">CMS image pending</div>
                                     )}

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { getJobById, submitApplication } from '../../services/api';
 import Button from '../common/Button';
 import MetaTags from '../common/MetaTags';
+import { ApplyPageSkeleton } from '../common/Skeletons';
 import './ApplyPage.css';
 
 const initialFormData = {
@@ -116,13 +117,7 @@ const ApplyPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="container">
-        <div className="page">
-          <div style={{ padding: '40px', textAlign: 'center' }}>Loading application...</div>
-        </div>
-      </div>
-    );
+    return <ApplyPageSkeleton />;
   }
 
   if (!job) {

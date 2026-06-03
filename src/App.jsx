@@ -1,30 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
-import { AnimatePresence, motion } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
-import Home from './components/pages/Home';
 
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
-import HowWeWork from './components/pages/HowWeWork';
-import CaseStudiesMain from './components/pages/CaseStudiesMain';
-import CaseStudySingle from './components/pages/CaseStudySingle';
-import WhitePapersMain from './components/pages/WhitePapersMain';
-import WhitePaperSingle from './components/pages/WhitePaperSingle';
-import IndustrySingle from './components/pages/IndustrySingle';
-import TechStack from './components/pages/TechStack';
-import Careers from './components/pages/Careers';
-import OpenRoles from './components/pages/OpenRoles';
-import ApplyPage from './components/pages/ApplyPage';
-
-
-import ContactPage from './components/pages/ContactPage';
-import TermsConditions from './components/pages/TermsConditions';
-import PrivacyPolicy from './components/pages/PrivacyPolicy';
+import RouteFallback from './components/common/RouteFallback';
+import { ScrollProgress } from './components/common/Animations';
+import { ThemeProvider } from './context/ThemeContext';
+import { prefetchCriticalRoutes } from './utils/performance';
 
 import './styles/global.css';
 import './styles/utilities.css';
 
+const Home = lazy(() => import('./components/pages/Home'));
+const HowWeWork = lazy(() => import('./components/pages/HowWeWork'));
+const CaseStudiesMain = lazy(() => import('./components/pages/CaseStudiesMain'));
+const CaseStudySingle = lazy(() => import('./components/pages/CaseStudySingle'));
+const WhitePapersMain = lazy(() => import('./components/pages/WhitePapersMain'));
+const WhitePaperSingle = lazy(() => import('./components/pages/WhitePaperSingle'));
+const IndustrySingle = lazy(() => import('./components/pages/IndustrySingle'));
+const TechStack = lazy(() => import('./components/pages/TechStack'));
+const Careers = lazy(() => import('./components/pages/Careers'));
+const OpenRoles = lazy(() => import('./components/pages/OpenRoles'));
+const ApplyPage = lazy(() => import('./components/pages/ApplyPage'));
+const ContactPage = lazy(() => import('./components/pages/ContactPage'));
+const TermsConditions = lazy(() => import('./components/pages/TermsConditions'));
+const PrivacyPolicy = lazy(() => import('./components/pages/PrivacyPolicy'));
 
 const routeConfig = [
   { path: "/", Component: Home },
@@ -43,11 +44,11 @@ const routeConfig = [
   { path: "/privacy-policy", Component: PrivacyPolicy },
 ];
 
-function AnimatedRoutes() {
+function PageRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode='wait'>
+    <Suspense fallback={<RouteFallback />}>
       <Routes location={location} key={location.pathname}>
         {routeConfig.map(({ path, Component }) => {
           return (
@@ -63,7 +64,7 @@ function AnimatedRoutes() {
           );
         })}
       </Routes>
-    </AnimatePresence>
+    </Suspense>
   );
 }
 
@@ -78,33 +79,29 @@ function PageWrapper({ children }) {
   }, []); // Empty dependency array means it runs once when the page mounts
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        duration: 1,
-        ease: [0.85, 0, 0, 1],
-      }}
-      style={{
-        transitionProperty: "opacity",
-      }}
-    >
+    <>
       {children}
-    </motion.div>
+    </>
   );
 }
 
 const App = () => {
+  useEffect(() => {
+    prefetchCriticalRoutes();
+  }, []);
+
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <Navbar />
-        <div className="main">
-          <AnimatedRoutes />
-        </div>
-        <Footer />
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <ScrollProgress />
+          <Navbar />
+          <div className="main">
+            <PageRoutes />
+          </div>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
     </HelmetProvider>
   )
 }

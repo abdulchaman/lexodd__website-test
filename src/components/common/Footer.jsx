@@ -1,148 +1,8 @@
-// import "./footer.css";
-// import BackgroundSVG from "./BackgroundSVG";
-
-// /* --- Custom Icons --- */
-
-// function MailIcon(props) {
-//     return (
-//         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-//             <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 7 8-7v10H4z" />
-//         </svg>
-//     );
-// }
-
-// function PhoneIcon(props) {
-//     return (
-//         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-//             <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
-//         </svg>
-//     );
-// }
-
-// function LinkedInIcon(props) {
-//     return (
-//         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-//             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.777 13.019H3.56V9h3.554v11.452z" />
-//         </svg>
-//     );
-// }
-
-// function FacebookIcon(props) {
-//     return (
-//         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-//             <path d="M22.675 0h-21.35C.595 0 0 .595 0 1.326v21.348C0 23.405.595 24 1.326 24H12.82v-9.294H9.692V11.06h3.128V8.412c0-3.1 1.894-4.788 4.658-4.788 1.325 0 2.466.099 2.797.143v3.24h-1.92c-1.506 0-1.797.716-1.797 1.765v2.314h3.587l-.467 3.647h-3.12V24h6.116C23.405 24 24 23.405 24 22.674V1.326C24 .595 23.405 0 22.675 0z" />
-//         </svg>
-//     );
-// }
-
-// function InstagramIcon(props) {
-//     return (
-//         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-//             <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 1.8h8.5c2.18 0 3.95 1.77 3.95 3.95v8.5c0 2.18-1.77 3.95-3.95 3.95h-8.5c-2.18 0-3.95-1.77-3.95-3.95v-8.5c0-2.18 1.77-3.95 3.95-3.95zm8.95 1.3a1.15 1.15 0 100 2.3 1.15 1.15 0 000-2.3zM12 7.1a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm0 1.8a3.1 3.1 0 110 6.2 3.1 3.1 0 010-6.2z" />
-//         </svg>
-//     );
-// }
-
-// function YouTubeIcon(props) {
-//     return (
-//         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-//             <path d="M23.498 6.186a2.997 2.997 0 00-2.11-2.12C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.388.566a2.997 2.997 0 00-2.11 2.12A31.24 31.24 0 000 12a31.24 31.24 0 00.502 5.814 2.997 2.997 0 002.11 2.12C4.7 20.5 12 20.5 12 20.5s7.3 0 9.388-.566a2.997 2.997 0 002.11-2.12A31.24 31.24 0 0024 12a31.24 31.24 0 00-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z" />
-//         </svg>
-//     );
-// }
-
-// /* --- Footer --- */
-
-// export default function Footer() {
-//     return (
-//         <>
-//             <footer className="footer section">
-//                 <div className="footer-container container">
-//                     <div className="footer-grid">
-//                         <div className="ft_top1">
-//                             <div>
-//                                 <img src="/images/logo.svg" alt="Lexodd" className="footer-logo" />
-//                                 <p className="footer-text">
-//                                     Operational infrastructure for businesses that have outgrown manual coordination.
-//                                 </p>
-//                             </div>
-//                         </div>
-//                         <div className="ft_top2">
-//                             <div className="ft_col">
-//                                 <div className="footer-heading">Navigation</div>
-//                                 <div className="footer-links">
-//                                     <a to="/how-we-work">How We Work</a>
-//                                     <a to="/case-studies">Case Studies</a>
-//                                     <a to="/industries/healthcare">Healthcare</a>
-//                                     <a to="/industries/logistics">Logistics</a>
-//                                     <a to="/contact">Contact</a>
-//                                 </div>
-//                             </div>
-//                             <div className="ft_col">
-//                                 <div className="footer-heading">Industries</div>
-//                                 <div className="footer-links">
-//                                     <a to="/industries/healthcare">Healthcare Operations</a>
-//                                     <a to="/industries/logistics">Logistics Infrastructure</a>
-//                                     <a to="/industries/healthcare">Franchise Management</a>
-//                                 </div>
-//                             </div>
-//                             <div className="ft_col">
-//                                 <div className="footer-heading">Contact</div>
-//                                 <div className="footer-links">
-
-//                                     <a href="mailto:info@lexodd.com" className="footer-inline">
-//                                         <MailIcon className="icon" />
-//                                         info@lexodd.com
-//                                     </a>
-
-//                                     <a href="tel:+919100113290" className="footer-inline">
-//                                         <PhoneIcon className="icon" />
-//                                         +91 9100113290
-//                                     </a>
-
-//                                     <a href="https://maps.app.goo.gl/8445wDX3UdEcZEiLA" target="_blank" rel="noopener noreferrer">
-//                                         Office number 202,203, Saptagiri Towers, Mayur Marg, Begumpet, Hyderabad, Telangana 500016
-//                                     </a>
-
-//                                     <div className="footer-socials">
-//                                         <a href="https://linkedin.com/company/lexodd-hypernova" target="_blank" rel="noopener noreferrer">
-//                                             <LinkedInIcon className="icon" />
-//                                         </a>
-//                                         <a href="https://www.instagram.com/lexoddhypernova/?hl=en" target="_blank" rel="noopener noreferrer">
-//                                             <InstagramIcon className="icon" />
-//                                         </a>
-//                                         <a href="https://www.facebook.com/profile.php?id=61585909160418" target="_blank" rel="noopener noreferrer">
-//                                             <FacebookIcon className="icon" />
-//                                         </a>
-//                                         <a href="https://www.youtube.com/@LexoddHypernovaPvtLtd" target="_blank" rel="noopener noreferrer">
-//                                             <YouTubeIcon className="icon" />
-//                                         </a>
-//                                     </div>
-
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-
-//                     <div className="footer-bottom">
-//                         <div>© 2026 Lexodd Hypernova Pvt Ltd. All rights reserved.</div>
-
-//                         <div className="footer-bottom-links">
-//                             <a to="/privacy-policy">Privacy Policy</a>
-//                             <a to="/terms">Terms</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </footer>
-//         </>
-//     );
-// }
-
-
 import "./footer.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { getIndustries } from "../../services/api";
+import OptimizedImage from "./OptimizedImage";
 // import BackgroundSVG from "./BackgroundSVG";
 
 /* --- Custom Icons --- */
@@ -226,7 +86,7 @@ export default function Footer() {
 
                             <div>
 
-                                <img
+                                <OptimizedImage
                                     src="/images/logo.svg"
                                     alt="Lexodd Hypernova logo"
                                     className="footer-logo"
@@ -283,27 +143,12 @@ export default function Footer() {
                                     >
                                         Careers
                                     </Link>
-
                                     {/* <Link
-                                        to="/industries/healthcare"
-                                        aria-label="Explore healthcare industry solutions"
-                                    >
-                                        Healthcare
-                                    </Link>
-
-                                    <Link
-                                        to="/industries/logistics"
-                                        aria-label="Explore logistics industry solutions"
-                                    >
-                                        Logistics
-                                    </Link> */}
-
-                                    <Link
                                         to="/contact"
                                         aria-label="Contact Lexodd"
                                     >
                                         Contact
-                                    </Link>
+                                    </Link> */}
 
                                 </div>
 

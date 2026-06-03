@@ -4,6 +4,7 @@ import WhatWeDo from "../common/WhatWeDo";
 import { Link } from "react-router";
 import api from "../../services/api";
 import MetaTags from "../common/MetaTags";
+import { FadeUp, HoverCard, StaggerGrid, TextReveal } from "../common/Animations";
 import "./home.css";
 
 
@@ -33,7 +34,7 @@ export default function Home() {
                 aria-label="Hero section"
             >
                 <div className="container hm_hero-grid">
-                    <div className="hero-content">
+                    <FadeUp className="hero-content">
                         <div className="label">
                             <strong>
                                 Operational Infrastructure
@@ -71,27 +72,27 @@ export default function Home() {
                                 View case studies →
                             </Link>
                         </div>
-                    </div>
-                    <div class="hero-proof">
+                    </FadeUp>
+                    <FadeUp className="hero-proof" delay={0.12}>
                         <div className="proof-name">
                             Active in
                         </div>
-                        <div class="proof-divider"></div>
-                        <div class="proof-item">
-                            <div class="proof-label">Energy</div>
-                            <div class="proof-text">Fuel logistics &amp; distribution</div>
+                        <div className="proof-divider"></div>
+                        <div className="proof-item">
+                            <div className="proof-label">Energy</div>
+                            <div className="proof-text">Fuel logistics &amp; distribution</div>
                         </div>
-                        <div class="proof-divider"></div>
-                        <div class="proof-item">
-                            <div class="proof-label">Healthcare</div>
-                            <div class="proof-text">Multi-location coordination</div>
+                        <div className="proof-divider"></div>
+                        <div className="proof-item">
+                            <div className="proof-label">Healthcare</div>
+                            <div className="proof-text">Multi-location coordination</div>
                         </div>
-                        <div class="proof-divider"></div>
-                        <div class="proof-item">
-                            <div class="proof-label">Enterprise</div>
-                            <div class="proof-text">Franchise & fleet management</div>
+                        <div className="proof-divider"></div>
+                        <div className="proof-item">
+                            <div className="proof-label">Enterprise</div>
+                            <div className="proof-text">Franchise & fleet management</div>
                         </div>
-                    </div>
+                    </FadeUp>
                 </div>
             </section>
             <section
@@ -103,7 +104,7 @@ export default function Home() {
 
                     <div className='reality_con'>
 
-                        <div className='reality-content'>
+                        <FadeUp className='reality-content'>
 
                             <div className="label">
                                 <strong>
@@ -113,12 +114,11 @@ export default function Home() {
 
                             <div className='reality-title'>
 
-                                <h2
+                                <TextReveal
+                                    as="h2"
                                     id="reality-heading"
-                                    className=''
-                                >
-                                    Most failures are invisible until they're expensive.
-                                </h2>
+                                    text="Most failures are invisible until they're expensive."
+                                />
 
                             </div>
 
@@ -129,13 +129,14 @@ export default function Home() {
                                 the organization has already adapted around the failure.
                             </p>
 
-                        </div>
-                        <div
+                        </FadeUp>
+                        <StaggerGrid
                             className="reality-cards"
                             role="list"
                         >
 
-                            <article
+                            <HoverCard
+                                as="article"
                                 className='reality-card-inner'
                                 role="listitem"
                                 aria-labelledby="structure-title"
@@ -164,9 +165,10 @@ export default function Home() {
 
                                 </div>
 
-                            </article>
+                            </HoverCard>
 
-                            <article
+                            <HoverCard
+                                as="article"
                                 className='reality-card-inner'
                                 role="listitem"
                                 aria-labelledby="visibility-title"
@@ -186,8 +188,9 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </div>
-                            </article>
-                            <article
+                            </HoverCard>
+                            <HoverCard
+                                as="article"
                                 className='reality-card-inner'
                                 role="listitem"
                                 aria-labelledby="control-title"
@@ -207,8 +210,8 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </div>
-                            </article>
-                        </div>
+                            </HoverCard>
+                        </StaggerGrid>
 
                     </div>
 
@@ -247,25 +250,25 @@ export default function Home() {
                 aria-labelledby="closing-title"
             >
                 <div className="container cl_section">
-                    <div className="cl_st">
+                    <FadeUp className="cl_st">
                         <h2 id="closing-title">
                             "Operations scale faster than coordination. Most system failures develop quietly, long before leadership is alerted.
                             <span>Lexodd exists to close that gap.</span>"
                         </h2>
-                        <div class="proof-clients">
+                        <div className="proof-clients">
                             Delivered across <strong>fuel logistics</strong> · <strong>multi-location healthcare</strong> · <strong>Franchise management platforms.</strong>
                         </div>
-                    </div>
+                    </FadeUp>
                 </div>
             </section>
 
-            <section class="cta-section section">
-                <div className="container">
-                    <h2 class="cta-headline">If your operations have outgrown your coordination, let's talk.</h2>
-                    <p class="cta-sub">
+            <section className="cta-section section">
+                <FadeUp className="container">
+                    <h2 className="cta-headline">If your operations have outgrown your coordination, let's talk.</h2>
+                    <p className="cta-sub">
                         We work with a small number of organizations at a time. Tell us where the friction is — we'll tell you if we can help.
                     </p>
-                    <div class="cta-actions">
+                    <div className="cta-actions">
                         <Link
                             className='grad-cta cta'
                             to="/contact"
@@ -284,7 +287,7 @@ export default function Home() {
                             View case studies →
                         </Link>
                     </div>
-                </div>
+                </FadeUp>
             </section>
         </>
     );

@@ -5,6 +5,9 @@ import api, { getWhitePapers } from '../../services/api';
 import MetaTags from '../common/MetaTags';
 import { formatDisplayDate } from '../../utils/dateFormat';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
+import { WhitePapersListingSkeleton } from '../common/Skeletons';
+import OptimizedImage from '../common/OptimizedImage';
+import { FadeUp, HoverCard, StaggerGrid, TextReveal } from '../common/Animations';
 
 const WhitePapersMain = () => {
     const navigate = useNavigate();
@@ -60,15 +63,7 @@ const WhitePapersMain = () => {
     };
 
     if (loading) {
-        return (
-            <div className='container'>
-                <div className="page">
-                    <div style={{ padding: '40px', textAlign: 'center' }}>
-                        <p>Loading white papers...</p>
-                    </div>
-                </div>
-            </div>
-        );
+        return <WhitePapersListingSkeleton />;
     }
 
     const filters = getUniqueTopics();
@@ -89,15 +84,15 @@ const WhitePapersMain = () => {
             />
             <div className='container'>
                 <div className="page">
-                    <div className="hero">
+                    <FadeUp className="hero">
                         <div className="ey">Resources</div>
-                        <h1>White Papers</h1>
+                        <TextReveal as="h1" text="White Papers" />
                         <p className="lead">Strategic insights for multi-location operations</p>
-                    </div>
+                    </FadeUp>
 
                     <div className="sec">
                         {whitePapers.length > 0 && (
-                            <div className="filter-row">
+                            <FadeUp className="filter-row">
                                 {filters.map(filter => (
                                     <button
                                         key={filter}
@@ -107,23 +102,24 @@ const WhitePapersMain = () => {
                                         {filter}
                                     </button>
                                 ))}
-                            </div>
+                            </FadeUp>
                         )}
 
                         {filteredPapers.length > 0 ? (
                             <>
-                            <div className="grid3">
+                            <StaggerGrid className="grid3">
                                 {visiblePapers.map(paper => {
                                 const coverImageUrl = getImageUrl(paper.coverImage);
                                 return (
-                                <div key={paper._id} className="card paper-card" onClick={() => navigate(`/white-papers/${paper.slug}`)}>
-                                    {/* <div>
-                                        <img src={paper.coverImage} alt="" />
-                                    </div> */}
+                                <HoverCard key={paper._id} className="card paper-card motion-card" onClick={() => navigate(`/white-papers/${paper.slug}`)}>
                                     {coverImageUrl && <div className="card-image">
-                                        <img
+                                        <OptimizedImage
                                             src={coverImageUrl}
                                             alt={getImageAlt(paper.coverImage, paper.title)}
+                                            width={420}
+                                            height={240}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
+                                            fallbackContent={getImagePlaceholder(paper.coverImage, 'Image failed to load')}
                                             onError={(e) => {
                                                 e.target.style.display = 'none';
                                                 e.target.parentElement.innerHTML = getImagePlaceholder(paper.coverImage, 'Image failed to load');
@@ -142,10 +138,10 @@ const WhitePapersMain = () => {
                                         </div> */}
                                     </div>
 
-                                </div>
+                                </HoverCard>
                                 );
                                 })}
-                            </div>
+                            </StaggerGrid>
                             {hasMorePapers && (
                                 <div className="btn-row" style={{ justifyContent: 'center', marginTop: 32 }}>
                                     <Button variant="secondary" onClick={() => setVisibleCount((count) => count + 6)}>

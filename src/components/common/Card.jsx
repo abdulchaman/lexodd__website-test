@@ -2,6 +2,8 @@ import React from 'react';
 import './Card.css';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
 import { formatDisplayDate } from '../../utils/dateFormat';
+import OptimizedImage from './OptimizedImage';
+import { HoverCard } from './Animations';
 
 const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, variant = 'default' }) => {
   const getTagStyle = () => {
@@ -20,9 +22,13 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
 
     return (
       <div className="card-image">
-        <img
+        <OptimizedImage
           src={imageUrl}
           alt={imageAlt}
+          width={420}
+          height={240}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
+          fallbackContent={placeholder}
           onError={(e) => {
             e.target.style.display = 'none';
             e.target.parentElement.innerHTML = placeholder;
@@ -34,7 +40,7 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
 
   if (variant === 'grid') {
     return (
-      <div className="card card-grid" onClick={onClick}>
+      <HoverCard className="card card-grid motion-card" onClick={onClick}>
         <div>
           <div className="card-meta">
             {industry && <span className={getTagStyle()}>{industry}</span>}
@@ -47,12 +53,12 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
           <button className="btn-secondary">Read online</button>
           <button className="btn-primary">Download PDF</button>
         </div>
-      </div>
+      </HoverCard>
     );
   }
 
   return (
-    <div className="card" onClick={onClick}>
+    <HoverCard className="card motion-card" onClick={onClick}>
       {renderImage()}
       <div className='card-body'>
         <div className="card-meta">
@@ -64,7 +70,7 @@ const Card = ({ image, industry, industryTag, date, title, excerpt, onClick, var
         {/* <div className="card-arrow">Read case study →</div> */}
       </div>
 
-    </div>
+    </HoverCard>
   );
 };
 

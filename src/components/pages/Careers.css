@@ -21,6 +21,10 @@
   margin-top: 24px;
 }
 
+.career-stat-row {
+  margin: 0 0 56px;
+}
+
 .hero-image {
   height: 340px;
   border-radius: 6px;

@@ -1,6 +1,6 @@
-import { div } from 'framer-motion/client';
 import './what-we-do.css';
-import { motion } from "framer-motion";
+import { FadeUp, HoverCard, StaggerGrid, TextReveal } from './Animations';
+
 export default function WhatWeDo({
     label = "WHAT WE DO",
     title = "",
@@ -13,7 +13,7 @@ export default function WhatWeDo({
             <div className="container">
 
                 {(label || title || description) && (
-                    <div className="narrow mb-lg">
+                    <FadeUp className="narrow mb-lg">
 
                         {label && (
                             <div className="label">
@@ -24,9 +24,7 @@ export default function WhatWeDo({
                         )}
 
                         {title && (
-                            <h2 className='mb'>
-                                {title}
-                            </h2>
+                            <TextReveal as="h2" className='mb' text={title} />
                         )}
 
                         {description && (
@@ -38,15 +36,17 @@ export default function WhatWeDo({
 
                         )}
 
-                    </div>
+                    </FadeUp>
                 )}
 
-                <div className="prb-blocks">
+                <StaggerGrid className="prb-blocks">
 
                     {items.map((item, index) => (
-                        <article
+                        <HoverCard
+                            as="article"
                             className="wwd_card"
                             aria-labelledby={`wwd-title-${index}`}
+                            key={index}
                         >
                             <div
                                 className='nm mb'
@@ -66,10 +66,10 @@ export default function WhatWeDo({
                                 {item.description}
                             </p>
 
-                        </article>
+                        </HoverCard>
                     ))}
 
-                </div>
+                </StaggerGrid>
 
             </div>
         </section>

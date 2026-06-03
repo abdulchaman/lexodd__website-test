@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { getJobs } from '../../services/api';
 import MetaTags from '../common/MetaTags';
 import MinimalJobCard from './MinimalJobCard';
+import { OpenRolesSkeleton } from '../common/Skeletons';
 import './Careers.css';
 
 const OpenRoles = () => {
@@ -32,6 +33,10 @@ const OpenRoles = () => {
     return acc;
   }, {});
 
+  if (loading) {
+    return <OpenRolesSkeleton />;
+  }
+
   return (
     <>
       <MetaTags
@@ -40,13 +45,6 @@ const OpenRoles = () => {
       />
       <div className="container">
         <div className="page">
-          {loading && (
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <p>Loading career opportunities...</p>
-            </div>
-          )}
-
-          {!loading && (
             <div className="view-content">
               <section className="open-positions">
                 <div className="open-positions-head">
@@ -80,7 +78,6 @@ const OpenRoles = () => {
                 )}
               </section>
             </div>
-          )}
         </div>
       </div>
     </>

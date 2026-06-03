@@ -443,53 +443,65 @@
     color: var(--text-muted);
 }
 
+/* Responsive home page polish */
+.hero-hm,
+.reality,
+.hm__closing,
+.cta-section {
+    width: 100%;
+}
+
+/* .hero-content .title {
+    font-size: clamp(42px, 7vw, 92px);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+} */
+
+.hero-content .description,
+.reality-content p,
+.cta-sub {
+    font-size: clamp(15px, 1.15vw, 18px);
+}
+
+.proof-item {
+    min-width: 0;
+}
+
+.reality-title h2,
+.cta-headline {
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 1600px) {
 
 
-/* =========================
-   LARGE DESKTOP
-========================= */
-
-@media (max-width: 1440px) {
-
-    .cl_st h2 {
-        font-size: 3.4rem;
+    .reality_con {
+        gap: clamp(6rem, 10vw, 14rem);
+        align-items: flex-start;
     }
 
-    .cm_cnt h3 {
-        font-size: 2.5rem;
-    }
-
-    .hero-hm {
-        min-height: 680px;
-    }
-
-    .hero-content {
-        max-width: 640px;
+    .reality-cards {
+        max-width: 620px;
     }
 }
 
-/* =========================
-   SMALL LAPTOP
-========================= */
+@media (min-width: 2200px) {
+    .hero-hm {
+        padding: 220px 0 170px;
+    }
+
+    .hero-content {
+        max-width: 980px;
+    }
+
+    .hero-proof {
+        gap: 64px;
+    }
+}
 
 @media (max-width: 1200px) {
-
-    .cl_section {
-        gap: 2rem;
-    }
-
-    .cl_st h2 {
-        font-size: 3rem;
-    }
-
-    .cm_cnt h3 {
-        font-size: 2.2rem;
-        width: 100%;
-    }
-
     .hero-hm {
-        min-height: 640px;
-        padding: 150px 0 110px;
+        padding: 140px 0 104px;
     }
 
     .hm_hero-grid {
@@ -497,16 +509,11 @@
     }
 
     .hero-content {
-        max-width: 58%;
+        max-width: 680px;
     }
 
-    .hero-tag {
-        width: 280px;
-    }
-
-    .hero-content .description,
-    .meta {
-        font-size: 17px;
+    .reality_con {
+        gap: 5rem;
     }
 
     .reality-cards {
@@ -514,211 +521,254 @@
     }
 }
 
-/* =========================
-   LARGE TABLET
-========================= */
-
 @media (max-width: 992px) {
-
-    .cl_st h2 {
-        font-size: 2.6rem;
-    }
-
-    .cm_cnt h3 {
-        font-size: 2rem;
-    }
-
-    .cl_icon img {
-        width: 56px;
-        height: 56px;
-    }
-
     .hero-hm {
-        min-height: auto;
-        padding: 140px 0 90px;
-    }
-
-    .hm_hero-grid {
-        flex-direction: column;
-        gap: 64px;
+        padding: 120px 0 88px;
     }
 
     .hero-content {
-        max-width: 100%;
+        max-width: 760px;
+        align-items: center;
     }
 
-    .hero-tag {
+    .hero-content .title {
+        font-size: clamp(40px, 8vw, 68px);
+    }
+
+    .hero-proof {
         width: 100%;
+        max-width: 760px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        padding-top: 28px;
     }
 
-    .hr_tag-cnt {
-        position: relative;
+    .proof-name {
+        grid-column: 1 / -1;
+    }
+
+    .proof-divider {
+        display: none;
+    }
+
+    .reality_con {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .reality-content {
+        max-width: 720px;
+    }
+
+    .reality-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--border);
+    }
+
+    .reality-card-inner {
+        border-left: 0;
+        border-top: 2px solid var(--border);
+        min-height: 100%;
+    }
+
+    .rea_crd-desc {
+        padding: 22px;
+    }
+
+    .hm__closing {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-hm {
+        min-height: auto;
+        padding: 96px 0 72px;
+    }
+
+    .hm_hero-grid {
+        gap: 36px;
+    }
+
+    .hero-content {
+        gap: 18px;
+    }
+
+    .hero-content .title {
+        font-size: clamp(34px, 10vw, 52px);
+        line-height: 1.05;
     }
 
     .hero-content .description {
-        max-width: 100%;
-    }
-
-    .reality-cards {
-        flex-wrap: wrap;
-        gap: 24px;
-    }
-
-    .real_cr-item {
-        min-width: calc(50% - 12px);
-    }
-}
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 768px) {
-
-    .cl_section {
-        gap: 1.75rem;
-    }
-
-    .cl_st h2 {
-        font-size: 2.2rem;
-        line-height: 1.25;
-    }
-
-    .cm_cnt h3 {
-        font-size: 1.7rem;
-        line-height: 1.3;
-    }
-
-    .cl_icon img {
-        width: 52px;
-        height: 52px;
-    }
-
-    .hero-hm {
-        padding: 120px 0 72px;
-    }
-
-    .hm_hero-grid {
-        gap: 48px;
-    }
-
-    .hero-content {
-        gap: 20px;
-    }
-
-    .hero-content .description,
-    .meta {
         font-size: 16px;
-        line-height: 1.7;
+        line-height: 1.65;
+        max-width: 560px;
     }
 
-    .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
+    .hero-cta,
+    .cta-actions {
         width: 100%;
+        gap: 12px;
     }
 
-    .hero-cta .cta {
-        width: 100%;
+    .hero-cta .cta,
+    .cta-actions .cta {
+        flex: 1 1 220px;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
         justify-content: center;
     }
 
-    .line {
-        margin-bottom: 18px;
+    .hero-proof {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        text-align: center;
+        padding-top: 24px;
+    }
+
+    .proof-item {
+        padding: 0 8px 18px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .proof-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
     }
 
     .reality-cards {
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 28px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        background: transparent;
     }
 
-    .real_cr-item {
-        min-width: 100%;
+    .reality-card-inner {
+        border-left: 2px solid var(--border);
+        border-top: 0;
+    }
+
+    .rea_crd-desc {
+        padding: 20px;
+    }
+
+    .cl_st {
+        max-width: 100%;
+    }
+
+    .proof-clients {
+        line-height: 1.8;
+    }
+
+    .cta-section {
+        padding: 72px 20px;
+    }
+
+    .cta-headline {
+        font-size: clamp(28px, 8vw, 42px);
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-hm {
+        padding: 82px 0 56px;
+    }
+
+    .hero-content .title {
+        font-size: clamp(31px, 11vw, 42px);
+        letter-spacing: -0.02em;
+    }
+
+    .hm_hero-grid .label {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    .hero-content .description {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .hero-cta,
+    .cta-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-cta .cta,
+    .cta-actions .cta {
+        width: 100%;
+        flex-basis: auto;
+    }
+
+    .proof-name {
+        font-size: 12px;
+    }
+
+    .proof-text {
+        font-size: 15px;
+    }
+
+    .reality-title h2 {
+        font-size: clamp(25px, 8vw, 34px);
+    }
+
+    .reality-content p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .rea_crd-ttl h3 {
+        font-size: 20px;
+    }
+
+    .hm__closing {
+        margin-top: 32px;
+    }
+
+    .cl_st h2 {
+        font-size: clamp(21px, 7vw, 28px);
+    }
+
+    .proof-clients {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+    }
+
+    .cta-section {
+        padding: 60px 16px;
+    }
+
+    .cta-sub {
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-hm {
+        padding: 72px 0 48px;
+    }
+
+    .hero-content .title {
+        font-size: 30px;
+    }
+
+    .hero-content .description,
+    .reality-content p,
+    .rea_crd-para p,
+    .cta-sub {
+        font-size: 14px;
     }
 
     .rea_crd-desc {
         padding: 18px;
     }
-}
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 576px) {
-
-    .cl_section {
-        gap: 1.5rem;
-    }
-
-    .cl_st h2 {
-        font-size: 1.9rem;
-        line-height: 1.3;
-    }
-
-    .cm_cnt h3 {
-        font-size: 1.45rem;
-        line-height: 1.35;
-    }
-
-    .cl_icon img {
-        width: 46px;
-        height: 46px;
-    }
-
-    .hero_video_wrapper {
-        display: none;
-    }
-
-    .hero_mobile_bg {
-        display: block;
-    }
-
-    .hero-hm {
-        padding: 110px 0 64px;
-    }
-
-    .hm_hero-grid {
-        gap: 40px;
-    }
-
-    .hero-content .description,
-    .meta {
-        font-size: 15px;
-    }
-
-    .grad-cta,
-    .cta3 {
-        min-height: 54px;
-    }
-
-    .reality-cards {
-        gap: 16px;
-    }
-
-    .rea_crd-desc {
-        padding: 16px;
-    }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 380px) {
-
-    .cl_st h2 {
-        font-size: 1.65rem;
-    }
-
-    .cm_cnt h3 {
-        font-size: 1.25rem;
-    }
-
-    .cl_icon img {
-        width: 40px;
-        height: 40px;
+    .cta-headline {
+        font-size: 26px;
     }
 }

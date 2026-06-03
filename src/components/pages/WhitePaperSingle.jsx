@@ -6,6 +6,8 @@ import { getWhitePaperBySlug, trackDownload } from '../../services/api';
 import { getImageAlt, getImagePlaceholder, getImageUrl } from '../../utils/imageHelper';
 import MetaTags from '../common/MetaTags';
 import { formatDisplayDate } from '../../utils/dateFormat';
+import { WhitePaperSingleSkeleton } from '../common/Skeletons';
+import OptimizedImage from '../common/OptimizedImage';
 import './WhitePaperSingle.css';
 
 const WhitePaperSingle = () => {
@@ -50,15 +52,7 @@ const WhitePaperSingle = () => {
   };
 
   if (loading) {
-    return (
-      <div className='container'>
-        <div className="page">
-          <div style={{ padding: '40px', textAlign: 'center' }}>
-            <p>Loading white paper...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <WhitePaperSingleSkeleton />;
   }
 
   if (error || !whitePaper) {
@@ -149,9 +143,13 @@ const WhitePaperSingle = () => {
             {/* Framework Diagram */}
             <div className="img-ph framework-image">
               {frameworkImageUrl ? (
-                <img
+                <OptimizedImage
                   src={frameworkImageUrl}
                   alt={getImageAlt(images.frameworkDiagram, 'Framework diagram')}
+                  width={900}
+                  height={320}
+                  sizes="(max-width: 1024px) 100vw, 780px"
+                  fallbackContent={getImagePlaceholder(images.frameworkDiagram, 'Image failed to load')}
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.parentElement.innerHTML = getImagePlaceholder(images.frameworkDiagram, 'Image failed to load');

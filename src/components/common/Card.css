@@ -1,7 +1,7 @@
 .card {
   background: var(--surface);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all ease-in-out .15s;
 }
 
 .card:hover {
@@ -69,4 +69,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.card-image picture,
+.card-image picture img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
