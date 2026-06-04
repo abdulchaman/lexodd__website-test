@@ -1,5 +1,5 @@
 const routeImports = {
-  '/': () => import('../components/pages/Home'),
+  '/': () => import('../components/pages/HomeV2'),
   '/how-we-work': () => import('../components/pages/HowWeWork'),
   '/case-studies': () => import('../components/pages/CaseStudiesMain'),
   '/white-papers': () => import('../components/pages/WhitePapersMain'),

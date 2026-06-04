@@ -7,11 +7,27 @@ const initial = {
     name: '',
     company: '',
     email: '',
+    countryCode: '',
     phone: '',
     industry: '',
     employees: '',
     message: '',
 }
+
+const countryCodes = [
+    { label: "India (+91)", value: "+91" },
+    { label: "United States (+1)", value: "+1" },
+    { label: "United Kingdom (+44)", value: "+44" },
+    { label: "United Arab Emirates (+971)", value: "+971" },
+    { label: "Singapore (+65)", value: "+65" },
+    { label: "Australia (+61)", value: "+61" },
+    { label: "Canada (+1)", value: "+1" },
+    { label: "Germany (+49)", value: "+49" },
+    { label: "France (+33)", value: "+33" },
+    { label: "Netherlands (+31)", value: "+31" },
+    { label: "Saudi Arabia (+966)", value: "+966" },
+    { label: "Qatar (+974)", value: "+974" },
+]
 
 function validate(values) {
     const errors = {}
@@ -23,8 +39,10 @@ function validate(values) {
     else if (!/^\S+@\S+\.\S+$/.test(values.email.trim()))
         errors.email = 'Enter a valid email.'
 
+    if (!values.countryCode) errors.countryCode = 'Country code is required.'
+
     if (!values.phone.trim()) errors.phone = 'Phone number field is required.'
-    else if (!/^[0-9+\-\s()]{8,15}$/.test(values.phone.trim()))
+    else if (!/^[0-9\-\s()]{6,15}$/.test(values.phone.trim()))
         errors.phone = 'Enter a valid phone number.'
 
     if (!values.industry) errors.industry = 'Industry field is required.'
@@ -148,6 +166,7 @@ export default function ContactForm() {
                 name: values.name.trim(),
                 company: values.company.trim(),
                 email: values.email.trim(),
+                countryCode: values.countryCode,
                 phone: values.phone.trim(),
                 industry: values.industry,
                 employees: values.employees,
@@ -292,13 +311,47 @@ export default function ContactForm() {
                                 />
                             </div>
 
+                            {/* COUNTRY CODE */}
+                            <div>
+                                <label
+                                    className="input-label"
+                                    htmlFor="country-code"
+                                >
+                                    Country Code
+                                    <span className="required-note">*</span>
+                                </label>
+
+                                <select
+                                    id="country-code"
+                                    name="countryCode"
+                                    className={`input-item ${touched.countryCode && errors.countryCode ? 'error' : ''}`}
+                                    value={values.countryCode}
+                                    required
+                                    autoComplete="tel-country-code"
+                                    aria-invalid={!!(touched.countryCode && errors.countryCode)}
+                                    onBlur={() => markTouched('countryCode')}
+                                    onChange={(e) => setField('countryCode', e.target.value)}
+                                >
+                                    <option value="">Select country code</option>
+                                    {countryCodes.map((country) => (
+                                        <option key={`${country.label}-${country.value}`} value={country.value}>
+                                            {country.label}
+                                        </option>
+                                    ))}
+                                </select>
+
+                                <FieldError
+                                    message={touched.countryCode ? errors.countryCode : ''}
+                                />
+                            </div>
+
                             {/* PHONE */}
                             <div>
                                 <label
                                     className="input-label"
                                     htmlFor="phone"
                                 >
-                                    Phone (Please include country code)
+                                    Phone Number
                                     <span className="required-note">*</span>
                                 </label>
 

@@ -160,7 +160,7 @@ const WhitePaperSingle = () => {
               )}
             </div>
 
-            <p className="body-text">The full framework, including worked examples from fuel distribution and healthcare contexts, is available in the downloadable PDF.</p>
+            {/* <p className="body-text">The full framework, including worked examples from fuel distribution and healthcare contexts, is available in the downloadable PDF.</p> */}
 
             <div className="btn-row">
               <Button variant="primary" onClick={handleDownload}>
