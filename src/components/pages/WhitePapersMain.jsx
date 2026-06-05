@@ -9,56 +9,89 @@ import { WhitePapersListingSkeleton } from '../common/Skeletons';
 import OptimizedImage from '../common/OptimizedImage';
 import { FadeUp, HoverCard, StaggerGrid, TextReveal } from '../common/Animations';
 
+const getListFromResponse = (payload, keys = []) => {
+    if (Array.isArray(payload)) return payload;
+    if (!payload || typeof payload !== 'object') return [];
+
+    for (const key of ['data', ...keys]) {
+        if (Array.isArray(payload[key])) return payload[key];
+    }
+
+    if (payload.data && typeof payload.data === 'object') {
+        return getListFromResponse(payload.data, keys);
+    }
+
+    return [];
+};
+
+const normalizeWhitePaper = (paper = {}) => ({
+    ...paper,
+    _id: paper._id || paper.id || paper.slug || paper.title,
+    slug: paper.slug || paper.id || '',
+    topic: String(paper.topic || paper.hero?.topic || '').trim(),
+    date: paper.date || paper.sidebar?.published || '',
+    readTime: paper.readTime || paper.hero?.readTime || '',
+    title: paper.title || paper.hero?.title || '',
+    excerpt: paper.excerpt || paper.hero?.description || paper.hero?.lead || paper.abstract || '',
+    coverImage: paper.coverImage || paper.image || {}
+});
+
+const normalizeWhitePapers = (payload) => getListFromResponse(payload, ['whitePapers', 'items', 'results'])
+    .filter(paper => paper && paper.isVisible !== false)
+    .map(normalizeWhitePaper);
+
 const WhitePapersMain = () => {
     const navigate = useNavigate();
     const [activeFilter, setActiveFilter] = useState('All topics');
     const [whitePapers, setWhitePapers] = useState([]);
     const [filteredPapers, setFilteredPapers] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [heroData, setHeroData] = useState({ eyebrow: '', title: '', lead: '' });
     const [seo, setSeo] = useState(null);
     const [visibleCount, setVisibleCount] = useState(6);
 
     useEffect(() => {
+        const fetchPageSEO = async () => {
+            try {
+                const response = await api.get('/pages/white-papers/seo');
+                setSeo(response.data.data || response.data);
+            } catch (error) {
+                console.error('Error fetching white papers SEO:', error);
+            }
+        };
+
+        const fetchWhitePapers = async () => {
+            try {
+                const response = await getWhitePapers();
+                const papers = normalizeWhitePapers(response.data);
+                setWhitePapers(papers);
+                setFilteredPapers(papers);
+            } catch (error) {
+                console.error('Error fetching white papers:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchWhitePapers();
         fetchPageSEO();
     }, []);
 
-    const fetchPageSEO = async () => {
-        try {
-            const response = await api.get('/pages/white-papers/seo');
-            setSeo(response.data.data || response.data);
-        } catch (error) {
-            console.error('Error fetching white papers SEO:', error);
-        }
+    // Public filters are topics only.
+    const getTopicFilters = () => {
+        const topics = whitePapers.map(paper => String(paper.topic || '').trim()).filter(Boolean);
+        return ['All topics', ...new Set(topics)];
     };
 
-    const fetchWhitePapers = async () => {
-        try {
-            const response = await getWhitePapers();
-            const papers = (response.data.data || response.data || []).filter(paper => paper.isVisible !== false);
-            setWhitePapers(papers);
-            setFilteredPapers(papers);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching white papers:', error);
-            setLoading(false);
-        }
-    };
-
-    // Get unique topics for filters
-    const getUniqueTopics = () => {
-        const topics = ['All topics', ...new Set(whitePapers.map(paper => paper.topic).filter(Boolean))];
-        return topics;
-    };
-
-    const handleFilter = (filter) => {
+    const handleFilter = async (filter) => {
         setActiveFilter(filter);
         setVisibleCount(6);
-        if (filter === 'All topics') {
-            setFilteredPapers(whitePapers);
-        } else {
-            setFilteredPapers(whitePapers.filter(paper => paper.topic === filter));
+        try {
+            const response = await getWhitePapers(filter === 'All topics' ? {} : { topic: filter });
+            const papers = normalizeWhitePapers(response.data);
+            setFilteredPapers(papers);
+        } catch (error) {
+            console.error('Error fetching filtered white papers:', error);
+            setFilteredPapers([]);
         }
     };
 
@@ -66,7 +99,7 @@ const WhitePapersMain = () => {
         return <WhitePapersListingSkeleton />;
     }
 
-    const filters = getUniqueTopics();
+    const filters = getTopicFilters();
     const visiblePapers = filteredPapers.slice(0, visibleCount);
     const hasMorePapers = filteredPapers.length > visibleCount;
 
@@ -107,7 +140,7 @@ const WhitePapersMain = () => {
 
                         {filteredPapers.length > 0 ? (
                             <>
-                            <StaggerGrid className="grid3">
+                            <StaggerGrid key={activeFilter} className="grid3">
                                 {visiblePapers.map(paper => {
                                 const coverImageUrl = getImageUrl(paper.coverImage);
                                 return (

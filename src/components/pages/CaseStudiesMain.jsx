@@ -7,57 +7,100 @@ import MetaTags from '../common/MetaTags';
 import { CaseStudiesListingSkeleton } from '../common/Skeletons';
 import { FadeUp, StaggerGrid, TextReveal } from '../common/Animations';
 
+const getListFromResponse = (payload, keys = []) => {
+    if (Array.isArray(payload)) return payload;
+    if (!payload || typeof payload !== 'object') return [];
+
+    for (const key of ['data', ...keys]) {
+        if (Array.isArray(payload[key])) return payload[key];
+    }
+
+    if (payload.data && typeof payload.data === 'object') {
+        return getListFromResponse(payload.data, keys);
+    }
+
+    return [];
+};
+
+const normalizeCaseStudy = (study = {}) => ({
+    ...study,
+    _id: study._id || study.id || study.slug || study.title,
+    slug: study.slug || study.id || '',
+    title: study.title || study.heroDetail?.title || '',
+    excerpt: study.excerpt || study.heroDetail?.lead || '',
+    industry: String(study.industry || '').trim(),
+    industryTag: String(study.industryTag || study.heroDetail?.industry || study.industry || '').trim(),
+    image: study.image || study.coverImage || study.images?.featureImage || {}
+});
+
+const normalizeCaseStudies = (payload) => getListFromResponse(payload, ['caseStudies', 'items', 'results'])
+    .filter(study => study && study.isVisible !== false)
+    .map(normalizeCaseStudy);
+
 const CaseStudiesMain = () => {
     const navigate = useNavigate();
     const [activeFilter, setActiveFilter] = useState('All');
     const [caseStudies, setCaseStudies] = useState([]);
     const [filteredStudies, setFilteredStudies] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [heroData, setHeroData] = useState({ eyebrow: '', title: '', lead: '' });
     const [seo, setSeo] = useState(null);
     const [visibleCount, setVisibleCount] = useState(6);
 
     useEffect(() => {
+        const fetchPageSEO = async () => {
+            try {
+                const response = await api.get('/pages/case-studies/seo');
+                setSeo(response.data.data || response.data);
+            } catch (error) {
+                console.error('Error fetching case studies SEO:', error);
+            }
+        };
+
+        const fetchCaseStudies = async () => {
+            try {
+                const response = await getCaseStudies();
+                const studies = normalizeCaseStudies(response.data);
+                setCaseStudies(studies);
+                setFilteredStudies(studies);
+            } catch (error) {
+                console.error('Error fetching case studies:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchCaseStudies();
         fetchPageSEO();
     }, []);
 
-    const fetchPageSEO = async () => {
-        try {
-            const response = await api.get('/pages/case-studies/seo');
-            setSeo(response.data.data || response.data);
-        } catch (error) {
-            console.error('Error fetching case studies SEO:', error);
-        }
+    // Public filters are industries only. The stored value is the industry slug;
+    // the label uses the CMS display tag when available.
+    const getIndustryFilters = () => {
+        const industryMap = new Map();
+
+        caseStudies.forEach((study) => {
+            const value = String(study.industry || '').trim();
+            if (!value || industryMap.has(value)) return;
+
+            industryMap.set(value, String(study.industryTag || value).trim());
+        });
+
+        return [
+            { value: 'All', label: 'All' },
+            ...Array.from(industryMap, ([value, label]) => ({ value, label }))
+        ];
     };
 
-    const fetchCaseStudies = async () => {
-        try {
-            const response = await getCaseStudies();
-            const studies = (response.data.data || response.data || []).filter(study => study.isVisible !== false);
-            setCaseStudies(studies);
-            setFilteredStudies(studies);
-
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching case studies:', error);
-            setLoading(false);
-        }
-    };
-
-    // Get unique industries for filters from API data
-    const getUniqueIndustries = () => {
-        const industries = ['All', ...new Set(caseStudies.map(study => study.industry).filter(Boolean))];
-        return industries;
-    };
-
-    const handleFilter = (filter) => {
+    const handleFilter = async (filter) => {
         setActiveFilter(filter);
         setVisibleCount(6);
-        if (filter === 'All') {
-            setFilteredStudies(caseStudies);
-        } else {
-            setFilteredStudies(caseStudies.filter(study => study.industry === filter));
+        try {
+            const response = await getCaseStudies(filter === 'All' ? {} : { industry: filter });
+            const studies = normalizeCaseStudies(response.data);
+            setFilteredStudies(studies);
+        } catch (error) {
+            console.error('Error fetching filtered case studies:', error);
+            setFilteredStudies([]);
         }
     };
 
@@ -65,7 +108,7 @@ const CaseStudiesMain = () => {
         return <CaseStudiesListingSkeleton />;
     }
 
-    const filters = getUniqueIndustries();
+    const filters = getIndustryFilters();
     const visibleStudies = filteredStudies.slice(0, visibleCount);
     const hasMoreStudies = filteredStudies.length > visibleCount;
 
@@ -94,11 +137,11 @@ const CaseStudiesMain = () => {
                             <FadeUp className="filter-row">
                                 {filters.map(filter => (
                                     <button
-                                        key={filter}
-                                        className={`f-btn ${activeFilter === filter ? 'on' : ''}`}
-                                        onClick={() => handleFilter(filter)}
+                                        key={filter.value}
+                                        className={`f-btn ${activeFilter === filter.value ? 'on' : ''}`}
+                                        onClick={() => handleFilter(filter.value)}
                                     >
-                                        {filter}
+                                        {filter.label}
                                     </button>
                                 ))}
                             </FadeUp>
@@ -106,7 +149,7 @@ const CaseStudiesMain = () => {
 
                         {filteredStudies.length > 0 ? (
                             <>
-                                <StaggerGrid className="grid3">
+                                <StaggerGrid key={activeFilter} className="grid3">
                                     {visibleStudies.map(study => (
                                         <Card key={study._id} {...study} onClick={() => navigate(`/case-studies/${study.slug}`)} />
                                     ))}
