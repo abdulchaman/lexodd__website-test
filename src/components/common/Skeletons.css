@@ -1,17 +1,17 @@
 .lex-skeleton {
-  background-color: #18181D !important;
+  background-color: var(--skeleton-base) !important;
   transform: none !important;
 }
 
 .lex-skeleton::after {
-  background: linear-gradient(90deg, transparent, #27272F, transparent) !important;
+  background: linear-gradient(90deg, transparent, var(--skeleton-shine), transparent) !important;
 }
 
 .skeleton-hero {
   display: grid;
   gap: 18px;
   padding: 80px 0;
-  border-bottom: 1px solid var(--b1);
+  border-bottom: 1px solid var(--skeleton-border);
 }
 
 .skeleton-hero--split {
@@ -48,7 +48,8 @@
 
 .skeleton-card {
   min-height: 304px;
-  background: var(--surface);
+  background: var(--s1);
+  border: 1px solid var(--skeleton-border);
 }
 
 .skeleton-card--horizontal {
@@ -56,7 +57,7 @@
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   gap: 0;
-  border: 1px solid var(--b1);
+  border: 1px solid var(--skeleton-border);
 }
 
 .skeleton-card--horizontal .skeleton-card-image {
@@ -91,7 +92,7 @@
 
 .skeleton-sidebar-card {
   background: var(--s1);
-  border: 1px solid var(--b1);
+  border: 1px solid var(--skeleton-border);
   border-radius: 8px;
   padding: 18px;
   display: flex;

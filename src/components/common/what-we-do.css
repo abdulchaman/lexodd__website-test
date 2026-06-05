@@ -36,7 +36,7 @@
 .prb-blocks {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: clamp(16px, 2vw, 32px);
+    gap: 2px;
     align-items: stretch;
 }
 

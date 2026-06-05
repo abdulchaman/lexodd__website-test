@@ -7,6 +7,9 @@
   --s1: #141418;
   --s2: #18181D;
   --s3: #27272F;
+  --skeleton-base: var(--s2);
+  --skeleton-shine: var(--s3);
+  --skeleton-border: var(--b1);
 
   /* Border Colors */
   --border: #27272F;
@@ -44,6 +47,9 @@ html.light-theme {
   --s1: #FFFFFF;
   --s2: #F0F0F5;
   --s3: #E4E4EC;
+  --skeleton-base: var(--s2);
+  --skeleton-shine: var(--s3);
+  --skeleton-border: var(--b1);
   --border: #DADAE4;
   --border-mid: #C7C7D4;
   --b1: rgba(11, 11, 13, 0.08);
@@ -87,6 +93,16 @@ html {
   box-shadow: 0 0 18px rgba(165, 31, 193, 0.35);
   transform-origin: 0 50%;
   pointer-events: none;
+}
+
+@keyframes lex-skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .text-reveal-word {
@@ -388,9 +404,6 @@ picture {
   display: contents;
 }
 
-img {
-  height: auto;
-}
 
 .ot_cta-cnt {
   position: absolute;

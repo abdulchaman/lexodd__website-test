@@ -58,7 +58,7 @@ function YouTubeIcon(props) {
 /* --- Footer --- */
 
 export default function Footer() {
-    const [industries, setIndustries] = useState([]);
+    const [industries, setIndustries] = useState(null);
 
     useEffect(() => {
         const loadIndustries = async () => {
@@ -84,23 +84,22 @@ export default function Footer() {
                         {/* LEFT */}
                         <div className="ft_top1">
 
-                            <div>
+                            <div className="footer-branding">
 
                                 <OptimizedImage
-                                    src="/images/logo.svg"
+                                    src="/images/lexodd.svg"
                                     alt="Lexodd Hypernova logo"
                                     className="footer-logo"
-                                    width="140"
-                                    height="36"
+                                    width="40"
+                                    height="40"
                                     loading="lazy"
                                     decoding="async"
                                 />
-
-                                <p className="footer-text">
-                                    Operational infrastructure for businesses that have outgrown manual coordination.
-                                </p>
-
+                                <span className="footer-logo-text">Lexodd</span>
                             </div>
+                            <p className="footer-text">
+                                Operational infrastructure for businesses that have outgrown manual coordination.
+                            </p>
 
                         </div>
 
@@ -163,7 +162,13 @@ export default function Footer() {
 
                                 <div className="footer-links">
 
-                                    {industries.length > 0 ? (
+                                    {industries === null ? (
+                                        <span className="footer-skeleton-list" aria-label="Industries are being fetched">
+                                            {Array.from({ length: 4 }).map((_, index) => (
+                                                <span className="footer-skeleton-line" key={index} aria-hidden="true" />
+                                            ))}
+                                        </span>
+                                    ) : industries.length > 0 ? (
                                         industries.map((industry) => (
                                             <Link
                                                 key={industry._id || industry.slug}
@@ -174,7 +179,7 @@ export default function Footer() {
                                             </Link>
                                         ))
                                     ) : (
-                                        <span className="footer-muted">Industries loading</span>
+                                        null
                                     )}
 
                                 </div>

@@ -450,20 +450,20 @@
 
     /* Skeleton effect */
     background: linear-gradient(90deg,
-            rgba(255, 255, 255, 0.04) 25%,
-            rgba(255, 255, 255, 0.08) 37%,
-            rgba(255, 255, 255, 0.04) 63%);
+            var(--skeleton-base) 25%,
+            var(--skeleton-shine) 37%,
+            var(--skeleton-base) 63%);
 
     background-size: 400% 100%;
     animation: skeleton-loading 1.4s ease infinite;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--skeleton-border);
 }
 
 .hero-image-placeholder.has-image,
 .honest-image-placeholder.has-image {
     animation: none;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--s1);
 }
 
 .hero-image-placeholder.is-loading,
@@ -496,9 +496,9 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg,
-            rgba(255, 255, 255, 0.04) 25%,
-            rgba(255, 255, 255, 0.08) 37%,
-            rgba(255, 255, 255, 0.04) 63%);
+            var(--skeleton-base) 25%,
+            var(--skeleton-shine) 37%,
+            var(--skeleton-base) 63%);
     background-size: 400% 100%;
     animation: skeleton-loading 1.4s ease infinite;
 }
@@ -553,14 +553,14 @@
     position: relative;
 
     background: linear-gradient(90deg,
-            rgba(255, 255, 255, 0.04) 25%,
-            rgba(255, 255, 255, 0.08) 37%,
-            rgba(255, 255, 255, 0.04) 63%);
+            var(--skeleton-base) 25%,
+            var(--skeleton-shine) 37%,
+            var(--skeleton-base) 63%);
 
     background-size: 400% 100%;
     animation: skeleton-loading 1.4s ease infinite;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--skeleton-border);
 }
 
 .honest-image-placeholder img {

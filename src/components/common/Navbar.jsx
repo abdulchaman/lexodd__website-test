@@ -152,22 +152,23 @@ export default function Navbar() {
 
                         {/* LOGO */}
                         <div className="rad-global-nav__logo">
-
                             <Link
                                 to="/"
                                 className="rad-global-nav__static-logo"
                                 aria-label="Go to homepage"
                             >
                                 <OptimizedImage
-                                    src="/images/logo.svg"
+                                    src="/images/lexodd.svg"
                                     alt="Company logo"
-                                    width="140"
+                                    width="40"
                                     height="40"
                                     loading="eager"
                                     fetchPriority="high"
                                     decoding="async"
                                 />
+                                <span className="rad-global-nav__logo-text">Lexodd</span>
                             </Link>
+
 
                         </div>
 
@@ -279,6 +280,10 @@ export default function Navbar() {
                                 </span>
                             </Link>
 
+                        </div>
+
+                        <div className="mobile_theme_toggle">
+                            <ThemeToggle />
                         </div>
 
                         {/* MOBILE MENU BUTTON */}
@@ -412,15 +417,7 @@ export default function Navbar() {
                             <IoClose />
                         </button>
 
-                        {showTechStack && (
-                            <Link
-                                to="/tech-stack"
-                                className="mobile_nav_link"
-                                onClick={closeAllMenus}
-                            >
-                                Tech stack
-                            </Link>
-                        )}
+
 
                     </div>
 
@@ -435,18 +432,9 @@ export default function Navbar() {
                             How we work
                         </Link>
 
-                        <button
-                            type="button"
-                            className="mobile_nav_link mobile_industry_btn"
-                            onClick={openSearch}
-                        >
-                            <span>Search</span>
-                            <IoSearch aria-hidden="true" />
-                        </button>
 
-                        <div className="mobile_theme_toggle">
-                            <ThemeToggle />
-                        </div>
+
+
 
                         {/* RESOURCES */}
                         <button
@@ -467,6 +455,16 @@ export default function Navbar() {
 
                         </button>
 
+                        {showTechStack && (
+                            <Link
+                                to="/tech-stack"
+                                className="mobile_nav_link"
+                                onClick={closeAllMenus}
+                            >
+                                Tech stack
+                            </Link>
+                        )}
+
                         {/* INDUSTRIES */}
                         <button
                             className="mobile_nav_link mobile_industry_btn"
@@ -484,6 +482,15 @@ export default function Navbar() {
                                 →
                             </span>
 
+                        </button>
+
+                        <button
+                            type="button"
+                            className="mobile_nav_link mobile_industry_btn"
+                            onClick={openSearch}
+                        >
+                            <span>Search</span>
+                            <IoSearch aria-hidden="true" />
                         </button>
 
                         <div className="mobile_cta_wrap">

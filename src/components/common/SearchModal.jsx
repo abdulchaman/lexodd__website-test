@@ -187,7 +187,17 @@ export default function SearchModal({ open, onClose }) {
 
         {trimmedQuery && (
           <div className="search-modal__results" role="listbox" aria-label="Search results">
-            {loading && <p className="search-modal__empty">Searching...</p>}
+            {loading && (
+              <div className="search-modal__loading" aria-label="Search results are being fetched">
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <div className="search-modal__loading-row" key={index} aria-hidden="true">
+                    <span className="search-modal__loading-line search-modal__loading-line--type" />
+                    <span className="search-modal__loading-line search-modal__loading-line--title" />
+                    <span className="search-modal__loading-line search-modal__loading-line--excerpt" />
+                  </div>
+                ))}
+              </div>
+            )}
 
             {!loading && visibleResults.map((result, index) => (
               <button
