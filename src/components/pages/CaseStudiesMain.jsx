@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import Card from '../common/Card';
 import Button from '../common/Button';
@@ -41,7 +41,6 @@ const CaseStudiesMain = () => {
     const navigate = useNavigate();
     const [activeFilter, setActiveFilter] = useState('All');
     const [caseStudies, setCaseStudies] = useState([]);
-    const [filteredStudies, setFilteredStudies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [seo, setSeo] = useState(null);
     const [visibleCount, setVisibleCount] = useState(6);
@@ -61,7 +60,6 @@ const CaseStudiesMain = () => {
                 const response = await getCaseStudies();
                 const studies = normalizeCaseStudies(response.data);
                 setCaseStudies(studies);
-                setFilteredStudies(studies);
             } catch (error) {
                 console.error('Error fetching case studies:', error);
             } finally {
@@ -73,9 +71,7 @@ const CaseStudiesMain = () => {
         fetchPageSEO();
     }, []);
 
-    // Public filters are industries only. The stored value is the industry slug;
-    // the label uses the CMS display tag when available.
-    const getIndustryFilters = () => {
+    const filters = useMemo(() => {
         const industryMap = new Map();
 
         caseStudies.forEach((study) => {
@@ -89,26 +85,22 @@ const CaseStudiesMain = () => {
             { value: 'All', label: 'All' },
             ...Array.from(industryMap, ([value, label]) => ({ value, label }))
         ];
-    };
+    }, [caseStudies]);
 
-    const handleFilter = async (filter) => {
+    const filteredStudies = useMemo(() => {
+        if (activeFilter === 'All') return caseStudies;
+        return caseStudies.filter(study => study.industry === activeFilter);
+    }, [activeFilter, caseStudies]);
+
+    const handleFilter = (filter) => {
         setActiveFilter(filter);
         setVisibleCount(6);
-        try {
-            const response = await getCaseStudies(filter === 'All' ? {} : { industry: filter });
-            const studies = normalizeCaseStudies(response.data);
-            setFilteredStudies(studies);
-        } catch (error) {
-            console.error('Error fetching filtered case studies:', error);
-            setFilteredStudies([]);
-        }
     };
 
     if (loading) {
         return <CaseStudiesListingSkeleton />;
     }
 
-    const filters = getIndustryFilters();
     const visibleStudies = filteredStudies.slice(0, visibleCount);
     const hasMoreStudies = filteredStudies.length > visibleCount;
 

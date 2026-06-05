@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import Button from '../common/Button';
 import api, { getWhitePapers } from '../../services/api';
@@ -44,7 +44,6 @@ const WhitePapersMain = () => {
     const navigate = useNavigate();
     const [activeFilter, setActiveFilter] = useState('All topics');
     const [whitePapers, setWhitePapers] = useState([]);
-    const [filteredPapers, setFilteredPapers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [seo, setSeo] = useState(null);
     const [visibleCount, setVisibleCount] = useState(6);
@@ -64,7 +63,6 @@ const WhitePapersMain = () => {
                 const response = await getWhitePapers();
                 const papers = normalizeWhitePapers(response.data);
                 setWhitePapers(papers);
-                setFilteredPapers(papers);
             } catch (error) {
                 console.error('Error fetching white papers:', error);
             } finally {
@@ -76,30 +74,25 @@ const WhitePapersMain = () => {
         fetchPageSEO();
     }, []);
 
-    // Public filters are topics only.
-    const getTopicFilters = () => {
+    const filters = useMemo(() => {
         const topics = whitePapers.map(paper => String(paper.topic || '').trim()).filter(Boolean);
         return ['All topics', ...new Set(topics)];
-    };
+    }, [whitePapers]);
 
-    const handleFilter = async (filter) => {
+    const filteredPapers = useMemo(() => {
+        if (activeFilter === 'All topics') return whitePapers;
+        return whitePapers.filter(paper => paper.topic === activeFilter);
+    }, [activeFilter, whitePapers]);
+
+    const handleFilter = (filter) => {
         setActiveFilter(filter);
         setVisibleCount(6);
-        try {
-            const response = await getWhitePapers(filter === 'All topics' ? {} : { topic: filter });
-            const papers = normalizeWhitePapers(response.data);
-            setFilteredPapers(papers);
-        } catch (error) {
-            console.error('Error fetching filtered white papers:', error);
-            setFilteredPapers([]);
-        }
     };
 
     if (loading) {
         return <WhitePapersListingSkeleton />;
     }
 
-    const filters = getTopicFilters();
     const visiblePapers = filteredPapers.slice(0, visibleCount);
     const hasMorePapers = filteredPapers.length > visibleCount;
 

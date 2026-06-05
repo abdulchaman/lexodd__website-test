@@ -69,21 +69,19 @@ export const getJobById = (id) => api.get(`/jobs/${id}`);
 export const submitApplication = (formData) => api.post('/applications', formData);
 
 // Case Study APIs
-export const getCaseStudies = ({ admin = false, featured = false, industry = '' } = {}) => {
+export const getCaseStudies = ({ admin = false, featured = false } = {}) => {
   const params = new URLSearchParams();
   if (admin) params.set('admin', 'true');
   if (featured) params.set('featured', 'true');
-  if (industry) params.set('industry', industry);
   const query = params.toString();
   return api.get(`/case-studies${query ? `?${query}` : ''}`);
 };
 export const getCaseStudyBySlug = (slug) => api.get(`/case-studies/${slug}`);
 
 // White Paper APIs
-export const getWhitePapers = ({ admin = false, topic = '' } = {}) => {
+export const getWhitePapers = ({ admin = false } = {}) => {
   const params = new URLSearchParams();
   if (admin) params.set('admin', 'true');
-  if (topic) params.set('topic', topic);
   const query = params.toString();
   return api.get(`/white-papers${query ? `?${query}` : ''}`);
 };
