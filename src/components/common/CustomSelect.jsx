@@ -16,7 +16,10 @@ export default function CustomSelect({
     const containerRef = useRef(null)
     const listRef = useRef(null)
 
-    const selectedLabel = value || "Select an option"
+    const getOptionValue = (option) => typeof option === 'object' ? option.value : option
+    const getOptionLabel = (option) => typeof option === 'object' ? option.label : option
+    const selectedOption = options.find((option) => getOptionValue(option) === value)
+    const selectedLabel = selectedOption ? getOptionLabel(selectedOption) : "Select an option"
 
     // Close on outside click
     useEffect(() => {
@@ -30,7 +33,7 @@ export default function CustomSelect({
     }, [])
 
     const handleSelect = (option) => {
-        setField(name, option)
+        setField(name, getOptionValue(option))
         markTouched(name)
         setOpen(false)
     }
@@ -105,25 +108,31 @@ export default function CustomSelect({
                 ref={listRef}
                 tabIndex={-1}
             >
-                {options.map((option, index) => (
+                {options.map((option, index) => {
+                    const optionValue = getOptionValue(option)
+                    const optionLabel = getOptionLabel(option)
+                    const isSelected = value === optionValue
+
+                    return (
                     <div
-                        key={option}
+                        key={optionValue}
                         role="option"
-                        aria-selected={value === option}
+                        aria-selected={isSelected}
                         className={`select-option 
-              ${value === option ? "selected" : ""} 
+              ${isSelected ? "selected" : ""} 
               ${focusedIndex === index ? "focused" : ""}`}
                         onClick={() => handleSelect(option)}
                         onMouseEnter={() => setFocusedIndex(index)}
                     >
-                        {option}
+                        {optionLabel}
 
                         {/* checkmark */}
-                        {value === option && (
+                        {isSelected && (
                             <span className="check"><MdCheck /></span>
                         )}
                     </div>
-                ))}
+                    )
+                })}
             </div>
 
             {/* ERROR */}

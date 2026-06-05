@@ -312,38 +312,15 @@ export default function ContactForm() {
                             </div>
 
                             {/* COUNTRY CODE */}
-                            <div>
-                                <label
-                                    className="input-label"
-                                    htmlFor="country-code"
-                                >
-                                    Country Code
-                                    <span className="required-note">*</span>
-                                </label>
-
-                                <select
-                                    id="country-code"
-                                    name="countryCode"
-                                    className={`input-item ${touched.countryCode && errors.countryCode ? 'error' : ''}`}
-                                    value={values.countryCode}
-                                    required
-                                    autoComplete="tel-country-code"
-                                    aria-invalid={!!(touched.countryCode && errors.countryCode)}
-                                    onBlur={() => markTouched('countryCode')}
-                                    onChange={(e) => setField('countryCode', e.target.value)}
-                                >
-                                    <option value="">Select country code</option>
-                                    {countryCodes.map((country) => (
-                                        <option key={`${country.label}-${country.value}`} value={country.value}>
-                                            {country.label}
-                                        </option>
-                                    ))}
-                                </select>
-
-                                <FieldError
-                                    message={touched.countryCode ? errors.countryCode : ''}
-                                />
-                            </div>
+                            <CustomSelect
+                                label="Country Code"
+                                name="countryCode"
+                                options={countryCodes}
+                                value={values.countryCode}
+                                setField={setField}
+                                markTouched={markTouched}
+                                error={touched.countryCode ? errors.countryCode : ""}
+                            />
 
                             {/* PHONE */}
                             <div>
