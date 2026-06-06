@@ -11,7 +11,7 @@
 }
 
 .hero-content__home .title {
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-weight: 700;
     line-height: 1.0;
     letter-spacing: -0.03em;

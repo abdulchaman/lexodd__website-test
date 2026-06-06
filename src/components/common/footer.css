@@ -13,12 +13,11 @@
 }
 
 .ft_top1 {
-    width: 30%;
+    width: 24%;
 }
 
 .ft_col {
     flex: 1;
-    padding-right: 24px;
 }
 
 .ft_top2 {
@@ -40,15 +39,15 @@
 .footer-text {
     margin-top: 16px;
     color: var(--ts);
-    max-width: 67%;
+    padding-right: 10%;
 }
 
 .footer-heading {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--tp);
-    text-transform: uppercase;
     font-weight: 700;
     line-height: 24px;
+    transition: color 180ms ease;
 }
 
 .footer-links {
@@ -70,6 +69,10 @@
 }
 
 .footer-links a:hover {
+    color: var(--ac);
+}
+
+.ft_how:hover {
     color: var(--ac);
 }
 
@@ -162,7 +165,7 @@
     }
 
     .ft_top1 {
-        width: 35%;
+        width: 30%;
     }
 
     .footer-text {
@@ -292,6 +295,7 @@
 
     .footer-text {
         margin-top: 14px;
+        padding-right: 0;
     }
 
     .footer-links {

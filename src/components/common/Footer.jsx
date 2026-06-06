@@ -109,18 +109,49 @@ export default function Footer() {
                             {/* NAVIGATION */}
                             <div className="ft_col">
 
-                                <div className="footer-heading">
-                                    Navigation
-                                </div>
-
-                                <div className="footer-links">
-
+                                <div className="footer-heading ft_how">
                                     <Link
                                         to="/how-we-work"
                                         aria-label="Learn how Lexodd works"
                                     >
                                         How We Work
                                     </Link>
+                                </div>
+
+                                <div className="footer-links">
+                                    {/* <Link
+                                        to="/careers"
+                                        aria-label="Explore Lexodd careers"
+                                    >
+                                        Careers
+                                    </Link> */}
+                                    {/* <Link
+                                        to="/contact"
+                                        aria-label="Contact Lexodd"
+                                    >
+                                        Contact
+                                    </Link> */}
+
+                                </div>
+
+                            </div>
+
+
+                            {/* NAVIGATION */}
+                            <div className="ft_col">
+
+                                <div className="footer-heading">
+                                    Resources
+                                </div>
+
+                                <div className="footer-links">
+
+                                    {/* <Link
+                                        to="/how-we-work"
+                                        aria-label="Learn how Lexodd works"
+                                    >
+                                        How We Work
+                                    </Link> */}
 
                                     <Link
                                         to="/case-studies"
@@ -136,12 +167,12 @@ export default function Footer() {
                                         White Papers
                                     </Link>
 
-                                    <Link
+                                    {/* <Link
                                         to="/careers"
                                         aria-label="Explore Lexodd careers"
                                     >
                                         Careers
-                                    </Link>
+                                    </Link> */}
                                     {/* <Link
                                         to="/contact"
                                         aria-label="Contact Lexodd"
@@ -194,6 +225,7 @@ export default function Footer() {
                                 </div>
 
                                 <div className="footer-links">
+
 
                                     <a
                                         href="mailto:info@lexodd.com"
@@ -281,6 +313,12 @@ export default function Footer() {
                         </div>
 
                         <div className="footer-bottom-links">
+                            <Link
+                                to="/careers"
+                                aria-label="Explore Lexodd careers"
+                            >
+                                Careers
+                            </Link>
 
                             <Link
                                 to="/privacy-policy"
