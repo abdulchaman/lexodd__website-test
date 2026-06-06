@@ -97,11 +97,18 @@
     .wwd_card {
         border-width: 1px;
     }
+
+    .nm{
+        font-size: 22px;
+    }
+    .wwd_card h3 {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 380px) {
     .what_we_do h2 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .what_we_do .main-para,

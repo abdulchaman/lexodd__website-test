@@ -621,20 +621,19 @@
     }
 
     .hero-proof {
-        grid-template-columns: 1fr;
         gap: 18px;
         text-align: center;
         padding-top: 24px;
     }
 
-    .proof-item {
-        padding: 0 8px 18px;
-        border-bottom: 1px solid var(--border);
-    }
-
     .proof-item:last-child {
         border-bottom: 0;
         padding-bottom: 0;
+    }
+
+   .hero-proof .proof-item:nth-child(5){
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
     }
 
     .reality-cards {
@@ -671,7 +670,7 @@
 
 @media (max-width: 576px) {
     .hero-hm {
-        padding: 82px 0 56px;
+        padding: 60px 0 30px;
     }
 
     .hero-content .title {
@@ -706,11 +705,11 @@
     }
 
     .proof-text {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .reality-title h2 {
-        font-size: clamp(25px, 8vw, 34px);
+        font-size: clamp(25px, 6vw, 34px);
     }
 
     .reality-content p {
@@ -719,7 +718,7 @@
     }
 
     .rea_crd-ttl h3 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .hm__closing {
@@ -727,7 +726,7 @@
     }
 
     .cl_st h2 {
-        font-size: clamp(21px, 7vw, 28px);
+        font-size: clamp(21px, 6vw, 28px);
     }
 
     .proof-clients {
@@ -736,7 +735,7 @@
     }
 
     .cta-section {
-        padding: 60px 16px;
+        padding: 40px 16px;
     }
 
     .cta-sub {
@@ -745,9 +744,7 @@
 }
 
 @media (max-width: 380px) {
-    .hero-hm {
-        padding: 72px 0 48px;
-    }
+
 
     .hero-content .title {
         font-size: 30px;
@@ -765,6 +762,6 @@
     }
 
     .cta-headline {
-        font-size: 26px;
+        font-size: 24px;
     }
 }

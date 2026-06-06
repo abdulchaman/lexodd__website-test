@@ -26,7 +26,7 @@
     display: flex;
 }
 
-.footer-branding{
+.footer-branding {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -218,8 +218,8 @@
 @media (max-width: 768px) {
 
     .footer {
-        padding-top: 64px;
-        padding-bottom: 64px;
+        padding-top: 44px;
+        padding-bottom: 44px;
     }
 
     .footer-grid {
@@ -281,6 +281,10 @@
 
 @media (max-width: 480px) {
 
+    .footer-logo-text {
+        font-size: 32px;
+    }
+
     .footer-container {
         padding-left: 20px;
         padding-right: 20px;
@@ -306,6 +310,18 @@
 
     .footer-bottom {
         font-size: 13px;
+    }
+
+    .ft_top2 {
+        gap: 32px;
+    }
+
+    .footer-grid {
+        gap: 32px;
+    }
+
+    .footer-bottom {
+        margin-top: 32px;
     }
 
 }

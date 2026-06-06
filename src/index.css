@@ -736,7 +736,7 @@ textarea {
   }
 
   .section {
-    padding: 48px 0;
+    padding: 30px 0;
   }
 
   .container {
@@ -808,7 +808,7 @@ textarea {
   }
 
   .mb-80 {
-    margin-bottom: 48px;
+    margin-bottom: 30px;
   }
 
   .hero_min-height {
@@ -845,10 +845,6 @@ textarea {
   .container {
     padding-left: 14px;
     padding-right: 14px;
-  }
-
-  .section {
-    padding: 40px 0;
   }
 
   .cta {
