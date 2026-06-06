@@ -78,8 +78,9 @@ export default function Navbar() {
 
     const loadTechStackVisibility = async () => {
         try {
-            await getTechStack();
-            setShowTechStack(true);
+            const response = await getTechStack({ skipCache: true });
+            const stack = response.data?.data || response.data;
+            setShowTechStack(Boolean(stack && stack.isVisible !== false));
         } catch (error) {
             if (error.response?.status !== 404) {
                 console.error('Failed to check tech stack visibility:', error);

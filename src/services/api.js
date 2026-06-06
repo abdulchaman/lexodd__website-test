@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api')
+  .replace(/\/api\/cms\/?$/, '/api');
 
 const api = axios.create({
   baseURL: API_URL,
@@ -93,7 +94,7 @@ export const getIndustries = (admin = false) => api.get(`/industries${admin ? '?
 export const getIndustryBySlug = (slug) => api.get(`/industries/${slug}`);
 
 // Tech Stack API
-export const getTechStack = () => api.get('/tech-stack');
+export const getTechStack = (config = {}) => api.get('/tech-stack', config);
 export const toggleTechStackVisibility = () => api.put('/tech-stack/toggle-visibility');
 
 // How We Work API
