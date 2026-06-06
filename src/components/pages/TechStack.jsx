@@ -89,7 +89,7 @@ const TechStack = () => {
                 <FadeUp className="hero-content">
                   <div className="ey">{hero.eyebrow}</div>
                   <TextReveal as="h1" text={hero.title} />
-                  <p className="lead">{hero.lead}</p>
+                  <p className="mt">{hero.lead}</p>
                 </FadeUp>
                 <ScaleIn className="img-ph hero-image">
                   {heroImageUrl ? (

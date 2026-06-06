@@ -26,6 +26,7 @@ const ApplyPage = lazy(() => import('./components/pages/ApplyPage'));
 const ContactPage = lazy(() => import('./components/pages/ContactPage'));
 const TermsConditions = lazy(() => import('./components/pages/TermsConditions'));
 const PrivacyPolicy = lazy(() => import('./components/pages/PrivacyPolicy'));
+const NotFound = lazy(() => import('./components/pages/NotFound'));
 
 const routeConfig = [
   { path: "/", Component: Home },
@@ -63,6 +64,14 @@ function PageRoutes() {
             />
           );
         })}
+        <Route
+          path="*"
+          element={
+            <PageWrapper>
+              <NotFound />
+            </PageWrapper>
+          }
+        />
       </Routes>
     </Suspense>
   );

@@ -462,6 +462,13 @@
     }
 }
 
+@media (max-width: 576px) {
+    .input-label {
+        font-size: 14px;
+    }
+}
+
+
 @media (max-width: 480px) {
 
     .popup-overlay {

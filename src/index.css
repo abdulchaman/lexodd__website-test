@@ -745,7 +745,7 @@ textarea {
   }
 
   h1 {
-    font-size: 34px;
+    font-size: 26px;
     line-height: 1.08;
     letter-spacing: -1.2px;
   }
@@ -825,10 +825,6 @@ textarea {
 /* ---------- SMALL MOBILE ---------- */
 
 @media (max-width: 380px) {
-
-  h1 {
-    font-size: 30px;
-  }
 
   h2 {
     font-size: 22px;

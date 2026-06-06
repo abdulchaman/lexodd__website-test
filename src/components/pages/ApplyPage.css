@@ -277,3 +277,13 @@
     margin: 0 8px;
   }
 }
+
+@media (max-width: 576px) {
+  .apply-hero h1 {
+    font-size: 26px;
+  }
+
+  .form-step h2 {
+    font-size: 22px;
+  }
+}

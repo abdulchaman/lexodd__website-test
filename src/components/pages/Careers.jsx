@@ -52,7 +52,7 @@ const Careers = () => {
                 <FadeUp>
                   <div className="ey">{hero.eyebrow}</div>
                   <TextReveal as="h1" text={hero.title} />
-                  <p className="lead">{hero.lead}</p>
+                  <p className="mt lead">{hero.lead}</p>
                   <div className="hero-actions">
                     <Link className="grad-cta cta" to="/open-roles"><span className='cta-text'>See open roles</span></Link>
                   </div>

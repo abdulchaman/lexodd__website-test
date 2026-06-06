@@ -16,3 +16,9 @@
   align-items: center;
   padding: 24px 28px;
 }
+
+@media (max-width: 768px) {
+  .industry-hero {
+    padding-top: 10px;
+  }
+}

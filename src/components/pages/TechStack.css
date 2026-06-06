@@ -3,7 +3,7 @@
 }
 
 .tech-stack-hero {
-  padding: 64px 40px;
+  padding: 64px 0px;
 }
 
 .hero-grid {
@@ -185,6 +185,7 @@
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -259,6 +260,7 @@
 }
 
 @media (max-width: 1024px) {
+
   .hero-grid,
   .tech-introduction {
     grid-template-columns: 1fr;
@@ -275,12 +277,13 @@
 }
 
 @media (max-width: 768px) {
+
   .tech-stack-hero,
   .tech-introduction,
   .stack-category,
   .principles-section,
   .stack-cta-section {
-    padding: 40px 20px;
+    padding: 40px 0px;
   }
 
   .tool-card,
@@ -296,9 +299,14 @@
   .section-copy h2 {
     font-size: 24px;
   }
+
+  .category-header {
+    padding: 0 16px;
+  }
 }
 
 @media print {
+
   .stack-category,
   .tool-card {
     break-inside: avoid;

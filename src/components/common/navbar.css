@@ -527,7 +527,8 @@ MOBILE
     }
 
     .mobile_nav_link {
-        font-size: 20px;
+        font-size: 18px;
+        padding: 18px 0;
     }
 
     .rad-global-nav__logo-text {

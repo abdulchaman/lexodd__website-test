@@ -45,7 +45,7 @@ const HowWeWork = () => {
                 <div className='container hero-inner'>
 
                     {/* Left Content */}
-                    <div className='hero-content'>
+                    <div className=''>
                         <div className="eyebrow">How we work</div>
 
                         <h1>

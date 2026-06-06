@@ -78,10 +78,10 @@ const IndustrySingle = () => {
             </div>
           </div>
 
-          <div className="hero industry-hero">
+          <div className="industry-hero">
 
             <div className="ey">{hero?.eyebrow}</div>
-            <h1>{hero?.title}</h1>
+            <h1 className="mb">{hero?.title}</h1>
             <p className="lead">{hero?.lead}</p>
 
             {/* Hero Image */}

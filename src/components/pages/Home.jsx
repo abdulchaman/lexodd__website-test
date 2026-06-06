@@ -34,7 +34,7 @@ export default function Home() {
                 aria-label="Hero section"
             >
                 <div className="container hm_hero-grid">
-                    <FadeUp className="hero-content">
+                    <FadeUp className="hero-content__home">
                         <div className="label">
                             <strong>
                                 Operational Infrastructure

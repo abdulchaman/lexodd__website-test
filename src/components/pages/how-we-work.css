@@ -750,7 +750,7 @@
     }
 
     .section-title {
-        font-size: clamp(26px, 7vw, 36px);
+        font-size: clamp(22px, 6vw, 36px);
     }
 
     .section-body {
@@ -779,7 +779,7 @@
     }
 
     .step-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .engage-grid {
@@ -837,7 +837,7 @@
     }
 
     .page-hero h1 {
-        font-size: clamp(31px, 10vw, 42px);
+        font-size: 26px;
     }
 
     .hero-image-placeholder,
@@ -883,14 +883,16 @@
     }
 
     .cta-left h2 {
-        font-size: clamp(25px, 8vw, 34px);
+        font-size: clamp(25px, 6vw, 34px);
+    }
+
+    .eyebrow {
+        margin-bottom: 10px;
     }
 }
 
 @media (max-width: 380px) {
-    .page-hero h1 {
-        font-size: 30px;
-    }
+
 
     .page-hero p,
     .section-body,

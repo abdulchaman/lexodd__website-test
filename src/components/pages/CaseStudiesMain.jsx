@@ -121,7 +121,7 @@ const CaseStudiesMain = () => {
                     <FadeUp className="hero">
                         <div className="ey">Our work</div>
                         <TextReveal as="h1" text="Case Studies" />
-                        <p className="lead">Real solutions to real operational challenges</p>
+                        <p className="lead mt">Real solutions to real operational challenges</p>
                     </FadeUp>
 
                     <div className="sec">

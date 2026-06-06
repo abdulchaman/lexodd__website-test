@@ -113,7 +113,7 @@ const WhitePapersMain = () => {
                     <FadeUp className="hero">
                         <div className="ey">Resources</div>
                         <TextReveal as="h1" text="White Papers" />
-                        <p className="lead">Strategic insights for multi-location operations</p>
+                        <p className="mt lead">Strategic insights for multi-location operations</p>
                     </FadeUp>
 
                     <div className="sec">

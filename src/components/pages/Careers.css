@@ -257,6 +257,7 @@
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -594,6 +595,7 @@
 }
 
 @media (max-width: 768px) {
+
   .hero-split,
   .values-grid-2col,
   .cta-grid {
@@ -603,7 +605,11 @@
   .hero-split,
   .values-section,
   .cta-section {
-    padding: 40px 20px;
+    padding: 40px 0px;
+  }
+
+  .career-stat-row {
+    margin: 0 0 0px;
   }
 
   .values-grid {
@@ -611,7 +617,9 @@
   }
 
   .open-positions {
-    padding: 40px 20px;
+    padding: 40px 0px;
+    padding-bottom: 0;
+
   }
 
   .job-card-header {
@@ -629,5 +637,11 @@
 
   .modal-footer {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .open-positions h1 {
+    font-size: 26px;
   }
 }
