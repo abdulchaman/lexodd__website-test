@@ -6,6 +6,10 @@ import api from "../../services/api";
 import MetaTags from "../common/MetaTags";
 import { FadeUp, HoverCard, StaggerGrid, TextReveal } from "../common/Animations";
 import "./home.css";
+import HomeVideoHero from "./HomeVideoHero";
+import heroDesktopVideo from '../../../public/videos/hero_video-1.mp4';
+import heroMobileVideo from '../../../public/videos/hero_video-1.mp4';
+import heroPoster from '../../../public/images/case_study__banner.png';
 
 
 export default function Home() {
@@ -29,7 +33,12 @@ export default function Home() {
                 canonicalUrl={seo?.canonicalUrl}
                 robots={seo?.robots}
             />
-            <section
+            <HomeVideoHero
+                desktopVideoSrc={heroDesktopVideo}
+                mobileVideoSrc={heroMobileVideo}
+                posterImage={heroPoster}
+            />
+            {/* <section
                 className="hero-hm"
                 aria-label="Hero section"
             >
@@ -94,7 +103,7 @@ export default function Home() {
                         </div>
                     </FadeUp>
                 </div>
-            </section>
+            </section> */}
             <section
                 className="reality section dark"
                 aria-labelledby="reality-heading"

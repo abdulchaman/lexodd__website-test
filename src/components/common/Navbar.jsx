@@ -15,6 +15,7 @@ export default function Navbar() {
 
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     // MOBILE DRAWERS
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +30,8 @@ export default function Navbar() {
     // Industries from API
     const [industries, setIndustries] = useState([]);
     const [showTechStack, setShowTechStack] = useState(false);
+    const isHomePage = pathname === '/';
+    const hasOpenMenu = isMenuOpen || isIndustriesDrawerOpen || isResourcesDrawerOpen || isIndustriesOpen || isResourcesOpen || isSearchOpen;
 
     /* =========================
        NAVBAR HIDE / SHOW
@@ -39,6 +42,7 @@ export default function Navbar() {
         const handleScroll = () => {
 
             const currentScrollY = window.scrollY;
+            setIsScrolled(currentScrollY > 24);
 
             if (currentScrollY > lastScrollY && currentScrollY > 50) {
                 setIsVisible(false);
@@ -56,6 +60,11 @@ export default function Navbar() {
         };
 
     }, [lastScrollY]);
+
+    useEffect(() => {
+        setIsVisible(true);
+        setIsScrolled(window.scrollY > 24);
+    }, [pathname]);
 
     /* =========================
        FETCH INDUSTRIES FROM API
@@ -138,7 +147,15 @@ export default function Navbar() {
 
     return (
         <>
-            <div className={`rad-global-nav ${!isVisible ? 'rad-global-nav--hidden' : ''}`}>
+            <div
+                className={[
+                    'rad-global-nav',
+                    isHomePage ? 'rad-global-nav--home rad-global-nav--glass' : '',
+                    isScrolled ? 'rad-global-nav--scrolled' : '',
+                    hasOpenMenu ? 'rad-global-nav--menu-open' : '',
+                    !isVisible ? 'rad-global-nav--hidden' : ''
+                ].filter(Boolean).join(' ')}
+            >
 
                 {/* =========================
                     TOP NAVBAR

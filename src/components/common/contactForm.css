@@ -170,7 +170,7 @@
 
 .input-label {
     margin-bottom: 8px;
-    color: #a2a2a0;
+    color: var(--ts);
     font-size: 18px;
     line-height: 1.2;
     display: block;
@@ -186,20 +186,21 @@
 
 .input-item {
     width: 100%;
-    background: #202020;
+    background: var(--s2);
     outline: none;
-    border: 1px solid transparent;
+    border: 1px solid var(--b1);
     padding: 14px 16px;
     font-size: 16px;
     line-height: 1.5;
-    color: #a2a2a0;
+    color: var(--tp);
     transition:
         border-color 0.3s ease,
-        background 0.3s ease;
+        background 0.3s ease,
+        color 0.3s ease;
 }
 
 .input-item::placeholder {
-    color: #a2a2a0;
+    color: var(--tt);
     font-size: 16px;
     line-height: 1.5;
 }
@@ -218,11 +219,12 @@
 }
 
 .input-item:hover {
-    border-color: #A51FC1;
+    border-color: var(--ac);
 }
 
 .input-item:focus-visible {
-    border-color: #A51FC1;
+    border-color: var(--ac);
+    background: var(--surface);
 }
 
 .custom-select {
@@ -231,12 +233,12 @@
 
 .select-trigger {
     width: 100%;
-    background: #202020;
-    border: 1px solid transparent;
+    background: var(--s2);
+    border: 1px solid var(--b1);
     padding: 14px 16px;
     font-size: 16px;
     line-height: 1.2;
-    color: #a2a2a0;
+    color: var(--tp);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -245,7 +247,7 @@
 }
 
 .select-trigger:hover {
-    border-color: #A51FC1;
+    border-color: var(--ac);
 }
 
 .select-trigger.error {
@@ -257,7 +259,7 @@
 }
 
 .select-value.placeholder {
-    color: #a2a2a0;
+    color: var(--tt);
 }
 
 .chevron {
@@ -268,7 +270,7 @@
 }
 
 .chevron svg {
-    color: #fff;
+    color: var(--tp);
     font-size: 26px;
 }
 
@@ -277,13 +279,15 @@
 }
 
 .chevron.open svg {
-    color: #a2a2a0;
+    color: var(--ts);
 }
 
 .select-dropdown {
     position: absolute;
     width: 100%;
-    background: #202020;
+    background: var(--surface);
+    border: 1px solid var(--b1);
+    border-top: 0;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -292,8 +296,8 @@
         opacity 0.25s ease;
     z-index: 10;
     box-shadow:
-        0 8px 12px 6px rgba(0, 0, 0, .15),
-        0 4px 4px rgba(0, 0, 0, .3);
+        0 8px 12px 6px rgba(0, 0, 0, .12),
+        0 4px 4px rgba(0, 0, 0, .18);
     overflow-y: auto;
     scrollbar-color: #a100ff #460073;
     scrollbar-width: thin;
@@ -306,7 +310,7 @@
 }
 
 .select-option {
-    color: #a2a2a0;
+    color: var(--ts);
     padding: 14px 16px;
     cursor: pointer;
     display: flex;
@@ -317,12 +321,12 @@
 
 .select-option:hover,
 .select-option.focused {
-    background: #2b2b2b;
-    color: #fff;
+    background: var(--s2);
+    color: var(--tp);
 }
 
 .select-option.selected {
-    color: #fff;
+    color: var(--tp);
 }
 
 .input-item.error {
@@ -361,8 +365,8 @@
 .popup-card {
     width: 100%;
     max-width: 440px;
-    background: #151515;
-    border: 1px solid #2a2a2a;
+    background: var(--surface);
+    border: 1px solid var(--b2);
     padding: 40px 32px;
     position: relative;
     animation: popupIn 0.45s cubic-bezier(0.85, 0, 0, 1);
@@ -384,7 +388,7 @@
     height: 36px;
     border: none;
     background: transparent;
-    color: #fff;
+    color: var(--tp);
     cursor: pointer;
     font-size: 28px;
     line-height: 1;
@@ -412,7 +416,7 @@
 }
 
 .popup-description {
-    color: #a2a2a0;
+    color: var(--ts);
 }
 
 .submit-error {

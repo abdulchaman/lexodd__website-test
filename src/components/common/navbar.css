@@ -1,6 +1,10 @@
 .rad-global-nav {
-    --rad-nav-height: 72px;
+    --rad-nav-height: 70px;
     padding-top: var(--rad-nav-height);
+}
+
+.rad-global-nav--home {
+    padding-top: 0;
 }
 
 .rad-global-nav.rad-global-nav--hidden .rad-global-nav__wrapper {
@@ -17,6 +21,73 @@
     transition: top 0.55s cubic-bezier(0.85, 0, 0, 1), background-color 180ms ease, border-color 180ms ease;
     border-bottom: 1px solid var(--b1);
     contain: paint;
+}
+
+.rad-global-nav--glass .rad-global-nav__wrapper {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+}
+
+.rad-global-nav--glass.rad-global-nav--scrolled .rad-global-nav__wrapper,
+.rad-global-nav--glass.rad-global-nav--menu-open .rad-global-nav__wrapper {
+    background-color: rgba(0, 0, 0, 0.72);
+    border-bottom-color: rgba(255, 255, 255, 0.24);
+    box-shadow: 0 20px 54px rgba(0, 0, 0, 0.28);
+}
+
+html.light-theme .rad-global-nav--glass .rad-global-nav__wrapper {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-bottom-color: rgba(11, 11, 13, 0.14);
+    box-shadow: 0 18px 48px rgba(11, 11, 13, 0.14);
+}
+
+html.light-theme .rad-global-nav--glass.rad-global-nav--scrolled .rad-global-nav__wrapper,
+html.light-theme .rad-global-nav--glass.rad-global-nav--menu-open .rad-global-nav__wrapper {
+    background-color: rgba(255, 255, 255, 0.86);
+    border-bottom-color: rgba(11, 11, 13, 0.2);
+    box-shadow: 0 20px 54px rgba(11, 11, 13, 0.18);
+}
+
+.rad-global-nav--glass .rad-global-nav__logo-text,
+.rad-global-nav--glass .rad-button--ghost,
+.rad-global-nav--glass .chevron-icon svg,
+.rad-global-nav--glass .mobile_menu_btn,
+.rad-global-nav--glass .nav-search-btn {
+    color: #fff;
+}
+
+.rad-global-nav--glass .nav-search-btn {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.rad-global-nav--glass .rad-button--ghost:hover,
+.rad-global-nav--glass .rad-button--ghost:hover .chevron-icon svg,
+.rad-global-nav--glass .nav-search-btn:hover {
+    color: var(--ac);
+}
+
+html.light-theme .rad-global-nav--glass .rad-global-nav__logo-text,
+html.light-theme .rad-global-nav--glass .rad-button--ghost,
+html.light-theme .rad-global-nav--glass .chevron-icon svg,
+html.light-theme .rad-global-nav--glass .mobile_menu_btn,
+html.light-theme .rad-global-nav--glass .nav-search-btn {
+    color: #0b0b0d;
+}
+
+html.light-theme .rad-global-nav--glass .nav-search-btn {
+    border-color: rgba(11, 11, 13, 0.22);
+    background: rgba(255, 255, 255, 0.34);
+}
+
+html.light-theme .rad-global-nav--glass .rad-button--ghost:hover,
+html.light-theme .rad-global-nav--glass .rad-button--ghost:hover .chevron-icon svg,
+html.light-theme .rad-global-nav--glass .nav-search-btn:hover {
+    color: var(--ac);
 }
 
 .rad-global-nav__container {
@@ -287,7 +358,7 @@ DRAWER HEADER
 ========================= */
 
 .mobile_drawer__header {
-    height: 72px;
+    height: var(--rad-nav-height);
     display: flex;
     align-items: center;
     padding-left: 20px;

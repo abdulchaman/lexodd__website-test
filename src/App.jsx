@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
-import RouteFallback from './components/common/RouteFallback';
+import RouteFallback, { HomeRouteFallback } from './components/common/RouteFallback';
 import { ScrollProgress } from './components/common/Animations';
 import { ThemeProvider } from './context/ThemeContext';
 import { prefetchCriticalRoutes } from './utils/performance';
@@ -47,9 +47,10 @@ const routeConfig = [
 
 function PageRoutes() {
   const location = useLocation();
+  const suspenseFallback = location.pathname === "/" ? <HomeRouteFallback /> : <RouteFallback />;
 
   return (
-    <Suspense fallback={<RouteFallback />}>
+    <Suspense fallback={suspenseFallback}>
       <Routes location={location} key={location.pathname}>
         {routeConfig.map(({ path, Component }) => {
           return (
